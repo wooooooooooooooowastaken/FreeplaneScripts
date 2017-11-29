@@ -3,6 +3,10 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-11-30_00.34.15
+            // Added proc.waitFor() so that the script will wait for the shell script to terminate before to delete the .sh file created.
+            // Added the obligation to have the 'executable' icon on the root branch node to have it's script executed.
+            // The html from the shell script note is stripped using rawNote() instead of htmlUtils. The script in the note has to be inside a <pre> </pre> tags.
         // Version 2017-11-29_20.21.36
             // Modified BASH_PATH code.
         // Version 2017-11-29_20.01.49
@@ -308,6 +312,7 @@
     // ==================================================================================================== 
         def branchRootNode = null
         def branchRootName = '' // This is the name of the output document and the prefix for the files linked if they are copied to the output directory
+        def runBranchRootScript = false
         def text = ''
         def rText = ''
         def htmlStr = '<html><meta charset="UTF-8"><body style="' + STYLE_BODY + '">' + EOL
@@ -394,6 +399,7 @@
                     rawNote = rawNote.replaceAll('\\n\\s*?\\n\\s*?\\n', '\n\n') // Remove multiple empty lines
                     rawNote = rawNote.replaceAll('\\n\\s*?$', '') // Remove last end of line
                     rawNote = rawNote.replaceAll('^\\s*?(\\S)', '$1') // Spaces at the beginning left-over by remoteHtmlTagsFromString()
+                    rawNote = rawNote.replaceAll('&quot;', '"')
             return rawNote
             }
 
@@ -630,7 +636,7 @@
                             link = n.link.text
                             if (link =~ /http/) { // Is URL
                                 hasUrlLink = true
-                                if (link =~ /youtube/) // Is a video
+                                if (link =~ /youtube|youtu\.be/) // Is a video
                                     hasVideoLink = true
                             }
                             else { // Is file or folder
@@ -691,6 +697,9 @@
                 if (branchRootNode == null) {
                     branchRootNode = n
                     branchRootName = truncateText(rText, SHORT_TEXT_MAX_SIZE, false, true)  // I use truncateText but really it was meant for another usage.
+                    // If the root node has a note (script?) + the icon 'Executable' then it is a script to run at the end 
+                        if (branchRootNode.noteText != null && n.icons.collect{it.toString()}.join(';').contains('executable'))
+                            runBranchRootScript = true
                 }
 
             // ====================================================================================================
@@ -1041,9 +1050,12 @@
                                         }
                                     if (hasVideoLink) {
                                         // Adapt the Youtube URL to an embedded Youtube URL 
-                                            if (linkPath =~ /youtube/) {
+                                            if (linkPath =~ /youtube|youtu\.be/) {
                                                 linkPath = linkPath.replace('watch?v=', 'embed/')
                                                 linkPath = linkPath.replaceAll('&t=\\d+s', '') // Remove the seconds that could be appended
+                                                // If link is youtu.be
+                                                    linkPath = linkPath.replace('youtu.', 'www.youtube.com')
+                                                    linkPath = linkPath.replace('be/', '/embed/')
                                             }
                                         sTag = indentSp + indentNbsp + aName + '<iframe src="' + linkPath + '" width="560" height="315" allowfullscreen="allowfullscreen">'
                                         eTag = '</iframe><br>' + EOL
@@ -1323,47 +1335,44 @@
     // ====================================================================================================
     // = Run shell commands from the root node's note (or branch root)
     // ==================================================================================================== 
-        def SHELL_SCRIPT_PATH = OUT_DIR + 'MapToHtmlDoc.sh'
-        // Exit if bash path doesn't exist
-            if (os == 'windows') {
-                def bashPath = new File(BASH_PATH)
-                if (!bashPath.exists())
-                    throw new Exception("To run shell commands please make sure that $BASH_PATH exists.")
-            }
-        // ----------------------------------------------------------------------------------------------------
-        // - If the branch root node contains a note which could be the shell script to run 
-        // ---------------------------------------------------------------------------------------------------- 
-            if (branchRootNode.noteText != null) {
-                // Convert the note to text
-                    def shellScript = htmlUtils.htmlToPlain(branchRootNode.noteText)
-                def runScript = false
-                // ····································································································
-                // · Password: If the note/script contains the variable $password, then show the password input box
-                // ···································································································· 
-                    def password = ''
-                    if (shellScript.contains('$password')) {
-                        password = passwordPrompt('Enter the password:')
-                        if (password != null) 
-                            runScript = true
-                    }
-                    else // If there is no $password variable in the note (maybe the password was entered in the note directly)
+        if (runBranchRootScript) { // - If the branch root node contains a note which could be the shell script to run 
+            def SHELL_SCRIPT_PATH = OUT_DIR + 'MapToHtmlDoc.sh'
+            // Exit if bash path doesn't exist
+                if (os == 'windows') {
+                    def bashPath = new File(BASH_PATH)
+                    if (!bashPath.exists())
+                        throw new Exception("To run shell commands please make sure that $BASH_PATH exists.")
+                }
+            // Convert the note to text
+                def shellScript = rawNote(branchRootNode)
+            def runScript = false
+            // ····································································································
+            // · Password: If the note/script contains the variable $password, then show the password input box
+            // ···································································································· 
+                def password = ''
+                if (shellScript.contains('$password')) {
+                    password = passwordPrompt('Enter the password:')
+                    if (password != null) 
                         runScript = true
-                // ····································································································
-                if (runScript) { // ·
-                // ···································································································· 
-                    // Write the note/script to a file
-                        def scriptWriter = new File(SHELL_SCRIPT_PATH)
-                        shellScript = shellScript.replace('$branchRootName', branchRootName)
-                        shellScript = shellScript.replace('$password', password)
-                        scriptWriter.write(shellScript, 'utf-8')
-                    // Run the script
-                        def bashCmd = "$BASH_PATH $SHELL_SCRIPT_PATH"
-                        //m(bashCmd)
-                        bashCmd.execute()
-                    // Delete so that the password is not available in it.
-                        scriptWriter.delete()
-                    }
-            }
+                }
+                else // If there is no $password variable in the note (maybe the password was entered in the note directly)
+                    runScript = true
+            // ····································································································
+            if (runScript) { // ·
+            // ···································································································· 
+                // Write the note/script to a file
+                    def scriptWriter = new File(SHELL_SCRIPT_PATH)
+                    shellScript = shellScript.replace('$branchRootName', branchRootName)
+                    shellScript = shellScript.replace('$password', password)
+                    scriptWriter.write(shellScript, 'utf-8')
+                // Run the script
+                    def bashCmd = "$BASH_PATH $SHELL_SCRIPT_PATH"
+                    def proc = bashCmd.execute()
+                    proc.waitFor() 
+                // Delete so that the password is not available in it.
+                    scriptWriter.delete()
+                }
+        }
 
     // ====================================================================================================
     // = Create the PDF file (close the pdf file prior to running this)
