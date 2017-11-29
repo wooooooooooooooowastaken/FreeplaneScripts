@@ -1,6 +1,8 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511980671848" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511995355939" LINK="file:/C:/Temp">
+<icon BUILTIN="executable"/>
+<richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -8,7 +10,7 @@
   </head>
   <body>
     <p>
-      Version: 2017-11-29_20.17.56
+      Version: 2017-11-30_00.40.55
     </p>
   </body>
 </html>
@@ -133,114 +135,43 @@
     
   </head>
   <body>
-    <p>
-      # Shell Script to upload to GitHub
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      # ####################################################################################################
-    </p>
-    <p>
-      # # Initialization
-    </p>
-    <p>
-      # ####################################################################################################
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;GIT_SITE='viaa'
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;GIT_PASSWORD=$password
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      # ####################################################################################################
-    </p>
-    <p>
-      # # Main
-    </p>
-    <p>
-      # ####################################################################################################
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# ====================================================================================================
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# = Local
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# ====================================================================================================
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Copying the files to the local git repository'
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cd /d/GitHubWebsites/$GIT_SITE
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# ----------------------------------------------------------------------------------------------------
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# - Git
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# ----------------------------------------------------------------------------------------------------
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Adding files...'
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git add ${branchRootName}*
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Commiting...'
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git commit -am 'Page update'
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# ====================================================================================================
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# = Remote
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;# ====================================================================================================
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Pushing...'
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
-    </p>
-    <p>
-      
-    </p>
-    <p>
-      echo 'Finished'
-    </p>
+    <pre># Shell Script to upload to GitHub
+            
+            # ####################################################################################################
+            # # Initialization
+            # ####################################################################################################
+                GIT_SITE='viaa'
+                GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
+                GIT_PASSWORD='$password'
+            
+            # ####################################################################################################
+            # # Main
+            # ####################################################################################################
+            
+                # ====================================================================================================
+                # = Local
+                # ====================================================================================================
+                    echo 'Copying the files to the local git repository'
+                        cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
+                        cd /d/GitHubWebsites/$GIT_SITE
+            
+                    # ----------------------------------------------------------------------------------------------------
+                    # - Git
+                    # ----------------------------------------------------------------------------------------------------
+                        echo 'Adding files...'
+                            git add ${branchRootName}*
+            
+                        echo 'Commiting...'
+                            git commit -am 'Page update'
+            
+                # ====================================================================================================
+                # = Remote
+                # ====================================================================================================
+                    echo 'Pushing...'
+                        git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
+            
+            echo 'Finished'
+        </pre>
   </body>
 </html>
 
@@ -1085,7 +1016,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="https://guides.github.com/features/pages/" ID="ID_1451866533" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
 </node>
 <node TEXT="Here is a sample shell script to put to the root node&apos;s note (or branch root node&apos;s note) to upload the document to a Github website:" ID="ID_1106222404" CREATED="1511977465009" MODIFIED="1511977522058">
-<node TEXT="Sample shell script" ID="ID_1745318332" CREATED="1511977526329" MODIFIED="1511977896325"><richcontent TYPE="NOTE">
+<node TEXT="Sample shell script" ID="ID_1745318332" CREATED="1511977526329" MODIFIED="1511995770733"><richcontent TYPE="NOTE">
 
 <html>
   <head>
@@ -1093,47 +1024,73 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
   </head>
   <body>
     <pre># Shell Script to upload to GitHub
+            
+            # ####################################################################################################
+            # # Initialization
+            # ####################################################################################################
+                GIT_SITE='viaa'
+                GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
+                GIT_PASSWORD='$password'
+            
+            # ####################################################################################################
+            # # Main
+            # ####################################################################################################
+            
+                # ====================================================================================================
+                # = Local
+                # ====================================================================================================
+                    echo 'Copying the files to the local git repository'
+                        cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
+                        cd /d/GitHubWebsites/$GIT_SITE
+            
+                    # ----------------------------------------------------------------------------------------------------
+                    # - Git
+                    # ----------------------------------------------------------------------------------------------------
+                        echo 'Adding files...'
+                            git add ${branchRootName}*
+            
+                        echo 'Commiting...'
+                            git commit -am 'Page update'
+            
+                # ====================================================================================================
+                # = Remote
+                # ====================================================================================================
+                    echo 'Pushing...'
+                        git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
+            
+            echo 'Finished'
+        </pre>
+  </body>
+</html>
 
-# ####################################################################################################
-# # Initialization
-# ####################################################################################################
-    GIT_SITE='viaa'
-    GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
-    GIT_PASSWORD=$password # The script will prompt for the password if this variable is used here.
+</richcontent>
+<node TEXT="NOTE: If you copy a shell script from one node to another, it is better to copy from the html view of the note editor and not from the layout view. And put it between &lt;pre&gt; &lt;/pre&gt; tags." ID="ID_979902391" CREATED="1511981397426" MODIFIED="1511990501364">
+<node TEXT="" ID="ID_1266006547" CREATED="1511990467204" MODIFIED="1511990472387">
+<hook URI="file:/C:/Screenshots/Image%206528.png" SIZE="0.8583691" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="You need to put the icon named &apos;executable&apos; to the node to make it run. If the note has a script but not this &apos;executable&apos; icon, the script will not run. This can be practical for users who have something else than a script in the note or that don&apos;t want to upload the page right now, then they could just remove temporarily the icon during the document design and testing." ID="ID_939750754" CREATED="1511995384756" MODIFIED="1511995550037">
+<node TEXT="" ID="ID_114846974" CREATED="1511995556119" MODIFIED="1511995581192">
+<hook URI="file:/C:/Screenshots/Image%206529.png" SIZE="1.0" NAME="ExternalObject"/>
+<richcontent TYPE="DETAILS">
 
-# ####################################################################################################
-# # Main
-# ####################################################################################################
-
-    # ====================================================================================================
-    # = Local
-    # ====================================================================================================
-        echo 'Copying the files to the local git repository'
-            cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
-            cd /d/GitHubWebsites/$GIT_SITE
-
-        # ----------------------------------------------------------------------------------------------------
-        # - Git
-        # ----------------------------------------------------------------------------------------------------
-            echo 'Adding files...'
-                git add ${branchRootName}*
-
-            echo 'Commiting...'
-                git commit -am 'Page update'
-
-    # ====================================================================================================
-    # = Remote
-    # ====================================================================================================
-        echo 'Pushing...'
-            git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
-
-echo 'Finished'</pre>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This is the icon name 'executable'
+    </p>
   </body>
 </html>
 
 </richcontent>
 </node>
 </node>
+<node TEXT="Note that it takes a few seconds before the page is refresh on Github pages (as html display) for some reason, but if you look at the html code on the repository you will see the change right away." ID="ID_1330142272" CREATED="1511995844295" MODIFIED="1511995947970"/>
 </node>
 <node TEXT="ftp/sftp" ID="ID_1518212399" CREATED="1511977008513" MODIFIED="1511977018474">
 <node TEXT="To send the exported html document to a website using ftp or sftp just put ftp or sftp commands in the root node&apos;s note (or branch root node&apos;s note) which contain the a shell script that can do any operations." ID="ID_175549903" CREATED="1511977019041" MODIFIED="1511977090970"/>
@@ -1257,6 +1214,9 @@ echo 'Finished'</pre>
 </node>
 <node TEXT="Version: 2017-11-29_20.14.58:" ID="ID_285869064" CREATED="1511979296249" MODIFIED="1511979300099">
 <node TEXT="Modified the upload to web section." ID="ID_476042659" CREATED="1511979300673" MODIFIED="1511979309396"/>
+</node>
+<node TEXT="Version: 2017-11-30_00.40.55:" ID="ID_122951726" CREATED="1511995252396" MODIFIED="1511995256709">
+<node TEXT="Added a screenshot and explanation about the executable icon that makes the script run." ID="ID_816538188" CREATED="1511995290420" MODIFIED="1511995640604" LINK="file:/C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.6.x/scripts/MapToHtmlDocDemoMap.mm#ID_979902391"/>
 </node>
 </node>
 </node>
@@ -1439,7 +1399,7 @@ echo 'Finished'</pre>
 </html>
 </richcontent>
 <cloud COLOR="#f0f0f0" SHAPE="ARC"/>
-<node FOLDED="true" ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
+<node ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -1858,7 +1818,20 @@ echo 'Finished'</pre>
 </node>
 </node>
 </node>
-<node TEXT="s0 Use jGit to push the map to repo" ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511886748377">
+<node FOLDED="true" ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511992763067"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s-1 Use jGit to push the map to repo
+    </p>
+  </body>
+</html>
+
+</richcontent>
 <node TEXT="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/" ID="ID_1921590087" CREATED="1511886757214" MODIFIED="1511886757214" LINK="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/"/>
 <node TEXT="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit" ID="ID_189531157" CREATED="1511886761642" MODIFIED="1511886761642" LINK="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit">
 <node TEXT="   Repository localRepo = new FileRepository(localPath);&#xa;    Git git = new Git(localRepo);&#xa;&#xa;    // add remote repo:&#xa;    RemoteAddCommand remoteAddCommand = git.remoteAdd();&#xa;    remoteAddCommand.setName(&quot;origin&quot;);&#xa;    remoteAddCommand.setUri(new URIish(httpUrl));&#xa;    // you can add more settings here if needed&#xa;    remoteAddCommand.call();&#xa;&#xa;    // push to remote:&#xa;    PushCommand pushCommand = git.push();&#xa;    pushCommand.setCredentialsProvider(new UsernamePasswordCredentialsProvider(&quot;username&quot;, &quot;password&quot;));&#xa;    // you can add more settings here if needed&#xa;    pushCommand.call();" ID="ID_1443250626" CREATED="1511886834631" MODIFIED="1511886835800"/>
@@ -1867,6 +1840,7 @@ echo 'Finished'</pre>
 <node TEXT="org.eclipse.jgit-4.9.0.201710071750-r.jar" ID="ID_321567434" CREATED="1511886943889" MODIFIED="1511886943889" LINK="file:/D:/Projects/org.eclipse.jgit-4.9.0.201710071750-r.jar"/>
 </node>
 </node>
+<node TEXT="s0 Check why, if there are 2 empty titles h3, h4 for example, there are still 2 lines added... it seems i fixed that." ID="ID_696451711" CREATED="1511992767017" MODIFIED="1511992797784"/>
 <node TEXT="s0 The name of the file generated and it&apos;s linked images and files should not be the name of the map because it could be a branch, so use the name of the branchRoot" ID="ID_1791580195" CREATED="1511799954714" MODIFIED="1511799999398"/>
 <node ID="ID_1597786103" CREATED="1511799075043" MODIFIED="1511799496270"><richcontent TYPE="NODE">
 
