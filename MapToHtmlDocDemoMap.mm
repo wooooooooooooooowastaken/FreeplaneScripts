@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511979577765" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511980671848" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -147,9 +147,6 @@
     </p>
     <p>
       # ####################################################################################################
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;branchRootName='MapToHtmlDoc_-_Demo_Map'
     </p>
     <p>
       &#160;&#160;&#160;&#160;GIT_SITE='viaa'
