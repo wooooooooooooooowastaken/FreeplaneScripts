@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-11-29_20.21.36
+            // Modified BASH_PATH code.
         // Version 2017-11-29_20.01.49
             // Add code to upload the document to the web (github pages and ftp).
         // Version 2017-11-29_17.24.45
@@ -207,6 +209,13 @@
                 USER_PATH = System.getProperty("user.home") + '/.freeplane/1.6.x/'
 			def ICONS_PATH = USER_PATH + 'icons/'
 			def LIB_PATH = USER_PATH + 'lib/' 
+
+            // Define bash path depending on the operating system
+            def BASH_PATH = ''
+                if (os == 'windows')
+                    BASH_PATH = 'D:\\Projects\\Tools\\PortableGit\\git-bash.exe'
+                else // Linux, Mac
+                    BASH_PATH = 'bash'
 
         // For connectors
             @Field def SHORT_TEXT_MAX_SIZE = 25 // Number of chars to display in the ShortText field
@@ -1314,17 +1323,13 @@
     // ====================================================================================================
     // = Run shell commands from the root node's note (or branch root)
     // ==================================================================================================== 
-        def SHELL_SCRIPT_PATH = 'c:\\temp\\MapToHtmlDoc.sh'
-        def BASH_PATH = ''
-        // Define bash path depending on the operating system
+        def SHELL_SCRIPT_PATH = OUT_DIR + 'MapToHtmlDoc.sh'
+        // Exit if bash path doesn't exist
             if (os == 'windows') {
-                BASH_PATH = 'D:\\Projects\\Tools\\PortableGit\\git-bash.exe' // s0 Maybe put this in a constant at the top of the script
                 def bashPath = new File(BASH_PATH)
                 if (!bashPath.exists())
                     throw new Exception("To run shell commands please make sure that $BASH_PATH exists.")
             }
-            else // Linux, Mac
-                BASH_PATH = 'bash'
         // ----------------------------------------------------------------------------------------------------
         // - If the branch root node contains a note which could be the shell script to run 
         // ---------------------------------------------------------------------------------------------------- 
@@ -1356,7 +1361,7 @@
                         //m(bashCmd)
                         bashCmd.execute()
                     // Delete so that the password is not available in it.
-                        //scriptWriter.delete()
+                        scriptWriter.delete()
                     }
             }
 
