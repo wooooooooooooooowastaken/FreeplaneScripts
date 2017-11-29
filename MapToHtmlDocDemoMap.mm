@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511252174598" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511978391376" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -8,13 +8,13 @@
   </head>
   <body>
     <p>
-      Version: 2017-11-21_10.16.13
+      Version: 2017-11-29_19.52.38:
     </p>
   </body>
 </html>
 
 </richcontent>
-<hook NAME="MapStyle" background="#ffffff" zoom="0.741">
+<hook NAME="MapStyle" background="#ffffff" zoom="0.815">
     <conditional_styles>
         <conditional_style ACTIVE="true" STYLE_REF="s-1: Abandonned" LAST="false">
             <node_contains_condition VALUE="s-1" ITEM="filter_node" MATCH_APPROXIMATELY="false"/>
@@ -41,7 +41,7 @@
             <node_compare_condition user_name="IGNORE (BAK)" VALUE="BAK" MATCH_CASE="true" MATCH_APPROXIMATELY="false" COMPARATION_RESULT="0" SUCCEED="true" ITEM="filter_node"/>
         </conditional_style>
     </conditional_styles>
-    <properties fit_to_viewport="false;" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false;" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -124,9 +124,134 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="175" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="179" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
-<node TEXT="Introduction" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      # Shell Script to upload to GitHub
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      # ####################################################################################################
+    </p>
+    <p>
+      # # Initialization
+    </p>
+    <p>
+      # ####################################################################################################
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;branchRootName='MapToHtmlDoc_-_Demo_Map'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;GIT_SITE='viaa'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;GIT_PASSWORD=$password
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      # ####################################################################################################
+    </p>
+    <p>
+      # # Main
+    </p>
+    <p>
+      # ####################################################################################################
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# ====================================================================================================
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# = Local
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# ====================================================================================================
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Copying the files to the local git repository'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;cd /d/GitHubWebsites/$GIT_SITE
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# ----------------------------------------------------------------------------------------------------
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# - Git
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;# ----------------------------------------------------------------------------------------------------
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Adding files...'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git add ${branchRootName}*
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Commiting...'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git commit -am 'Page update'
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# ====================================================================================================
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# = Remote
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;# ====================================================================================================
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo 'Pushing...'
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      echo 'Finished'
+    </p>
+    <p>
+      
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Introduction" FOLDED="true" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
 <edge COLOR="#808080"/>
 <node TEXT="What is it?" ID="ID_1808926678" CREATED="1497111702297" MODIFIED="1508139732946">
 <icon BUILTIN="info"/>
@@ -145,7 +270,7 @@
 </html>
 </richcontent>
 </node>
-<node TEXT="The script will take a map with a structure like this map and convert it automatically to a basic although very usable html document that can later be converted to pdf." ID="ID_149309362" CREATED="1497111747393" MODIFIED="1507189009282">
+<node TEXT="The script will take a map with a structure like this map and convert it automatically to a basic although very usable html document that can later be converted to pdf or uploaded to the web, for example on Github pages." ID="ID_149309362" CREATED="1497111747393" MODIFIED="1511347906061">
 <node TEXT="PDF Creation" ID="ID_1458681393" CREATED="1497111796247" MODIFIED="1497111796251" LINK="file:/D:/Work/MindMaps/Doc/MapToHtmlDocDemoMap.mm#ID_324386908"/>
 </node>
 <node TEXT="It is possible to convert only a part of a map. If you want to whole map to be converted to html, you have to select the root node before to run the script, otherwise only the branch of the currently selected node will be converted." ID="ID_799281830" CREATED="1507189016871" MODIFIED="1507189108064"/>
@@ -161,10 +286,8 @@
 </node>
 <node TEXT="I wanted to be able to create documents using Freeplane and just moves blocs of nodes arount to restructure my documents easily." ID="ID_995873642" CREATED="1497111289766" MODIFIED="1497111371358"/>
 </node>
-</node>
 <node TEXT="Compose documents from existing nodes" ID="ID_601793243" CREATED="1497111464701" MODIFIED="1508139864757">
 <icon BUILTIN="pencil"/>
-<node TEXT="" ID="ID_1148351141" CREATED="1497111611331" MODIFIED="1497111611331">
 <node TEXT="It is easy to compose a document using text and images and links that are stored in other maps, just by copying them into the document map." ID="ID_65028233" CREATED="1497111612365" MODIFIED="1497111651900"/>
 <node TEXT="Also someone may want to keep the structure of maps like this map for example so that it can be converted to html later if needed." ID="ID_950856550" CREATED="1497111652250" MODIFIED="1497111699946"/>
 </node>
@@ -185,7 +308,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Features" POSITION="right" ID="ID_998844426" CREATED="1497029381635" MODIFIED="1511123111987">
+<node TEXT="Features" FOLDED="true" POSITION="right" ID="ID_998844426" CREATED="1497029381635" MODIFIED="1511123111987">
 <icon BUILTIN="idea"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_106028219" STARTINCLINATION="608;0;" ENDINCLINATION="-924;-174;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
@@ -315,7 +438,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <font BOLD="true"/>
 <node ID="ID_1615324998" CREATED="1511176315387" MODIFIED="1511252127655"><richcontent TYPE="NODE">
@@ -354,7 +476,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_745100889" CREATED="1511089690003" MODIFIED="1511176402624"><richcontent TYPE="NODE">
 
@@ -368,7 +489,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_186590597" CREATED="1511089921155" MODIFIED="1511090822566"><richcontent TYPE="NODE">
@@ -383,7 +503,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -439,7 +558,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="If a node is a link for example and has a note, the note content will not be inserted." ID="ID_905083844" CREATED="1497110582938" MODIFIED="1508138055872">
@@ -559,14 +677,14 @@
 </node>
 </node>
 </node>
-<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1511089605427">
+<node TEXT="More features" FOLDED="true" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1511976132143">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="PalmIcons/dFileMan/Misc/Spark"/>
-<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-510;-97;" ENDINCLINATION="421;-112;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-488;-456;" ENDINCLINATION="431;-275;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
 <node TEXT="Images" ID="ID_34785326" CREATED="1497029381635" MODIFIED="1508142040129">
 <icon BUILTIN="PalmIcons/dFileMan/Image/Image-file"/>
-<node TEXT="2 types of image insertion" ID="ID_336707127" CREATED="1497029381635" MODIFIED="1511090139014">
+<node TEXT="3 types of image insertion" ID="ID_336707127" CREATED="1497029381635" MODIFIED="1511307436548">
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1366768445" STARTINCLINATION="1165;0;" ENDINCLINATION="1165;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <node ID="ID_1071338087" CREATED="1497029825254" MODIFIED="1497108576998"><richcontent TYPE="NODE">
 
@@ -627,6 +745,9 @@
 </richcontent>
 </node>
 </node>
+<node TEXT="Web image:" ID="ID_881902189" CREATED="1511307439801" MODIFIED="1511307447133">
+<node TEXT="Freeplane Bee" ID="ID_151372436" CREATED="1511307672554" MODIFIED="1511307680432" LINK="https://cdn.pixabay.com/photo/2016/03/31/21/14/bee-1296273_960_720.png"/>
+</node>
 </node>
 </node>
 <node TEXT="Videos" ID="ID_620410827" CREATED="1511304604341" MODIFIED="1511304607442">
@@ -644,7 +765,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -688,7 +808,7 @@
 </node>
 </node>
 <node TEXT="Ignore sections/nodes in connectors" ID="ID_611331884" CREATED="1510134350714" MODIFIED="1510134390300">
-<node TEXT="If the word &apos;IGNORE&apos; is contained in a connector label, the link will not be created at the node where that label is located. And &apos;IGNORE&apos; is found in the label in the middle, no link will be created at all (this can be useful if connectors are needed in the map but they are not needed in the html output)." ID="ID_1955046585" CREATED="1510134391554" MODIFIED="1510134493324"/>
+<node TEXT="If the word &apos;IGNORE&apos; is contained in a connector label, the link will not be created at the node where that label is located. If an &apos;IGNORE&apos; is found in the label in the middle, no link will be created at all (this can be useful if connectors are needed in the map but they are not needed in the html output)." ID="ID_1955046585" CREATED="1510134391554" MODIFIED="1511857118069"/>
 </node>
 <node TEXT="SHOW_CONNECTOR_DETAILS" ID="ID_257161057" CREATED="1510095380029" MODIFIED="1510095387456">
 <node TEXT="There is a constant called &apos;SHOW_CONNECTOR_DETAILS&apos;. When it is set to &apos;true&apos; (by default) the details of the connector is shown, so a textual arrow is displayed besided the link and it shows the source section and target section, all 3 labels if any is defined, and also the path to the source or target node." ID="ID_497556981" CREATED="1510095389500" MODIFIED="1510095516844"/>
@@ -786,7 +906,7 @@
 <node TEXT="The ignored sections will not be visilble in the html file." ID="ID_902861845" CREATED="1497109380758" MODIFIED="1497109395348"/>
 </node>
 <node TEXT="Ignored sections using icons" ID="ID_911605202" CREATED="1497339536808" MODIFIED="1497339919828">
-<node TEXT="This section should be empty." ID="ID_730029603" CREATED="1497339903384" MODIFIED="1497339915730"/>
+<node TEXT="You should not see the 2 nodes below, they should be ignored:" ID="ID_730029603" CREATED="1497339903384" MODIFIED="1511440988386"/>
 <node TEXT="This node and it&apos;s child not will be excluded if the node has this icon" ID="ID_569158912" CREATED="1497336558491" MODIFIED="1497339627247">
 <icon BUILTIN="button_cancel"/>
 <node TEXT="This text should not appear in the output." ID="ID_113474311" CREATED="1497339599462" MODIFIED="1497339612457"/>
@@ -803,7 +923,7 @@
 <node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/" ID="ID_868508449" CREATED="1497544050009" MODIFIED="1497544050009" LINK="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/"/>
 </node>
 </node>
-<node TEXT="Ignored sections using nodes with specific core text" FOLDED="true" ID="ID_767063111" CREATED="1497339652384" MODIFIED="1497339842437">
+<node TEXT="Ignored sections using nodes with specific core text" ID="ID_767063111" CREATED="1497339652384" MODIFIED="1497339842437">
 <node ID="ID_647950553" CREATED="1497339750086" MODIFIED="1497339892968"><richcontent TYPE="NODE">
 
 <html>
@@ -891,6 +1011,123 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
+</node>
+</node>
+<node TEXT="Upload to the web" ID="ID_1977730383" CREATED="1511976153017" MODIFIED="1511976562450">
+<icon BUILTIN="FreeplaneIcons32px/09Docs&amp;Folders/html"/>
+<node TEXT="Description" ID="ID_80615536" CREATED="1511976175337" MODIFIED="1511976480585">
+<node TEXT="Once the html document is created the script can use a bash script that is stored in the root node&apos;s note (or the current branch root node if a branch is exported) and will run it to do any kind of operations that is in this script, and mainly to upload the html document generated and it&apos;s linked files to the web using git or ftp for example." ID="ID_526326420" CREATED="1511976178617" MODIFIED="1511976373859"/>
+<node TEXT="If a user is on the Windows operating system, he will need to install PortableGit and set the path to its git-bash.exe executable." ID="ID_1587264976" CREATED="1511977109113" MODIFIED="1511977149233">
+<node TEXT="https://git-scm.com/download/win" ID="ID_526167041" CREATED="1511977167341" MODIFIED="1511977215321" LINK="https://git-scm.com/download/win"><richcontent TYPE="DETAILS">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Download PortableGit
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node TEXT="I have only tested with git for the moment." ID="ID_1348953946" CREATED="1511976374425" MODIFIED="1511976382100"/>
+</node>
+<node TEXT="Shell script variables" ID="ID_1332111752" CREATED="1511976401361" MODIFIED="1511976420458">
+<node TEXT="The script will replace some variables in the shell script (the root node&apos;s note) with some of its values here are some of these, the names are the same as in the script." ID="ID_681049751" CREATED="1511976617785" MODIFIED="1511976690194">
+<node TEXT="$branchRootName" ID="ID_1943918665" CREATED="1511976690927" MODIFIED="1511976713468"><richcontent TYPE="DETAILS">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This is the name of the document exported
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="$password" ID="ID_348897660" CREATED="1511976772090" MODIFIED="1511976850834"><richcontent TYPE="DETAILS">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If the $password variable is found in the shell script, then a dialog will popup to enter a password. If cancel is is clicked or escape is pressed, then the script won't execute
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Git" ID="ID_1728054439" CREATED="1511976171657" MODIFIED="1511976173098">
+<node TEXT="Github allows users that have a Github account to create web sites as a repository. Html pages can be pushed to such a website repository like code files. There are some tutorials on the web on how to do that. Here is 2 examples of tutorials:" ID="ID_429634311" CREATED="1511976886801" MODIFIED="1511977323771">
+<node TEXT="https://www.youtube.com/watch?v=3jt-J4Rc__M" ID="ID_615156692" CREATED="1510766820971" MODIFIED="1510766820971" LINK="https://www.youtube.com/watch?v=3jt-J4Rc__M"/>
+<node TEXT="https://guides.github.com/features/pages/" ID="ID_1451866533" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
+</node>
+<node TEXT="Here is a sample shell script to put to the root node&apos;s note (or branch root node&apos;s note) to upload the document to a Github website:" ID="ID_1106222404" CREATED="1511977465009" MODIFIED="1511977522058">
+<node TEXT="Sample shell script" ID="ID_1745318332" CREATED="1511977526329" MODIFIED="1511977896325"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre># Shell Script to upload to GitHub
+
+# ####################################################################################################
+# # Initialization
+# ####################################################################################################
+    GIT_SITE='viaa'
+    GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
+    GIT_PASSWORD=$password # The script will prompt for the password if this variable is used here.
+
+# ####################################################################################################
+# # Main
+# ####################################################################################################
+
+    # ====================================================================================================
+    # = Local
+    # ====================================================================================================
+        echo 'Copying the files to the local git repository'
+            cp /c/Temp/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
+            cd /d/GitHubWebsites/$GIT_SITE
+
+        # ----------------------------------------------------------------------------------------------------
+        # - Git
+        # ----------------------------------------------------------------------------------------------------
+            echo 'Adding files...'
+                git add ${branchRootName}*
+
+            echo 'Commiting...'
+                git commit -am 'Page update'
+
+    # ====================================================================================================
+    # = Remote
+    # ====================================================================================================
+        echo 'Pushing...'
+            git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
+
+echo 'Finished'</pre>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="ftp/sftp" ID="ID_1518212399" CREATED="1511977008513" MODIFIED="1511977018474">
+<node TEXT="To send the exported html document to a website using ftp or sftp just put ftp or sftp commands in the root node&apos;s note (or branch root node&apos;s note) which contain the a shell script that can do any operations." ID="ID_175549903" CREATED="1511977019041" MODIFIED="1511977090970"/>
 </node>
 </node>
 </node>
@@ -1003,6 +1240,12 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Version: 2017-11-22_01.27.07:" ID="ID_1412103965" CREATED="1511306823933" MODIFIED="1511306831948">
 <node TEXT="Added support for youtube videos." ID="ID_28288391" CREATED="1511306833057" MODIFIED="1511306838424"/>
 </node>
+<node TEXT="Version: 2017-11-23_14.46.04:" ID="ID_121811067" CREATED="1511441157143" MODIFIED="1511441165858">
+<node TEXT="Small changes to this demo map text and structure." ID="ID_1800683829" CREATED="1511441166759" MODIFIED="1511441184592"/>
+</node>
+<node TEXT="Version: 2017-11-29_19.52.38:" ID="ID_1405145843" CREATED="1511977952961" MODIFIED="1511977959122">
+<node TEXT="Added the section to upload to the web (with Github)." ID="ID_843682852" CREATED="1511977959665" MODIFIED="1511977974138"/>
+</node>
 </node>
 </node>
 <node TEXT="I hope you&apos;ll find it useful too" POSITION="right" ID="ID_495374163" CREATED="1497112090702" MODIFIED="1508142077622">
@@ -1024,6 +1267,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="https://www.youtube.com/watch?v=3jt-J4Rc__M" ID="ID_1558523785" CREATED="1511203154232" MODIFIED="1511203154232" LINK="https://www.youtube.com/watch?v=3jt-J4Rc__M"/>
 <node TEXT="https://guides.github.com/features/pages/" ID="ID_815736451" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
 </node>
+<node TEXT="FreeplaneScripts (upload the map .mm)" ID="ID_1949924066" CREATED="1511307312046" MODIFIED="1511307327633" LINK="file:/D:/Work/MindMaps/Commands.mm#ID_262304796"/>
 </node>
 <node TEXT="Folders" ID="ID_1277631006" CREATED="1511252926293" MODIFIED="1511253023049">
 <node TEXT="Temp" ID="ID_1346148829" CREATED="1511253019789" MODIFIED="1511253019790" LINK="file:/C:/Temp/"/>
@@ -1033,24 +1277,14 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="# Copy" ID="ID_1151322858" CREATED="1511271127649" MODIFIED="1511271129939">
 <node TEXT="cp /c/Temp/MapToHtmlDocDemoMap* /d/GitHubWebsites/viaa" ID="ID_1181496580" CREATED="1511203610727" MODIFIED="1511253133474"/>
 </node>
+<node TEXT="s0 Add delete of files in the folder" ID="ID_1497383173" CREATED="1511515530723" MODIFIED="1511515535856"/>
 <node TEXT="# Upload" ID="ID_524196982" CREATED="1511212350625" MODIFIED="1511257999996" BACKGROUND_COLOR="#ffff00">
 <cloud COLOR="#99ffff" SHAPE="ARC"/>
-<node TEXT="cp /c/Temp/MapToHtmlDocDemoMap* /d/GitHubWebsites/viaa" ID="ID_257428937" CREATED="1511203610727" MODIFIED="1511253133474"/>
+<node TEXT="cp /c/Temp/MapToHtmlDoc_-_Demo_Map* /d/GitHubWebsites/viaa" ID="ID_257428937" CREATED="1511203610727" MODIFIED="1511894409515"/>
 <node TEXT="cd /d/GitHubWebsites/viaa" ID="ID_612073317" CREATED="1511253151917" MODIFIED="1511253153399"/>
-<node TEXT="git add MapToHtmlDocDemoMap*" ID="ID_125348823" CREATED="1511211568716" MODIFIED="1511212654463"/>
-<node TEXT="git commit - &apos;Page update&apos;" ID="ID_537452778" CREATED="1511211359512" MODIFIED="1511307107722"/>
-<node ID="ID_1824069495" CREATED="1511203632260" MODIFIED="1511212430244"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <pre class="f5 js-zeroclipboard-target" style="font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace; font-size: 14px; margin-top: 0px; margin-bottom: 0px; color: rgb(36, 41, 46); font-style: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><span class="user-select-contain">git push -u <font color="#ff0000">viaa</font> master --force</span></pre>
-  </body>
-</html>
-</richcontent>
-</node>
+<node TEXT="git add MapToHtmlDoc_-_Demo_Map*" ID="ID_125348823" CREATED="1511211568716" MODIFIED="1511894413881"/>
+<node TEXT="git commit -m &apos;Page update&apos;" ID="ID_537452778" CREATED="1511211359512" MODIFIED="1511341040952"/>
+<node TEXT="    git push &quot;https://alexandreviau%40gmail.com@github.com/viaa/viaa.github.io.git&quot; master --force" ID="ID_918959905" CREATED="1511894267461" MODIFIED="1511894513971"/>
 </node>
 <node TEXT="OLD" ID="ID_1713268961" CREATED="1511252274629" MODIFIED="1511252275462">
 <node ID="ID_1545516430" CREATED="1511212497050" MODIFIED="1511212497050" LINK="https://viaa.github.io/test.html"><richcontent TYPE="NODE">
@@ -1114,6 +1348,66 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
+<node ID="ID_1976170194" CREATED="1511894267455" MODIFIED="1511894267455"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;&#160;&#160;&#160;cp /c/Temp/MapToHtmlDocDemoMap* /d/GitHubWebsites/viaa
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_1057619277" CREATED="1511894267456" MODIFIED="1511894267456"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;&#160;&#160;&#160;cd /d/GitHubWebsites/viaa
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_1828903479" CREATED="1511894267458" MODIFIED="1511894267458"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;&#160;&#160;&#160;git add MapToHtmlDocDemoMap*
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_575708398" CREATED="1511894267459" MODIFIED="1511894267459"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;&#160;&#160;&#160;git commit -m 'Page&#160;update'
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
 </node>
 </node>
 <node TEXT="MyDocumentation" ID="ID_35550841" CREATED="1491376844393" MODIFIED="1502874578021" LINK="file:/D:/Work/MyDocumentation"><richcontent TYPE="DETAILS">
@@ -1133,7 +1427,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 <cloud COLOR="#f0f0f0" SHAPE="ARC"/>
-<node ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
+<node FOLDED="true" ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -1150,7 +1444,67 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Markdown (todo)" ID="ID_1177086229" CREATED="1511114975256" MODIFIED="1511176216670">
 <font BOLD="true"/>
 <node TEXT="To fix/Bugs" ID="ID_23184298" CREATED="1511174842259" MODIFIED="1511174901020">
-<node TEXT="s0 Add documentation about git in this map" ID="ID_798208830" CREATED="1511262509545" MODIFIED="1511262521277"/>
+<node ID="ID_1574634702" CREATED="1511432146697" MODIFIED="1511884131480"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 so I commented out the entire subsection containing the iconpath definition and the script executed exactly as it was supposed to.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_57289573" CREATED="1511432156921" MODIFIED="1511884130112"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 There is another bit of code that I've had to manually change with each update because my installation doesn't like it. Its the bit defining Freeplane Paths. The script fails at the line defining the USER_PATH to the 1.6x freeplane directory. Doesn't like the line: def USER_PATH = 'C:/Users/' + System.getenv(&quot;USERNAME&quot;) + '/AppData/Roaming/Freeplane/1.6.x/'I have to replace the 'System.getenv(&quot;USERNAME&quot;)' with my hardcoded user name and then it works fine. The computer I'm using is Windows XP so more likely that's the problem rather than your system call.Thanks again,
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_735069410" CREATED="1511308739512" MODIFIED="1511798288475"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 Now there is a new problem determining if the link is a file or a folder... the tulip is not copied to out_dir.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_745405694" CREATED="1511309025340" MODIFIED="1511798290551"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 else { // Is file or folder File fileTypeCheck = getFileFromPath(link) if (fileTypeCheck.exists()) { if (fileTypeCheck.listFiles() != null) hasFolderLink = true else hasFileLink = true }
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="s0 Add documentation about git in this map" ID="ID_798208830" CREATED="1511262509545" MODIFIED="1511262521277">
+<node TEXT="s0 But if I add git support in the script then I would not need to add a section because it will be another way of commiting." ID="ID_1728820964" CREATED="1511701912847" MODIFIED="1511701939958"/>
+</node>
 <node ID="ID_428391015" CREATED="1511174845059" MODIFIED="1511177411415"><richcontent TYPE="NODE">
 
 <html>
@@ -1163,7 +1517,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="s0 Also the outtmp.md file is not deleted once the export is completed, I think this is linked to the TOC not being replaced" ID="ID_28626167" CREATED="1511177412471" MODIFIED="1511177436201"/>
 </node>
@@ -1325,7 +1678,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_619770883" CREATED="1511086433987" MODIFIED="1511120732623"><richcontent TYPE="NODE">
@@ -1340,7 +1692,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1605099662" CREATED="1511086601982" MODIFIED="1511120970914"><richcontent TYPE="NODE">
@@ -1355,7 +1706,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1275692537" CREATED="1511089074689" MODIFIED="1511126226966"><richcontent TYPE="NODE">
@@ -1370,9 +1720,10 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
-<node TEXT="s0 The TOC doesn&apos;t show in large file mode for some reason, fix that...." ID="ID_1516577292" CREATED="1511126229230" MODIFIED="1511126252428"/>
+<node TEXT="s0 The TOC doesn&apos;t show in large file mode for some reason, fix that...." ID="ID_1516577292" CREATED="1511126229230" MODIFIED="1511701961500">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_28626167" STARTINCLINATION="642;0;" ENDINCLINATION="642;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+</node>
 </node>
 </node>
 <node TEXT="To Add" ID="ID_1899804574" CREATED="1511086816419" MODIFIED="1511086818332">
@@ -1389,7 +1740,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -1405,7 +1755,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1573666877" CREATED="1511087847011" MODIFIED="1511119005346"><richcontent TYPE="NODE">
@@ -1420,7 +1769,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1983617963" CREATED="1511086819104" MODIFIED="1511115024203"><richcontent TYPE="NODE">
@@ -1435,7 +1783,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_78404471" CREATED="1511086902810" MODIFIED="1511115024203"><richcontent TYPE="NODE">
@@ -1450,7 +1797,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1622306324" CREATED="1511092636049" MODIFIED="1511115024203"><richcontent TYPE="NODE">
@@ -1465,15 +1811,102 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
+</richcontent>
+</node>
+<node ID="ID_892945841" CREATED="1511174852987" MODIFIED="1511884162098"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 Add youtube video support
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)" ID="ID_109838976" CREATED="1511093106659" MODIFIED="1511093106659"/>
+</node>
+<node ID="ID_840236089" CREATED="1511174860251" MODIFIED="1511884164784"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 Add web images support
+    </p>
+  </body>
+</html>
 
 </richcontent>
 </node>
-<node TEXT="s0 Add youtube video support" ID="ID_892945841" CREATED="1511174852987" MODIFIED="1511174858493">
-<node TEXT="[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)" ID="ID_109838976" CREATED="1511093106659" MODIFIED="1511093106659"/>
-</node>
-<node TEXT="s0 Add web images support" ID="ID_840236089" CREATED="1511174860251" MODIFIED="1511174873692"/>
 </node>
 </node>
+<node TEXT="s0 Use jGit to push the map to repo" ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511886748377">
+<node TEXT="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/" ID="ID_1921590087" CREATED="1511886757214" MODIFIED="1511886757214" LINK="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/"/>
+<node TEXT="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit" ID="ID_189531157" CREATED="1511886761642" MODIFIED="1511886761642" LINK="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit">
+<node TEXT="   Repository localRepo = new FileRepository(localPath);&#xa;    Git git = new Git(localRepo);&#xa;&#xa;    // add remote repo:&#xa;    RemoteAddCommand remoteAddCommand = git.remoteAdd();&#xa;    remoteAddCommand.setName(&quot;origin&quot;);&#xa;    remoteAddCommand.setUri(new URIish(httpUrl));&#xa;    // you can add more settings here if needed&#xa;    remoteAddCommand.call();&#xa;&#xa;    // push to remote:&#xa;    PushCommand pushCommand = git.push();&#xa;    pushCommand.setCredentialsProvider(new UsernamePasswordCredentialsProvider(&quot;username&quot;, &quot;password&quot;));&#xa;    // you can add more settings here if needed&#xa;    pushCommand.call();" ID="ID_1443250626" CREATED="1511886834631" MODIFIED="1511886835800"/>
+</node>
+<node TEXT="Projects" ID="ID_1773579815" CREATED="1511886939391" MODIFIED="1511886939392" LINK="file:/D:/Projects/">
+<node TEXT="org.eclipse.jgit-4.9.0.201710071750-r.jar" ID="ID_321567434" CREATED="1511886943889" MODIFIED="1511886943889" LINK="file:/D:/Projects/org.eclipse.jgit-4.9.0.201710071750-r.jar"/>
+</node>
+</node>
+<node TEXT="s0 The name of the file generated and it&apos;s linked images and files should not be the name of the map because it could be a branch, so use the name of the branchRoot" ID="ID_1791580195" CREATED="1511799954714" MODIFIED="1511799999398"/>
+<node ID="ID_1597786103" CREATED="1511799075043" MODIFIED="1511799496270"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 Before text in image core text there are 2 lines of spacing... fix that.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_613458842" CREATED="1511795714026" MODIFIED="1511797209265"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s2 The breadcrumb paths are generated until the root node even if the document is generated from a branch.... this should be fixed..!! I think I should pass the branchRootNode
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="s0 Why when adding a icon to an image, the icon is added after the image? It should be before?" ID="ID_1043731737" CREATED="1511795845883" MODIFIED="1511795869253"/>
+<node TEXT="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all" ID="ID_1970449073" CREATED="1511795013021" MODIFIED="1511795013021" LINK="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all">
+<node TEXT="s0 Try to adapt markdown also for the JIRA syntax" ID="ID_718626163" CREATED="1511795019331" MODIFIED="1511795031556"/>
+</node>
+<node ID="ID_708440136" CREATED="1511515067464" MODIFIED="1511515072023"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      s0 Eventually I was thinking to add the posibility to some of the constants from the script using attributes in the current node of the map (root note or another).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="s0 Support CSS and have the current style as default, and maybe I could put CSS in IGNORE nodes and some STYLE nodes, if the script finds this then it will include it to the output document, so no external CSS file, then I could change style by putting the STYLE node to an INGORE node and put another STYLE node not in the IGNORE section." ID="ID_310534831" CREATED="1511346788762" MODIFIED="1511346882516">
+<node TEXT="One is CSS support. I have this idea that a branch with CSS code would be move around in and out an IGNORE node to activate the style or remove it. Multiple CSS branches could be in the map and would be combined if out of an ignored node. These branches could be copied to another map. So there would not be dependance on external .css file but if there is one available then I guess it could be used the html document." ID="ID_1385470425" CREATED="1511367206517" MODIFIED="1511367206517"/>
+<node TEXT="The current style with the Freeplane colors would be the default style." ID="ID_83721252" CREATED="1511367206517" MODIFIED="1511367206517"/>
+</node>
+<node TEXT="s0 Maybe put breadcrumbs for the connectors path display? So to display these paths as breadcrumbs?" ID="ID_1502427415" CREATED="1511345332667" MODIFIED="1511345371805"/>
 <node ID="ID_1364566399" CREATED="1511304635966" MODIFIED="1511305814122"><richcontent TYPE="NODE">
 
 <html>
@@ -1486,7 +1919,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1964492864" CREATED="1511280856102" MODIFIED="1511282554128"><richcontent TYPE="NODE">
@@ -1501,7 +1933,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="s0 When displayed as link the text does not show, we should see it." ID="ID_1105469977" CREATED="1511218488599" MODIFIED="1511218514547"/>
@@ -1518,7 +1949,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="s0 Continue the test.groovy script to include nodes from another map, and add the precision that a map should be included at a certain node id only." ID="ID_128473865" CREATED="1509643961119" MODIFIED="1509643997161"/>
@@ -1534,7 +1964,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1519953105" CREATED="1510673251618" MODIFIED="1511119074334"><richcontent TYPE="NODE">
@@ -1549,7 +1978,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="s0 Maybe the connectors should be added according to the arrows" ID="ID_1343916894" CREATED="1510672445794" MODIFIED="1510672467932"/>
@@ -1693,7 +2121,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node FOLDED="true" ID="ID_1979560022" CREATED="1491381602871" MODIFIED="1492507259075"><richcontent TYPE="NODE">
+<node ID="ID_1979560022" CREATED="1491381602871" MODIFIED="1492507259075"><richcontent TYPE="NODE">
 
 <html>
   <head>
