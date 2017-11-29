@@ -3,6 +3,10 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-11-29_20.01.49
+            // Add code to upload the document to the web (github pages and ftp).
+        // Version 2017-11-29_17.24.45
+            // Added code to detect the operating system and set the paths accordingly. Not tested on mac or linux.
         // Version 2017-11-28_10.21.48
             // Added an error message when the root node or the branch root node is ignored.
             // Added parameter to truncateText() so that special chars are not always removed, for performance.
@@ -112,7 +116,6 @@
             // I added 1 <br> after the attributes so that there is the same spacing as with paragraph before the sections.
             // I added a check if a file exists before to insert it to the gray box, so that if it is moved it will not cause a script error and have the script to stop. It will tell in the gray box that the file xyz doesn't exist. 
 
-
 // ####################################################################################################
 // # Imports 
 // ####################################################################################################
@@ -120,6 +123,8 @@
         import groovy.transform.Field
     // SimpleDateFormat
         import java.text.*
+    // Prompt (input box)
+        import javax.swing.*
     // Imports for latex
         // BEGIN - LATEX (Comment out this section if jlatexmath-1.0.6.jar is not in C:\Users\%USERNAME%\AppData\Roaming\Freeplane\1.6.x\lib. See the demo map documentation for Latex usage)
             /* import java.awt.image.BufferedImage */ 
@@ -134,6 +139,24 @@
         import org.apache.commons.io.FileUtils
 	// To get parts of paths
 		import org.apache.commons.io.FilenameUtils
+
+// ####################################################################################################
+// # Pre-Initialization
+// #################################################################################################### 
+
+    // ====================================================================================================
+    // = Get operating system
+    // ==================================================================================================== 
+        String OS = System.getProperty("os.name").toLowerCase();
+        String os = ''
+        if (OS.contains("win"))
+            os = 'windows'
+        else if (OS.contains("mac"))
+            os = 'mac'
+        else if (OS =~ /nix|nux|aix/)
+            os = 'unix'
+        else
+            os = 'other'
 
 // ####################################################################################################
 // # Constants and variables
@@ -165,16 +188,23 @@
         def CHANGE_DEPTH_ICON = 'Dark-'
 
         // Html doc paths
-            @Field def OUT_DIR = 'c:/Temp/'
+            @Field def OUT_DIR = ''
+            if (os == 'windows')
+                OUT_DIR = 'c:/Temp/'
+            else
+                OUT_DIR = '/tmp/'
             def OUT_FILENAME = 'out.html'
             def OUT_TMP_FILENAME = 'outtmp.html'
-            // Markdown
+           // Markdown
                 def MD_OUT_FILENAME = 'out.md'
                 def MD_OUT_TMP_FILENAME = 'outtmp.md'
 
-		// Freeplane paths
-			// def USER_PATH = 'C:/Users/' + System.getenv("USERNAME") + '/AppData/Roaming/Freeplane/1.6.x/'
-			def USER_PATH = 'C:/Users/' + System.getProperty("user.name") + '/AppData/Roaming/Freeplane/1.6.x/'
+		// Paths
+            def USER_PATH = ''
+            if (os == 'windows')
+                USER_PATH = 'C:/Users/' + System.getProperty("user.name") + '/AppData/Roaming/Freeplane/1.6.x/'
+            else // if (os == 'mac')
+                USER_PATH = System.getProperty("user.home") + '/.freeplane/1.6.x/'
 			def ICONS_PATH = USER_PATH + 'icons/'
 			def LIB_PATH = USER_PATH + 'lib/' 
 
@@ -303,6 +333,18 @@
             }
 
         // ====================================================================================================
+        def passwordPrompt(label) { // = Input box
+        // ==================================================================================================== 
+            JLabel jPassword = new JLabel("Please enter the password required for the script in the branch root node:")
+            JTextField password = new JPasswordField()
+            Object[] ob = [jPassword, password]
+            int result = JOptionPane.showConfirmDialog(null, ob, "Password", JOptionPane.OK_CANCEL_OPTION)
+            String passwordValue = ''
+            if (result == JOptionPane.OK_OPTION)
+                passwordValue = password.getText()
+        }
+
+        // ====================================================================================================
          def d(message) { // = To write debug messages to a file
         // ====================================================================================================
             if (DEBUG) {
@@ -373,7 +415,7 @@
             else
                 text = pStr
             if (removeSpecialChars) // Replace reserved chars for files
-                text = text.replaceAll('<|>|:|"|/|\\\\|\\||\\?|\\*', '_')
+                text = text.replaceAll('<|>|:|"|/|\\\\|\\||\\?|\\*| |&', '_').replaceAll('_+', '_') // Then replace multiple _ by only one.
             // Double the apostrophes so there is no issue inserting the strings in the database
                 // text = text.replaceAll("'", "''")
             return text
@@ -1270,6 +1312,55 @@
             m("Markdown document saved as '" + OUT_DIR + MD_OUT_FILENAME + "' and to '" + OUT_DIR + branchRootName + '.md' + "'.")
 
     // ====================================================================================================
+    // = Run shell commands from the root node's note (or branch root)
+    // ==================================================================================================== 
+        def SHELL_SCRIPT_PATH = 'c:\\temp\\MapToHtmlDoc.sh'
+        def BASH_PATH = ''
+        // Define bash path depending on the operating system
+            if (os == 'windows') {
+                BASH_PATH = 'D:\\Projects\\Tools\\PortableGit\\git-bash.exe' // s0 Maybe put this in a constant at the top of the script
+                def bashPath = new File(BASH_PATH)
+                if (!bashPath.exists())
+                    throw new Exception("To run shell commands please make sure that $BASH_PATH exists.")
+            }
+            else // Linux, Mac
+                BASH_PATH = 'bash'
+        // ----------------------------------------------------------------------------------------------------
+        // - If the branch root node contains a note which could be the shell script to run 
+        // ---------------------------------------------------------------------------------------------------- 
+            if (branchRootNode.noteText != null) {
+                // Convert the note to text
+                    def shellScript = htmlUtils.htmlToPlain(branchRootNode.noteText)
+                def runScript = false
+                // ····································································································
+                // · Password: If the note/script contains the variable $password, then show the password input box
+                // ···································································································· 
+                    def password = ''
+                    if (shellScript.contains('$password')) {
+                        password = passwordPrompt('Enter the password:')
+                        if (password != null) 
+                            runScript = true
+                    }
+                    else // If there is no $password variable in the note (maybe the password was entered in the note directly)
+                        runScript = true
+                // ····································································································
+                if (runScript) { // ·
+                // ···································································································· 
+                    // Write the note/script to a file
+                        def scriptWriter = new File(SHELL_SCRIPT_PATH)
+                        shellScript = shellScript.replace('$branchRootName', branchRootName)
+                        shellScript = shellScript.replace('$password', password)
+                        scriptWriter.write(shellScript, 'utf-8')
+                    // Run the script
+                        def bashCmd = "$BASH_PATH $SHELL_SCRIPT_PATH"
+                        //m(bashCmd)
+                        bashCmd.execute()
+                    // Delete so that the password is not available in it.
+                        //scriptWriter.delete()
+                    }
+            }
+
+    // ====================================================================================================
     // = Create the PDF file (close the pdf file prior to running this)
     // ==================================================================================================== 
         /* command = '"C:\\Tools\\PrinceXML\\bin\\prince.exe c:\\temp\\out.html c:\\temp\\out.pdf"' */
@@ -1282,3 +1373,4 @@
             // C:\Tools\PrinceXML\bin\prince.exe c:\temp\out.html c:\temp\out.pdf
             // c:\vim\vim74\vim.exe -c "e c:/temp/out.pdf | exe 'g,^\/T (www\.princexml\.com,norm 9k16dd' | exe 'g,^<<\/Producer (Prince,norm 1k4dd' | 0407
             // c:\temp\out.pdf
+
