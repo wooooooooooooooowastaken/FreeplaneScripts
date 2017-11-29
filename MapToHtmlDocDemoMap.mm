@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511978391376" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511979577765" LINK="file:/C:/Temp"><richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -8,7 +8,7 @@
   </head>
   <body>
     <p>
-      Version: 2017-11-29_19.52.38:
+      Version: 2017-11-29_20.17.56
     </p>
   </body>
 </html>
@@ -243,9 +243,6 @@
     </p>
     <p>
       echo 'Finished'
-    </p>
-    <p>
-      
     </p>
   </body>
 </html>
@@ -900,7 +897,7 @@
 <icon BUILTIN="idea"/>
 <icon BUILTIN="launch"/>
 <edge COLOR="#808080"/>
-<node TEXT="Ignored sections" ID="ID_1455741693" CREATED="1497109000350" MODIFIED="1497109020774">
+<node TEXT="Ignored sections" FOLDED="true" ID="ID_1455741693" CREATED="1497109000350" MODIFIED="1497109020774">
 <node TEXT="Why this feature was added?" ID="ID_1664469574" CREATED="1497109125121" MODIFIED="1497112345518">
 <node TEXT="If a node is called IGNORE, BAK or OLD, or contains specific icons, the nodes that are put inside them will be ignored. This is useful to put temporary things or todo items, or things not needed anymore but that we want to keep stored in the map.&#xa;As many of these sections as needed can be created at any level in the map." ID="ID_1510170325" CREATED="1497109041343" MODIFIED="1497339704538"/>
 <node TEXT="The ignored sections will not be visilble in the html file." ID="ID_902861845" CREATED="1497109380758" MODIFIED="1497109395348"/>
@@ -976,7 +973,7 @@
 </node>
 </node>
 </node>
-<node TEXT="PDF creation" ID="ID_324386908" CREATED="1497110483274" MODIFIED="1507040868533">
+<node TEXT="PDF creation" FOLDED="true" ID="ID_324386908" CREATED="1497110483274" MODIFIED="1507040868533">
 <node TEXT="PrinceXML" ID="ID_1149512415" CREATED="1497110489220" MODIFIED="1497110491424">
 <node TEXT="You can use PrinceXML to convert your html to pdf once it is generated so you get a portable document with images included." ID="ID_295185508" CREATED="1497110492087" MODIFIED="1497110542350"/>
 </node>
@@ -984,7 +981,7 @@
 <node TEXT="You can use also OpenOffice Writer or Microsoft Word to open the html file generated and save it as PDF or other formats as you need." ID="ID_1059487994" CREATED="1497267310033" MODIFIED="1497267348362"/>
 </node>
 </node>
-<node TEXT="Image minimize" ID="ID_1766577308" CREATED="1507030156891" MODIFIED="1507030169883">
+<node TEXT="Image minimize" FOLDED="true" ID="ID_1766577308" CREATED="1507030156891" MODIFIED="1507030169883">
 <node TEXT="ImageEmbedLinkSwitcher.groovy" ID="ID_1765991671" CREATED="1507030171387" MODIFIED="1507030495278">
 <node TEXT="This script is useful if you want to get the images out of the screen, to minimize them. Then embedded images will appear as links." ID="ID_782805686" CREATED="1507030243138" MODIFIED="1507030495278"/>
 <node TEXT="Code" ID="ID_560719244" CREATED="1507030288244" MODIFIED="1510662250605"><richcontent TYPE="NOTE">
@@ -1027,6 +1024,21 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
   <body>
     <p>
       Download PortableGit
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_32141034" CREATED="1511979114305" MODIFIED="1511979163805"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If you are on Windows you will need too set the <font color="#ff0000">BASH_PATH</font>&#160;constant in script to the location of PortableGit's 'git-bash.exe'.
     </p>
   </body>
 </html>
@@ -1131,7 +1143,7 @@ echo 'Finished'</pre>
 </node>
 </node>
 </node>
-<node TEXT="Configuration" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
+<node TEXT="Configuration" FOLDED="true" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
 <icon BUILTIN="PalmIcons/cSeries/Blue1/Blue-pc"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1784484328" MIDDLE_LABEL="IGNORE" STARTINCLINATION="-286;8;" ENDINCLINATION="-286;8;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
@@ -1245,6 +1257,9 @@ echo 'Finished'</pre>
 </node>
 <node TEXT="Version: 2017-11-29_19.52.38:" ID="ID_1405145843" CREATED="1511977952961" MODIFIED="1511977959122">
 <node TEXT="Added the section to upload to the web (with Github)." ID="ID_843682852" CREATED="1511977959665" MODIFIED="1511977974138"/>
+</node>
+<node TEXT="Version: 2017-11-29_20.14.58:" ID="ID_285869064" CREATED="1511979296249" MODIFIED="1511979300099">
+<node TEXT="Modified the upload to web section." ID="ID_476042659" CREATED="1511979300673" MODIFIED="1511979309396"/>
 </node>
 </node>
 </node>
