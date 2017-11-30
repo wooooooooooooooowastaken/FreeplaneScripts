@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-11-30_18.10.20
+            // I added a sub directory to the temp directory because some files not related with the document in that temp dir were uploaded to github...
         // Version 2017-11-30_14.08.07
             // Added the replacement of \n by _ in the truncate function, because this was causing path errors.
         // Version 2017-11-30_00.34.15
@@ -198,9 +200,9 @@
         // Html doc paths
             @Field def OUT_DIR = ''
             if (os == 'windows')
-                OUT_DIR = 'c:/Temp/'
+                OUT_DIR = 'c:/Temp/MapToHtmlDoc/'
             else
-                OUT_DIR = '/tmp/'
+                OUT_DIR = '/tmp/MapToHtmlDoc/'
             def OUT_FILENAME = 'out.html'
             def OUT_TMP_FILENAME = 'outtmp.html'
            // Markdown
