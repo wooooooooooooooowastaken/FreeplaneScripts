@@ -1322,6 +1322,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="git commit -m &apos;Page update&apos;" ID="ID_537452778" CREATED="1511211359512" MODIFIED="1511341040952"/>
 <node TEXT="    git push &quot;https://alexandreviau%40gmail.com@github.com/viaa/viaa.github.io.git&quot; master --force" ID="ID_918959905" CREATED="1511894267461" MODIFIED="1511894513971"/>
 </node>
+<node TEXT="Remove" ID="ID_824085987" CREATED="1512049268586" MODIFIED="1512049270140"/>
 <node TEXT="OLD" ID="ID_1713268961" CREATED="1511252274629" MODIFIED="1511252275462">
 <node ID="ID_1545516430" CREATED="1511212497050" MODIFIED="1511212497050" LINK="https://viaa.github.io/test.html"><richcontent TYPE="NODE">
 
