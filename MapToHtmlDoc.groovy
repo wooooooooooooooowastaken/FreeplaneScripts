@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-11-30_14.08.07
+            // Added the replacement of \n by _ in the truncate function, because this was causing path errors.
         // Version 2017-11-30_00.34.15
             // Added proc.waitFor() so that the script will wait for the shell script to terminate before to delete the .sh file created.
             // Added the obligation to have the 'executable' icon on the root branch node to have it's script executed.
@@ -430,7 +432,7 @@
             else
                 text = pStr
             if (removeSpecialChars) // Replace reserved chars for files
-                text = text.replaceAll('<|>|:|"|/|\\\\|\\||\\?|\\*| |&', '_').replaceAll('_+', '_') // Then replace multiple _ by only one.
+                text = text.replaceAll('<|>|:|"|/|\\\\|\\||\\?|\\*| |&|\\n', '_').replaceAll('_+', '_') // Then replace multiple _ by only one.
             // Double the apostrophes so there is no issue inserting the strings in the database
                 // text = text.replaceAll("'", "''")
             return text
@@ -439,12 +441,13 @@
         // ====================================================================================================
         def getFileFromPath(path) { // = This function was created because there is an issue using for example FileUtils with spaces in paths 
         // ==================================================================================================== 
-            // s0 Check if this function could simply be replaced by this because it works for fileTypeCheck: File f = new File(link.replace('file:/', '').replace('%20', ' ')). But this will not replace all encoded chars and also for some reason this function didn't work for fileTypeCheck...
 			path = path.replace('file:/', ' ')
+			path = path.replaceAll("\\u0020", '%20')
             def driveLetter = path.substring(0, 2) // For some reason uri.getPath() returns no drive letter so it is kept here
-                URI uri = new URI(path.trim().replaceAll("\\u0020", '%20'))
+                URI uri = new URI(path.trim())
                 File file = new File(driveLetter + uri.getPath())
 			return file
+            return ''
             }
 
         // ====================================================================================================
