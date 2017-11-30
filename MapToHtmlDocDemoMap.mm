@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1512032945399" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1512042085791" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
 <icon BUILTIN="executable"/>
 <richcontent TYPE="DETAILS">
 
@@ -10,7 +10,7 @@
   </head>
   <body>
     <p>
-      Version: 2017-11-30_10.59.56
+      Version: 2017-11-30_13.41.24
     </p>
   </body>
 </html>
@@ -836,24 +836,52 @@
 <icon BUILTIN="idea"/>
 <icon BUILTIN="launch"/>
 <edge COLOR="#808080"/>
-<node TEXT="Ignored sections" FOLDED="true" ID="ID_1455741693" CREATED="1497109000350" MODIFIED="1497109020774">
+<node TEXT="Ignored sections" ID="ID_1455741693" CREATED="1497109000350" MODIFIED="1497109020774">
 <node TEXT="Why this feature was added?" ID="ID_1664469574" CREATED="1497109125121" MODIFIED="1497112345518">
 <node TEXT="If a node is called IGNORE, BAK or OLD, or contains specific icons, the nodes that are put inside them will be ignored. This is useful to put temporary things or todo items, or things not needed anymore but that we want to keep stored in the map.&#xa;As many of these sections as needed can be created at any level in the map." ID="ID_1510170325" CREATED="1497109041343" MODIFIED="1497339704538"/>
 <node TEXT="The ignored sections will not be visilble in the html file." ID="ID_902861845" CREATED="1497109380758" MODIFIED="1497109395348"/>
 </node>
 <node TEXT="Ignored sections using icons" ID="ID_911605202" CREATED="1497339536808" MODIFIED="1497339919828">
 <node TEXT="You should not see the 2 nodes below, they should be ignored:" ID="ID_730029603" CREATED="1497339903384" MODIFIED="1511440988386"/>
-<node TEXT="This node and it&apos;s child not will be excluded if the node has this icon" ID="ID_569158912" CREATED="1497336558491" MODIFIED="1497339627247">
+<node TEXT="This node (but not it&apos;s children) will be excluded if the node has this icon" ID="ID_569158912" CREATED="1497336558491" MODIFIED="1512041969523">
 <icon BUILTIN="button_cancel"/>
-<node TEXT="This text should not appear in the output." ID="ID_113474311" CREATED="1497339599462" MODIFIED="1497339612457"/>
+<node ID="ID_113474311" CREATED="1497339599462" MODIFIED="1512041982453"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This text <font color="#ff0000">should</font>&#160;appear in the output.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
 </node>
 <node TEXT="This node and it&apos;s child not will be excluded if the node has this icon" ID="ID_1970782863" CREATED="1497337819276" MODIFIED="1497339620776">
 <icon BUILTIN="closed"/>
-<node TEXT="This text should not appear in the output." ID="ID_270111790" CREATED="1497339599462" MODIFIED="1497339612457"/>
+<node ID="ID_270111790" CREATED="1497339599462" MODIFIED="1512041986855"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This text <font color="#ff0000">should not</font>&#160;appear in the output.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
 </node>
 </node>
 <node TEXT="Ignored sections with attributes" ID="ID_1594407392" CREATED="1497543987993" MODIFIED="1497543996217">
-<node TEXT="This section should be empty." ID="ID_272395147" CREATED="1497339903384" MODIFIED="1497339915730"/>
+<node TEXT="This section should be empty:" ID="ID_272395147" CREATED="1497339903384" MODIFIED="1512042042705"/>
 <node TEXT="At Quinbus&apos; request" ID="ID_1512728740" CREATED="1497543998744" MODIFIED="1497544049369">
 <attribute NAME="Type" VALUE="Private"/>
 <node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/" ID="ID_868508449" CREATED="1497544050009" MODIFIED="1497544050009" LINK="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/"/>
@@ -1251,6 +1279,9 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Version: 2017-11-30_11.10.19:" ID="ID_810496500" CREATED="1512033016970" MODIFIED="1512033020308">
 <node TEXT="I added Github push of the .mm in the shell script of the root note&apos;s node along with the push of the html doc generated." ID="ID_1827766131" CREATED="1512033020834" MODIFIED="1512033057036"/>
 </node>
+<node TEXT="Version: 2017-11-30_13.41.24:" ID="ID_212860992" CREATED="1512042095531" MODIFIED="1512042098868">
+<node TEXT="Modified the node exclusion documentation, the impass icon in fact excludes the children also, but the red X exclude only the current node." ID="ID_168296408" CREATED="1512042099962" MODIFIED="1512042144452"/>
+</node>
 </node>
 </node>
 <node TEXT="I hope you&apos;ll find it useful too" POSITION="right" ID="ID_495374163" CREATED="1497112090702" MODIFIED="1508142077622">
@@ -1432,7 +1463,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 <cloud COLOR="#f0f0f0" SHAPE="ARC"/>
-<node FOLDED="true" ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
+<node ID="ID_1021239499" CREATED="1491377944091" MODIFIED="1491471738444"><richcontent TYPE="NODE">
 
 <html>
   <head>
