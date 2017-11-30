@@ -1248,6 +1248,9 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Version: 2017-11-30_10.59.56:" ID="ID_184146052" CREATED="1512032393442" MODIFIED="1512032397229">
 <node TEXT="Small modifications to text and content." ID="ID_668454350" CREATED="1512032397882" MODIFIED="1512032414876"/>
 </node>
+<node TEXT="Version: 2017-11-30_11.10.19:" ID="ID_810496500" CREATED="1512033016970" MODIFIED="1512033020308">
+<node TEXT="I added Github push of the .mm in the shell script of the root note&apos;s node along with the push of the html doc generated." ID="ID_1827766131" CREATED="1512033020834" MODIFIED="1512033057036"/>
+</node>
 </node>
 </node>
 <node TEXT="I hope you&apos;ll find it useful too" POSITION="right" ID="ID_495374163" CREATED="1497112090702" MODIFIED="1508142077622">
