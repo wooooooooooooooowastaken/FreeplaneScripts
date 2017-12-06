@@ -1401,7 +1401,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Github pages" ID="ID_327047891" CREATED="1511252223302" MODIFIED="1511257938143">
 <cloud COLOR="#ccffff" SHAPE="ARC"/>
 <node TEXT="Links" ID="ID_359900307" CREATED="1511252906173" MODIFIED="1511252907870">
-<node TEXT="https://viaa.github.io/MapToHtmlDocDemoMap.html" ID="ID_1149562625" CREATED="1511212611461" MODIFIED="1511253247208" LINK="https://viaa.github.io/MapToHtmlDocDemoMap.html#ID_1723255651" BACKGROUND_COLOR="#ffff00"/>
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1149562625" CREATED="1511212611461" MODIFIED="1512600930350" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ffff00"/>
 <node TEXT="HowTo" ID="ID_1745155518" CREATED="1511203156496" MODIFIED="1511203158184">
 <node TEXT="https://www.youtube.com/watch?v=3jt-J4Rc__M" ID="ID_1558523785" CREATED="1511203154232" MODIFIED="1511203154232" LINK="https://www.youtube.com/watch?v=3jt-J4Rc__M"/>
 <node TEXT="https://guides.github.com/features/pages/" ID="ID_815736451" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
@@ -2081,6 +2081,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
+<node TEXT="s0 Add an icon to the root node to tell if the document will be converted to pdf." ID="ID_1292122904" CREATED="1512601016793" MODIFIED="1512601061737"/>
 <node TEXT="s0 There seems to be a conflict when adding both the CSS formatting and the html formatting using the dialog. I will try to resolved that later." ID="ID_1771968082" CREATED="1512600522909" MODIFIED="1512600566956"/>
 <node TEXT="s0 The formatting in the details (using the dialog) dosen&apos;t work" ID="ID_1029798927" CREATED="1512600503224" MODIFIED="1512600521273"/>
 <node TEXT="s0 Do a function that converts text style (even to background to span? to css style or html font style" ID="ID_953641032" CREATED="1512497852643" MODIFIED="1512497892990"/>
