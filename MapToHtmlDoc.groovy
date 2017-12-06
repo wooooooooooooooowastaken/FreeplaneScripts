@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-06_17.46.20
+            // Added the possibility to add links to list item (<li>) and also added this for markdown + fixed markdown list items that had some issue. 
         // Version 2017-11-30_18.10.20
             // I added a sub directory to the temp directory because some files not related with the document in that temp dir were uploaded to github...
         // Version 2017-11-30_14.08.07
@@ -209,14 +211,14 @@
                 def MD_OUT_FILENAME = 'out.md'
                 def MD_OUT_TMP_FILENAME = 'outtmp.md'
 
-		// Paths
+        // Paths
             def USER_PATH = ''
             if (os == 'windows')
                 USER_PATH = 'C:/Users/' + System.getProperty("user.name") + '/AppData/Roaming/Freeplane/1.6.x/'
             else // if (os == 'mac')
                 USER_PATH = System.getProperty("user.home") + '/.freeplane/1.6.x/'
-			def ICONS_PATH = USER_PATH + 'icons/'
-			def LIB_PATH = USER_PATH + 'lib/' 
+            def ICONS_PATH = USER_PATH + 'icons/'
+            def LIB_PATH = USER_PATH + 'lib/' 
 
             // Define bash path depending on the operating system
             def BASH_PATH = ''
@@ -235,7 +237,7 @@
             def ADD_H4_BREADCRUMBS = false
     
         // For Markdown (enable export to Markdown, .md files will be also create with the .html files)
-            @Field def MARKDOWN = false
+            @Field def MARKDOWN = true
             def NOTE_IS_HTML = '<b>|<a href|<i>|<small>|<font' // To identify that a note contains html (to select the display method for the markdown notes: bloquote or code)
 
 		// To copy files or images to the output directory
@@ -980,7 +982,7 @@
                                     iText = rText.substring(2) // Remove 2 first chars '* ' 
 
                                     if (MARKDOWN)
-                                        mdStr += "$rText$EOL"
+                                        mdStr += "$rText$EOL" // No need to add the * it is already in the text
                                 }
                             // Paragraph
                                 else {
@@ -1043,6 +1045,16 @@
                                     if (MARKDOWN)
                                         mdStr += "[$iconsMd$rText](#$linkId)$EOL$EOL"
                                 }
+                           // List element with link
+                                else if (rText.take(2) == '* ') {
+                                    sTag = indentSp + '<li>' + aName + '<a href="' + link + '">'
+                                    eTag = '</li></a>' + EOL
+                                    iText = rText.substring(2) // Remove 2 first chars '* ' 
+
+                                    if (MARKDOWN)
+                                        mdStr += "* [$iText]($link)$EOL"
+                                }
+
                             // Just add the link to the file
                                 else { 
                                     def linkPath = link // Set link path to file path
