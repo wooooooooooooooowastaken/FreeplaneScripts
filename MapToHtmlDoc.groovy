@@ -3,7 +3,7 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
-        // Version 2017-12-07_00.51.54
+        // Version 2017-12-07_01.29.47 
             // Started to add the ability to format nodes using the toolbar and the format panel, these styles will be rendered as CSS in the output document.
             // Overwrite if exists is now set to true, so the images and files will be overwritten in the OUT_DIR if they exists there already. This takes more time but is useful if the linked files and images are updated frequently.
             // Corrected the replacement of spaces in linked images and files. Will not be replaced by _ 
