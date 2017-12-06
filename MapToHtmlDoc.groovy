@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-07_01.51.13 
+            // Removed the cssStyle variable and the pre-rendering of each node style to css that was not needed. Only the node with the pencil icon will be pre-rendered. 
         // Version 2017-12-07_01.29.47 
             // Started to add the ability to format nodes using the toolbar and the format panel, these styles will be rendered as CSS in the output document.
             // Overwrite if exists is now set to true, so the images and files will be overwritten in the OUT_DIR if they exists there already. This takes more time but is useful if the linked files and images are updated frequently.
@@ -323,7 +325,6 @@
         def runBranchRootScript = false
         def text = ''
         def rText = '' // Raw text
-        def cssText = '' // Text styled with CSS
         def htmlStr = '<html><meta charset="UTF-8"><body style="' + STYLE_BODY + '">' + EOL
         def htmlFileTmp = null
         def mdFileTmp = null // Markdown
@@ -651,7 +652,6 @@
                     // - Text
                     // ---------------------------------------------------------------------------------------------------- 
                         rText = rawText(text, false)
-                        cssText = getStyledTextWithCss(n, rText)
 
                     // ----------------------------------------------------------------------------------------------------
                     // - Link
@@ -775,7 +775,7 @@
                     }
 
                 if (n.icons.collect{it.toString()}.join(';') =~ '(^|;)(pencil)') // Icons with the red pencil will be styled using CSS 
-                    iText = cssText
+                    iText = getStyledTextWithCss(n, rText)
                 else
                     iText = rText
 
