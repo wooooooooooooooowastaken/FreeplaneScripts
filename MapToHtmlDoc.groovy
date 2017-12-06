@@ -3,8 +3,10 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-07_00.51.54
+            // Started to add the ability to format nodes using the toolbar and the format panel, these styles will be rendered as CSS in the output document.
         // Version 2017-12-06_17.46.20
-            // Added the possibility to add links to list item (<li>) and also added this for markdown + fixed markdown list items that had some issue. 
+            // Added the possibility to add links to list item (<li>) 
         // Version 2017-11-30_18.10.20
             // I added a sub directory to the temp directory because some files not related with the document in that temp dir were uploaded to github...
         // Version 2017-11-30_14.08.07
@@ -198,6 +200,7 @@
         def LARGE_MAP_USE_FILE = false // If the map is large there may be memory issues, so set this to true so that the script will use a file instead of the memory. Note that it is much faster when this is set to false, so set it to false for small maps.
 
         def CHANGE_DEPTH_ICON = 'Dark-'
+        def CSS_STYLE_ICON = 'pencil' // It is the red pencil, if a node has this icon its style properties will become css style properties in the output html 
 
         // Html doc paths
             @Field def OUT_DIR = ''
@@ -255,14 +258,11 @@
                 def STYLE_SEP_COLOR = '#C3C3C3;'
                 def SEP1 = '<hr align="left" style="border-top: 1px solid #000000; width:100%;">' // Separator for h1
                 // SEP2
-                    // def SEP2 = '<hr align="left" style="border-top: 3px double #8c8b8b;width:100%;">' // Separator for h2
                     def SEP2 = '<hr align="left" style="border-top: 3px double #0033FF; width:100%;">' // Separator for h2
                 // SEP3 
-                    //def SEP3 = '<hr align="left" style="border-top: 1px dashed #8c8b8b;width:100%;">' // Separator for h3
                     def SEP3 = '<hr align="left" style="border-top: 1px solid #00B439; width:100%;">' // Separator for h3
                 // SEP4
                     def SEP4 = '' // Separator for h4
-                    //def SEP4 = '<hr align="left" style="border-top: 1px dotted #990000;width:100%;">' // Separator for h4
 
             // ····································································································
             // · Fonts
@@ -320,7 +320,8 @@
         def branchRootName = '' // This is the name of the output document and the prefix for the files linked if they are copied to the output directory
         def runBranchRootScript = false
         def text = ''
-        def rText = ''
+        def rText = '' // Raw text
+        def cssText = '' // Text styled with CSS
         def htmlStr = '<html><meta charset="UTF-8"><body style="' + STYLE_BODY + '">' + EOL
         def htmlFileTmp = null
         def mdFileTmp = null // Markdown
@@ -540,6 +541,25 @@
             return breadcrumbsArr
         }
 
+        // ====================================================================================================
+        def getStyledTextWithCss(pNode, rText) { // = Returns the text of a node styled with CSS from the nodes properties. rText is the rawText.
+        // ==================================================================================================== 
+            def cssStyle = ''
+            cssStyle += "font-family: '" + pNode.style.font.name + "';"
+            cssStyle += 'font-size: ' + pNode.style.font.size + 'px;'
+            // Font-weight
+                if (node.style.font.bold)
+                    cssStyle += 'font-weight: bold;'
+                else
+                    cssStyle += 'font-weight: normal;'
+            if (pNode.style.font.italic)
+                cssStyle += 'font-style: italic;'
+            cssStyle += 'color: ' + pNode.style.textColorCode + ';'
+            if (pNode.style.backgroundColorCode != null)
+                cssStyle += 'background-color: ' + pNode.style.backgroundColorCode + ';'
+            return '<span style="' + cssStyle + '">' + rText + '</span>'
+        }
+
 // ####################################################################################################
 // # Initialization
 // #################################################################################################### 
@@ -628,6 +648,7 @@
                     // - Text
                     // ---------------------------------------------------------------------------------------------------- 
                         rText = rawText(text, false)
+                        cssText = getStyledTextWithCss(n, rText)
 
                     // ----------------------------------------------------------------------------------------------------
                     // - Link
@@ -750,7 +771,11 @@
                             nextNode = n.parent.children[nodePosition + 1]
                     }
 
-                iText = rText
+                if (n.icons.collect{it.toString()}.join(';') =~ '(^|;)(pencil)') // Icons with the red pencil will be styled using CSS 
+                    iText = cssText
+                else
+                    iText = rText
+
                 cptNode += 1 
 
             // ====================================================================================================
@@ -768,7 +793,7 @@
                     n.icons.each {
                         try { // This empty try-catch is to avoid an error in case there are specific icons added by users. The icons will not display simply if there is an issue.
                             iconName = it.toString().tokenize('/').last() // Get the last part of the icon name because it may contain some of the path.
-                            if (!iconName.contains(CHANGE_DEPTH_ICON)) { // Ignore the icons that are the icons used to change the depth.
+                            if (!(iconName =~ /$CHANGE_DEPTH_ICON|$CSS_STYLE_ICON/)) { // Ignore the icons that are the icons used to change the depth or the CSS icon (don't show them).
                                 iconPath = iconsMap.get(iconName)?.value
                                 if (iconPath != null) { // If the path is null, it means that one of the icons in the current node doesn't have a path (file) in the iconsMap collected earlier from scanning the icons folder and subfolders. So that icon would be somewhere else not in these folders.
                                     // Copy file (image) to OUT_DIR
@@ -830,7 +855,7 @@
                         sTag = EOL + indentSp + '<h1>' + aName
                         eTag = '</h1>' + EOL
                         if (MARKDOWN)
-                            mdStr += "# $aName$rText$EOL"
+                            mdStr += "# $aName$iText$EOL"
                     }
 
                 // ----------------------------------------------------------------------------------------------------
@@ -859,7 +884,7 @@
                             else
                                 sTag += EOL + '<br>' + indentSp + SEP2 + '<h2 style="' + STYLE_H2 + '">' + aName
                             eTag = '</h2>' + breadcrumbs // + TOC_BACK_LINK
-                            toc += indentSp + '&#8226; ' + ' <big><a style="' + STYLE_H2 + '" href="#' + id + '">' + rText + '</a></big> ' + iconsHtml + EOL
+                            toc += indentSp + '&#8226; ' + ' <big><a style="' + STYLE_H2 + '" href="#' + id + '">' + iText + '</a></big> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "***$EOL"
@@ -892,7 +917,7 @@
                                 }
                             sTag = EOL + indentSp + SEP3 + '<h3 style="' + STYLE_H3 + '">' + aName
                             eTag = '</h3>' + breadcrumbs + EOL
-                            toc += indentSp + '&#9675; ' + ' <a style="' + STYLE_H3 + '" href="#' + id + '">' + rText + '</a> ' + iconsHtml + EOL
+                            toc += indentSp + '&#9675; ' + ' <a style="' + STYLE_H3 + '" href="#' + id + '">' + iText + '</a> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "### $aName$iconsMd$rText$EOL"
@@ -927,7 +952,7 @@
                             sTag = EOL + indentSp + SEP4 + '<h4 style="' + STYLE_H4 + '" style="' + STYLE_H4 + '">' + aName
                             eTag = '</h4>' + breadcrumbs + EOL
                             //toc += indentSp + '&#183; <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + rText + '</a></small></i>' + EOL
-                            toc += indentSp + '&#183; ' + ' <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + rText + '</a></small></i> ' + iconsHtml + EOL
+                            toc += indentSp + '&#183; ' + ' <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + iText + '</a></small></i> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "#### $aName$iconsMd$rText$EOL"
