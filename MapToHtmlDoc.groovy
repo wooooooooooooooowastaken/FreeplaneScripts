@@ -244,7 +244,7 @@
             def ADD_H4_BREADCRUMBS = false
     
         // For Markdown (enable export to Markdown, .md files will be also create with the .html files)
-            @Field def MARKDOWN = true
+            @Field def MARKDOWN = false
             def NOTE_IS_HTML = '<b>|<a href|<i>|<small>|<font' // To identify that a note contains html (to select the display method for the markdown notes: bloquote or code)
 
 		// To copy files or images to the output directory
