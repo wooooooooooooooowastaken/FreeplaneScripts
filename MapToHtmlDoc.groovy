@@ -5,6 +5,8 @@
 // #################################################################################################### 
         // Version 2017-12-07_00.51.54
             // Started to add the ability to format nodes using the toolbar and the format panel, these styles will be rendered as CSS in the output document.
+            // Overwrite if exists is now set to true, so the images and files will be overwritten in the OUT_DIR if they exists there already. This takes more time but is useful if the linked files and images are updated frequently.
+            // Corrected the replacement of spaces in linked images and files. Will not be replaced by _ 
         // Version 2017-12-06_17.46.20
             // Added the possibility to add links to list item (<li>) 
         // Version 2017-11-30_18.10.20
@@ -246,7 +248,7 @@
 		// To copy files or images to the output directory
 			def COPY_FILES_TO_OUT_DIR = true
 			def COPY_IMAGES_TO_OUT_DIR = true // The images that are link from anywhere on disks will be copied in the output directory and linked in the html and markdown files from there.
-            @Field def OVERWRITE_IF_EXISTS = false // If the images or files exists already they will be overwritten if set to true, so copied again everytime.
+            @Field def OVERWRITE_IF_EXISTS = true // If the images or files exists already they will be overwritten if set to true, so copied again everytime.
 
         // ----------------------------------------------------------------------------------------------------
         // - Styles
@@ -465,6 +467,7 @@
                 def destExt = FilenameUtils.getExtension(srcPath) // Get extension of source file
                     if (destExt != '')
                         destExt = '.' + destExt
+                destFilename = destFilename.replaceAll('%20| ', '_').replaceAll('_+', '_') // Replace the spaces (single or multiple) by _ 
                 destFilename = branchRootName + '_' + destFilename + '_' + id + destExt
                 def destPath = OUT_DIR + destFilename
                 def destFile = getFileFromPath(destPath)

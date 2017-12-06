@@ -17,7 +17,7 @@
 </html>
 
 </richcontent>
-<hook NAME="MapStyle" background="#ffffff" zoom="0.827">
+<hook NAME="MapStyle" background="#ffffff" zoom="0.425">
     <conditional_styles>
         <conditional_style ACTIVE="true" STYLE_REF="s-1: Abandonned" LAST="false">
             <node_contains_condition VALUE="s-1" ITEM="filter_node" MATCH_APPROXIMATELY="false"/>
@@ -717,10 +717,10 @@
 </node>
 </node>
 </node>
-<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1512599650351">
+<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1512601643126">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="PalmIcons/dFileMan/Misc/Spark"/>
-<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-989;-535;" ENDINCLINATION="251;-361;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-1333;-313;" ENDINCLINATION="-186;-126;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
 <node TEXT="Images" ID="ID_34785326" CREATED="1497029381635" MODIFIED="1508142040129">
 <icon BUILTIN="PalmIcons/dFileMan/Image/Image-file"/>
@@ -1402,12 +1402,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <cloud COLOR="#ccffff" SHAPE="ARC"/>
 <node TEXT="Links" ID="ID_359900307" CREATED="1511252906173" MODIFIED="1511252907870">
 <node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1149562625" CREATED="1511212611461" MODIFIED="1512600930350" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ffff00"/>
-<node TEXT="HowTo" ID="ID_1745155518" CREATED="1511203156496" MODIFIED="1511203158184">
-<node TEXT="https://www.youtube.com/watch?v=3jt-J4Rc__M" ID="ID_1558523785" CREATED="1511203154232" MODIFIED="1511203154232" LINK="https://www.youtube.com/watch?v=3jt-J4Rc__M"/>
-<node TEXT="https://guides.github.com/features/pages/" ID="ID_815736451" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
-</node>
 <node TEXT="FreeplaneScripts (upload the map .mm)" ID="ID_1949924066" CREATED="1511307312046" MODIFIED="1511307327633" LINK="file:/D:/Work/MindMaps/Commands.mm#ID_262304796"/>
-<node TEXT="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1568528242" CREATED="1511989032672" MODIFIED="1511989032672" LINK="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html"/>
 <node ID="ID_68851427" CREATED="1459638281712" MODIFIED="1512032772876" LINK="https://github.com/viaa/FreeplaneScripts">
 <icon BUILTIN="internet"/>
 <richcontent TYPE="NODE">
@@ -1434,22 +1429,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 <node TEXT="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1659416143" CREATED="1511989032672" MODIFIED="1511989032672" LINK="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html"/>
-<node ID="ID_903807566" CREATED="1459638281712" MODIFIED="1512032772876" LINK="https://github.com/viaa/FreeplaneScripts">
-<icon BUILTIN="internet"/>
-<richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      https://github.com/viaa/<font color="#ff0000">FreeplaneScripts</font>
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
 <node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_136622126" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
 <icon BUILTIN="internet"/>
 </node>
@@ -1593,6 +1572,27 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="cp /c/Temp/MapToHtmlDocDemoMap* /d/GitHubWebsites/viaa" ID="ID_1181496580" CREATED="1511203610727" MODIFIED="1511253133474"/>
 </node>
 <node TEXT="s0 Add delete of files in the folder" ID="ID_1497383173" CREATED="1511515530723" MODIFIED="1511515535856"/>
+<node TEXT="HowTo" ID="ID_1745155518" CREATED="1511203156496" MODIFIED="1511203158184">
+<node TEXT="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1568528242" CREATED="1511989032672" MODIFIED="1511989032672" LINK="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html"/>
+<node TEXT="https://www.youtube.com/watch?v=3jt-J4Rc__M" ID="ID_1558523785" CREATED="1511203154232" MODIFIED="1511203154232" LINK="https://www.youtube.com/watch?v=3jt-J4Rc__M"/>
+<node TEXT="https://guides.github.com/features/pages/" ID="ID_815736451" CREATED="1511212254450" MODIFIED="1511212254450" LINK="https://guides.github.com/features/pages/"/>
+</node>
+<node ID="ID_903807566" CREATED="1459638281712" MODIFIED="1512032772876" LINK="https://github.com/viaa/FreeplaneScripts">
+<icon BUILTIN="internet"/>
+<richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      https://github.com/viaa/<font color="#ff0000">FreeplaneScripts</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 </node>
