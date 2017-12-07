@@ -17,7 +17,7 @@
 </html>
 
 </richcontent>
-<hook NAME="MapStyle" background="#ffffff" zoom="0.425">
+<hook NAME="MapStyle" background="#ffffff" zoom="0.515">
     <conditional_styles>
         <conditional_style ACTIVE="true" STYLE_REF="s-1: Abandonned" LAST="false">
             <node_contains_condition VALUE="s-1" ITEM="filter_node" MATCH_APPROXIMATELY="false"/>
