@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-07_10.30.58
+            // I removed the formatting of font-size and font-family for the table of content items. So they will have only color, backgroundcolor and bold etc.
         // Version 2017-12-07_01.51.13 
             // Removed the cssStyle variable and the pre-rendering of each node style to css that was not needed. Only the node with the pencil icon will be pre-rendered. 
         // Version 2017-12-07_01.29.47 
@@ -546,11 +548,13 @@
         }
 
         // ====================================================================================================
-        def getStyledTextWithCss(pNode, rText) { // = Returns the text of a node styled with CSS from the nodes properties. rText is the rawText.
+        def getStyledTextWithCss(pNode, rText, isToc) { // = Returns the text of a node styled with CSS from the nodes properties. rText is the rawText.
         // ==================================================================================================== 
             def cssStyle = ''
-            cssStyle += "font-family: '" + pNode.style.font.name + "';"
-            cssStyle += 'font-size: ' + pNode.style.font.size + 'px;'
+            if (!isToc) {
+                cssStyle += "font-family: '" + pNode.style.font.name + "';"
+                cssStyle += 'font-size: ' + pNode.style.font.size + 'px;'
+            }
             // Font-weight
                 if (node.style.font.bold)
                     cssStyle += 'font-weight: bold;'
@@ -774,10 +778,14 @@
                             nextNode = n.parent.children[nodePosition + 1]
                     }
 
-                if (n.icons.collect{it.toString()}.join(';') =~ '(^|;)(pencil)') // Icons with the red pencil will be styled using CSS 
-                    iText = getStyledTextWithCss(n, rText)
-                else
+                if (n.icons.collect{it.toString()}.join(';') =~ '(^|;)(pencil)') { // Icons with the red pencil will be styled using CSS 
+                    iText = getStyledTextWithCss(n, rText, false)
+                    iTextToc = getStyledTextWithCss(n, rText, true)
+                }
+                else {
                     iText = rText
+                    iTextToc = iText
+                }
 
                 cptNode += 1 
 
@@ -887,7 +895,7 @@
                             else
                                 sTag += EOL + '<br>' + indentSp + SEP2 + '<h2 style="' + STYLE_H2 + '">' + aName
                             eTag = '</h2>' + breadcrumbs // + TOC_BACK_LINK
-                            toc += indentSp + '&#8226; ' + ' <big><a style="' + STYLE_H2 + '" href="#' + id + '">' + iText + '</a></big> ' + iconsHtml + EOL
+                            toc += indentSp + '&#8226; ' + ' <big><a style="' + STYLE_H2 + '" href="#' + id + '">' + iTextToc + '</a></big> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "***$EOL"
@@ -920,7 +928,7 @@
                                 }
                             sTag = EOL + indentSp + SEP3 + '<h3 style="' + STYLE_H3 + '">' + aName
                             eTag = '</h3>' + breadcrumbs + EOL
-                            toc += indentSp + '&#9675; ' + ' <a style="' + STYLE_H3 + '" href="#' + id + '">' + iText + '</a> ' + iconsHtml + EOL
+                            toc += indentSp + '&#9675; ' + ' <a style="' + STYLE_H3 + '" href="#' + id + '">' + iTextToc + '</a> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "### $aName$iconsMd$rText$EOL"
@@ -955,7 +963,7 @@
                             sTag = EOL + indentSp + SEP4 + '<h4 style="' + STYLE_H4 + '" style="' + STYLE_H4 + '">' + aName
                             eTag = '</h4>' + breadcrumbs + EOL
                             //toc += indentSp + '&#183; <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + rText + '</a></small></i>' + EOL
-                            toc += indentSp + '&#183; ' + ' <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + iText + '</a></small></i> ' + iconsHtml + EOL
+                            toc += indentSp + '&#183; ' + ' <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + iTextToc + '</a></small></i> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
                                 mdStr += "#### $aName$iconsMd$rText$EOL"
