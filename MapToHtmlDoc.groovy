@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-18_14.13.50
+            // Added more short link text for connectors. 
         // Version 2017-12-07_10.30.58
             // I removed the formatting of font-size and font-family for the table of content items. So they will have only color, backgroundcolor and bold etc.
         // Version 2017-12-07_01.51.13 
@@ -246,7 +248,7 @@
             def ADD_H4_BREADCRUMBS = false
     
         // For Markdown (enable export to Markdown, .md files will be also create with the .html files)
-            @Field def MARKDOWN = false
+            @Field def MARKDOWN = true
             def NOTE_IS_HTML = '<b>|<a href|<i>|<small>|<font' // To identify that a note contains html (to select the display method for the markdown notes: bloquote or code)
 
 		// To copy files or images to the output directory
@@ -1188,6 +1190,7 @@
                 // = Connectors: Add as links if any 
                 // ==================================================================================================== 
                     // · Connectors
+                        def connectorLinkText = ''
                         // · In
                             def connectorsInList = ''
                             def mdConnectorsInList = ''
@@ -1217,13 +1220,14 @@
                                     pathToNode = ''
                                     it.source.pathToRoot.each { it2 -> pathToNode += '/' + truncateText(it2.plainText, SHORT_TEXT_MAX_SIZE, true, false) }
                                 // Add the connector to the text list
-                                    connectorsInList += indentSp + indentNbsp + '<small><a href="#' + it.source.id + '">< ' + it.source.plainText + '</a></small>'
+                                    connectorLinkText = truncateText(it.source.plainText, SHORT_TEXT_MAX_SIZE, true, false)
+                                    connectorsInList += indentSp + indentNbsp + '<small><a href="#' + it.source.id + '">< ' + connectorLinkText + '</a></small>'
                                     if (MARKDOWN)
                                         mdConnectorsInList += "[$it.source.plainText](#$it.source.id)"
                                     if (SHOW_CONNECTOR_DETAILS) {
-                                        connectorsInList += ' <i><small>This section' + tLabel + '<---' + mLabel + sLabel + it.source.plainText + '{' + pathToNode + '}</small></i><br>' + EOL
+                                        connectorsInList += ' <i><small>This section' + tLabel + '<---' + mLabel + sLabel + connectorLinkText + '{' + pathToNode + '}</small></i><br>' + EOL
                                         if (MARKDOWN)
-                                            mdConnectorsInList += ' *This section' + tLabel + '<---' + mLabel + sLabel + it.source.plainText + '{' + pathToNode + "}*$EOL$EOL"
+                                            mdConnectorsInList += ' *This section' + tLabel + '<---' + mLabel + sLabel + connectorLinkText + '{' + pathToNode + "}*$EOL$EOL"
                                     }
                                     else {
                                         connectorsInList += '<br>' + EOL
@@ -1263,13 +1267,14 @@
                                     pathToNode = ''
                                     it.target.pathToRoot.each { it2 -> pathToNode += '/' + truncateText(it2.plainText, SHORT_TEXT_MAX_SIZE, true, false) }
                                 // Add the connector to the text list
-                                    connectorsOutList += indentSp + indentNbsp + '<small><a href="#' + it.target.id + '">> ' + it.target.plainText + '</a></small>'
+                                    connectorLinkText = truncateText(it.target.plainText, SHORT_TEXT_MAX_SIZE, true, false)
+                                    connectorsOutList += indentSp + indentNbsp + '<small><a href="#' + it.target.id + '">> ' + connectorLinkText + '</a></small>'
                                     if (MARKDOWN)
                                         mdConnectorsOutList += "[$it.target.plainText](#$it.target.id)"
                                     if (SHOW_CONNECTOR_DETAILS) {
-                                         connectorsOutList += ' <i><small>This section' + sLabel + mLabel+ '--->'  + tLabel + it.target.plainText + '{' + pathToNode + '}</small></i><br>' + EOL
+                                         connectorsOutList += ' <i><small>This section' + sLabel + mLabel+ '--->'  + tLabel + connectorLinkText + '{' + pathToNode + '}</small></i><br>' + EOL
                                         if (MARKDOWN)
-                                            mdConnectorsOutList += ' *This section' + sLabel + mLabel+ '--->'  + tLabel + it.target.plainText + '{' + pathToNode + "}*$EOL$EOL"
+                                            mdConnectorsOutList += ' *This section' + sLabel + mLabel+ '--->'  + tLabel + connectorLinkText  + '{' + pathToNode + "}*$EOL$EOL"
                                     }
                                     else {
                                         connectorsOutList += '<br>' + EOL
