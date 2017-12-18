@@ -32,7 +32,11 @@ final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
             linkPath = externalObject.uri.toString()
 
     // Remove and replace stuff in copied paths/url
-        if (linkPath =~ /\/\w:\//) { // Is a path
+        //if ((linkPath.contains('file:/') && linkPath.contains('.mm#ID_')) { // Is a freeplane link
+        if (linkPath.contains('file:/') && linkPath.contains('mm#ID_')) { // Is a freeplane link
+            // Do nothing
+        }
+        else if (linkPath =~ /\/\w:\//) { // Is a path
             linkPath = linkPath.replace('file:/', '')
             if (os == 'windows')
                 linkPath = linkPath.replace('/', '\\')
