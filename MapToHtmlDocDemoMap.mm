@@ -1,8 +1,9 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1512600816443" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" COLOR="#6666ff" BACKGROUND_COLOR="#ccffff">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1513759150741" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
 <icon BUILTIN="executable"/>
 <icon BUILTIN="pencil"/>
+<font NAME="Rockwell" SIZE="36" BOLD="true"/>
 <richcontent TYPE="DETAILS">
 
 <html>
@@ -11,13 +12,13 @@
   </head>
   <body>
     <p>
-      Version: 2017-12-07_00.52.42
+      Version: 2017-12-20_10:38:44
     </p>
   </body>
 </html>
 
 </richcontent>
-<hook NAME="MapStyle" background="#ffffff" zoom="0.515">
+<hook NAME="MapStyle" background="#ffffff" zoom="0.623">
     <conditional_styles>
         <conditional_style ACTIVE="true" STYLE_REF="s-1: Abandonned" LAST="false">
             <node_contains_condition VALUE="s-1" ITEM="filter_node" MATCH_APPROXIMATELY="false"/>
@@ -127,7 +128,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="180" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="181" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <richcontent TYPE="NOTE">
 
@@ -188,8 +189,7 @@
 </html>
 
 </richcontent>
-<font NAME="Rockwell" SIZE="36" BOLD="true"/>
-<node TEXT="Introduction" FOLDED="true" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
+<node TEXT="Introduction" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
 <edge COLOR="#808080"/>
 <node TEXT="What is it?" ID="ID_1808926678" CREATED="1497111702297" MODIFIED="1508139732946">
 <icon BUILTIN="info"/>
@@ -207,6 +207,7 @@
   </body>
 </html>
 </richcontent>
+<node TEXT="https://github.com/viaa/FreeplaneScripts" ID="ID_1767889679" CREATED="1513759007517" MODIFIED="1513759012497" LINK="https://github.com/viaa/FreeplaneScripts"/>
 </node>
 <node TEXT="The script will take a map with a structure like this map and convert it automatically to a basic although very usable html document that can later be converted to pdf or uploaded to the web, for example on Github pages." ID="ID_149309362" CREATED="1497111747393" MODIFIED="1511347906061">
 <node TEXT="PDF Creation" ID="ID_1458681393" CREATED="1497111796247" MODIFIED="1497111796251" LINK="file:/D:/Work/MindMaps/Doc/MapToHtmlDocDemoMap.mm#ID_324386908"/>
@@ -549,7 +550,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="I suggest to set a keyboard shortcut to open the &apos;Edit node core in dialog&apos; window quickly if you need to change a lot of formatting." ID="ID_719284684" CREATED="1508931081803" MODIFIED="1512600097961"/>
@@ -569,7 +569,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_274970293" CREATED="1512598763572" MODIFIED="1512600079428"><richcontent TYPE="NODE">
@@ -584,7 +583,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="" ID="ID_1640217739" CREATED="1512599172088" MODIFIED="1512600473592">
 <hook URI="file:/C:/Screenshots/Image%206564.png" SIZE="1.0" NAME="ExternalObject"/>
@@ -600,7 +598,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -616,7 +613,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="* font-family:" ID="ID_1519611597" CREATED="1512599575356" MODIFIED="1512599575356"/>
@@ -647,7 +643,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -717,7 +712,7 @@
 </node>
 </node>
 </node>
-<node TEXT="More features" FOLDED="true" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1512601643126">
+<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1512601643126">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="PalmIcons/dFileMan/Misc/Spark"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-1333;-313;" ENDINCLINATION="-186;-126;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
@@ -936,7 +931,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Extra features" FOLDED="true" POSITION="right" ID="ID_797831984" CREATED="1497108979742" MODIFIED="1508246942839">
+<node TEXT="Extra features" POSITION="right" ID="ID_797831984" CREATED="1497108979742" MODIFIED="1508246942839">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="launch"/>
 <edge COLOR="#808080"/>
@@ -1042,7 +1037,7 @@
 </node>
 </node>
 </node>
-<node TEXT="PDF creation" FOLDED="true" ID="ID_324386908" CREATED="1497110483274" MODIFIED="1507040868533">
+<node TEXT="PDF creation" ID="ID_324386908" CREATED="1497110483274" MODIFIED="1507040868533">
 <node TEXT="PrinceXML" ID="ID_1149512415" CREATED="1497110489220" MODIFIED="1497110491424">
 <node TEXT="You can use PrinceXML to convert your html to pdf once it is generated so you get a portable document with images included." ID="ID_295185508" CREATED="1497110492087" MODIFIED="1497110542350"/>
 </node>
@@ -1247,7 +1242,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
-<node TEXT="Configuration" FOLDED="true" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
+<node TEXT="Configuration" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
 <icon BUILTIN="PalmIcons/cSeries/Blue1/Blue-pc"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1784484328" MIDDLE_LABEL="IGNORE" STARTINCLINATION="-286;8;" ENDINCLINATION="-286;8;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
@@ -1304,8 +1299,8 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="History" POSITION="right" ID="ID_1784484328" CREATED="1507667504082" MODIFIED="1508246710686">
 <icon BUILTIN="calendar"/>
 <edge COLOR="#808080"/>
-<node TEXT="Documentation" ID="ID_273653473" CREATED="1507667511885" MODIFIED="1510137656096">
-<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1478027423" MIDDLE_LABEL="The End" STARTINCLINATION="980;-495;" ENDINCLINATION="1540;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<node TEXT="Documentation" ID="ID_273653473" CREATED="1507667511885" MODIFIED="1513759119499">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1478027423" MIDDLE_LABEL="The End" STARTINCLINATION="980;-495;" ENDINCLINATION="1328;60;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <node TEXT="Version: 2017-10-10_23.31.35:" ID="ID_725781849" CREATED="1507667517993" MODIFIED="1511306899077">
 <node TEXT="Added the &apos;Freeplane Configuration&apos; section." ID="ID_1275234350" CREATED="1507667554585" MODIFIED="1507667585045"/>
 </node>
@@ -1385,6 +1380,9 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="More advanced style using node style and CSS" ID="ID_1205966767" CREATED="1512600803864" MODIFIED="1512600803866" LINK="file:/C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.6.x/scripts/MapToHtmlDocDemoMap.mm#ID_381401682"/>
 </node>
 </node>
+<node TEXT="Version: 2017-12-20_10:38:44:" ID="ID_695473143" CREATED="1513759120693" MODIFIED="1513759125950">
+<node TEXT="Added link to files groovy and mindmap files." ID="ID_1575682268" CREATED="1513759126532" MODIFIED="1513759142975"/>
+</node>
 </node>
 </node>
 <node TEXT="I hope you&apos;ll find it useful too" POSITION="right" ID="ID_495374163" CREATED="1497112090702" MODIFIED="1508142077622">
@@ -1442,7 +1440,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="viaa" ID="ID_197871103" CREATED="1511253005381" MODIFIED="1511253005381" LINK="file:/D:/GitHubWebsites/viaa/"/>
 </node>
 <node TEXT="Git" ID="ID_1351456244" CREATED="1511180959192" MODIFIED="1511253028935">
-<node TEXT="OLD" FOLDED="true" ID="ID_1713268961" CREATED="1511252274629" MODIFIED="1511252275462">
+<node TEXT="OLD" ID="ID_1713268961" CREATED="1511252274629" MODIFIED="1511252275462">
 <node ID="ID_1545516430" CREATED="1511212497050" MODIFIED="1511212497050" LINK="https://viaa.github.io/test.html"><richcontent TYPE="NODE">
 
 <html>
@@ -1627,7 +1625,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 <cloud COLOR="#ffffcc" SHAPE="ARC"/>
-<node TEXT="Markdown (todo)" FOLDED="true" ID="ID_1177086229" CREATED="1511114975256" MODIFIED="1511176216670">
+<node TEXT="Markdown (todo)" ID="ID_1177086229" CREATED="1511114975256" MODIFIED="1511176216670">
 <font BOLD="true"/>
 <node TEXT="To fix/Bugs" ID="ID_23184298" CREATED="1511174842259" MODIFIED="1511174901020">
 <node ID="ID_1574634702" CREATED="1511432146697" MODIFIED="1511884131480"><richcontent TYPE="NODE">
@@ -2028,7 +2026,8 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
-<node FOLDED="true" ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511992763067"><richcontent TYPE="NODE">
+<node TEXT="s0 I cannot link a groovy script from the web because the script tries to include its code in the note.... maybe don&apos;t do that for groovy files on the web? or put an icon to exlude them" ID="ID_1994479272" CREATED="1513759033335" MODIFIED="1513759074441"/>
+<node ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511992763067"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2042,10 +2041,10 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 <node TEXT="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/" ID="ID_1921590087" CREATED="1511886757214" MODIFIED="1511886757214" LINK="http://www.codeaffine.com/2015/12/15/getting-started-with-jgit/"/>
-<node TEXT="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit" FOLDED="true" ID="ID_189531157" CREATED="1511886761642" MODIFIED="1511886761642" LINK="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit">
+<node TEXT="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit" ID="ID_189531157" CREATED="1511886761642" MODIFIED="1511886761642" LINK="https://stackoverflow.com/questions/13446842/how-do-i-do-git-push-with-jgit">
 <node TEXT="   Repository localRepo = new FileRepository(localPath);&#xa;    Git git = new Git(localRepo);&#xa;&#xa;    // add remote repo:&#xa;    RemoteAddCommand remoteAddCommand = git.remoteAdd();&#xa;    remoteAddCommand.setName(&quot;origin&quot;);&#xa;    remoteAddCommand.setUri(new URIish(httpUrl));&#xa;    // you can add more settings here if needed&#xa;    remoteAddCommand.call();&#xa;&#xa;    // push to remote:&#xa;    PushCommand pushCommand = git.push();&#xa;    pushCommand.setCredentialsProvider(new UsernamePasswordCredentialsProvider(&quot;username&quot;, &quot;password&quot;));&#xa;    // you can add more settings here if needed&#xa;    pushCommand.call();" ID="ID_1443250626" CREATED="1511886834631" MODIFIED="1511886835800"/>
 </node>
-<node TEXT="Projects" FOLDED="true" ID="ID_1773579815" CREATED="1511886939391" MODIFIED="1511886939392" LINK="file:/D:/Projects/">
+<node TEXT="Projects" ID="ID_1773579815" CREATED="1511886939391" MODIFIED="1511886939392" LINK="file:/D:/Projects/">
 <node TEXT="org.eclipse.jgit-4.9.0.201710071750-r.jar" ID="ID_321567434" CREATED="1511886943889" MODIFIED="1511886943889" LINK="file:/D:/Projects/org.eclipse.jgit-4.9.0.201710071750-r.jar"/>
 </node>
 </node>
@@ -2088,10 +2087,11 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="s0 If a list item is the last of the section it is very closed to the hr separator..." ID="ID_1741009248" CREATED="1512580482363" MODIFIED="1512580502492"/>
 <node TEXT="s0 Maybe add a variable for the temp directory in the shell script so the user don&apos;t have to risk to do a mistake" ID="ID_294986917" CREATED="1512396679870" MODIFIED="1512396705423"/>
-<node TEXT="s0 Maybe add folding like this?" FOLDED="true" ID="ID_1041786058" CREATED="1512031142212" MODIFIED="1512031147126">
+<node TEXT="s0 Maybe add folding like this?" ID="ID_1041786058" CREATED="1512031142212" MODIFIED="1512031147126">
 <node TEXT="https://vifm.info/" ID="ID_1191358411" CREATED="1512031140215" MODIFIED="1512031140215" LINK="https://vifm.info/"/>
 </node>
 <node TEXT="s0 Maybe use another temp dir because misc temp files are sent to github" ID="ID_734481246" CREATED="1512049998138" MODIFIED="1512050019500"/>
+<node TEXT="s0 Truncate the text for the automatic links created for connectors.... if a paragraph is connected then the text of the link is very long." ID="ID_210531019" CREATED="1513598370247" MODIFIED="1513598413842"/>
 <node TEXT="s0 Check why, if there are 2 empty titles h3, h4 for example, there are still 2 lines added... it seems i fixed that." ID="ID_696451711" CREATED="1511992767017" MODIFIED="1511992797784"/>
 <node TEXT="s0 The name of the file generated and it&apos;s linked images and files should not be the name of the map because it could be a branch, so use the name of the branchRoot" ID="ID_1791580195" CREATED="1511799954714" MODIFIED="1511799999398"/>
 <node ID="ID_1597786103" CREATED="1511799075043" MODIFIED="1511799496270"><richcontent TYPE="NODE">
@@ -2123,7 +2123,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </richcontent>
 </node>
 <node TEXT="s0 Why when adding a icon to an image, the icon is added after the image? It should be before?" ID="ID_1043731737" CREATED="1511795845883" MODIFIED="1511795869253"/>
-<node TEXT="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all" FOLDED="true" ID="ID_1970449073" CREATED="1511795013021" MODIFIED="1511795013021" LINK="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all">
+<node TEXT="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all" ID="ID_1970449073" CREATED="1511795013021" MODIFIED="1511795013021" LINK="https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all">
 <node TEXT="s0 Try to adapt markdown also for the JIRA syntax" ID="ID_718626163" CREATED="1511795019331" MODIFIED="1511795031556"/>
 </node>
 <node ID="ID_708440136" CREATED="1511515067464" MODIFIED="1511515072023"><richcontent TYPE="NODE">
@@ -2152,7 +2152,6 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="One is CSS support. I have this idea that a branch with CSS code would be move around in and out an IGNORE node to activate the style or remove it. Multiple CSS branches could be in the map and would be combined if out of an ignored node. These branches could be copied to another map. So there would not be dependance on external .css file but if there is one available then I guess it could be used the html document." ID="ID_1385470425" CREATED="1511367206517" MODIFIED="1511367206517"/>
 <node TEXT="The current style with the Freeplane colors would be the default style." ID="ID_83721252" CREATED="1511367206517" MODIFIED="1511367206517"/>
@@ -2232,12 +2231,12 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </richcontent>
 </node>
 <node TEXT="s0 Maybe the connectors should be added according to the arrows" ID="ID_1343916894" CREATED="1510672445794" MODIFIED="1510672467932"/>
-<node TEXT="s0 The notes have an indenting issue with the slashes, so if at the top of a note there are // then the text under will be all indented... The problem is this line:" FOLDED="true" ID="ID_622917513" CREATED="1510566344295" MODIFIED="1510566821651">
+<node TEXT="s0 The notes have an indenting issue with the slashes, so if at the top of a note there are // then the text under will be all indented... The problem is this line:" ID="ID_622917513" CREATED="1510566344295" MODIFIED="1510566821651">
 <node TEXT="rawNote = rawNote.replaceAll(&apos;\\n\\s*?\\n\\s*?\\n&apos;, &apos;\n&apos;) // Remove multiple empty lines" ID="ID_1611950920" CREATED="1510566822194" MODIFIED="1510566822194"/>
 </node>
 <node TEXT="s0 Export as markdown also maybe don&apos;t mix the code and put it at the end?..." ID="ID_117007128" CREATED="1510650345440" MODIFIED="1510650382004"/>
 <node TEXT="s0 Maybe fix the formatting so that it takes style formatting and format using the format panel?" ID="ID_1141923887" CREATED="1510306437120" MODIFIED="1510306463643"/>
-<node TEXT="s0 Add a new feature: Content identification. So this will add for example an image icon near the menu links in the toc where images are found in the document and also a number (3) for example near to tell that they are 3 images. And do that also with notes or files included, connectors (with the plug icon). This should be enabled and disabled using a constant." FOLDED="true" ID="ID_1514853016" CREATED="1510306464157" MODIFIED="1510306613550">
+<node TEXT="s0 Add a new feature: Content identification. So this will add for example an image icon near the menu links in the toc where images are found in the document and also a number (3) for example near to tell that they are 3 images. And do that also with notes or files included, connectors (with the plug icon). This should be enabled and disabled using a constant." ID="ID_1514853016" CREATED="1510306464157" MODIFIED="1510306613550">
 <node TEXT="s0 Maybe it could show the number of nodes in the section and the total length of the sections nodes." ID="ID_460071353" CREATED="1510306695266" MODIFIED="1510306730547"/>
 </node>
 <node TEXT="s0 Modify the connectors so that if there is both arrows then add both links, and basically just add the link where there is arrow (at the opposite)" ID="ID_691943370" CREATED="1510177668364" MODIFIED="1510177718980"/>
@@ -2272,7 +2271,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="s0 Make the formatting work also when the format is changed with the format toolbar or the format panel." FOLDED="true" ID="ID_170672124" CREATED="1508225422304" MODIFIED="1508225446197">
+<node TEXT="s0 Make the formatting work also when the format is changed with the format toolbar or the format panel." ID="ID_170672124" CREATED="1508225422304" MODIFIED="1508225446197">
 <node ID="ID_1188639693" CREATED="1508926255322" MODIFIED="1508926255322"><richcontent TYPE="NODE">
 
 <html>
@@ -2302,7 +2301,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </richcontent>
 </node>
 </node>
-<node TEXT="s0 Add css stylesheets to get same style as freeplane wiki/wikipedia and avid kb" FOLDED="true" ID="ID_163456607" CREATED="1508929803515" MODIFIED="1508929827518">
+<node TEXT="s0 Add css stylesheets to get same style as freeplane wiki/wikipedia and avid kb" ID="ID_163456607" CREATED="1508929803515" MODIFIED="1508929827518">
 <node TEXT="s0 Use CSS... but have a default style like the map? Generate CSS code from the script to have everything in the script." ID="ID_331635655" CREATED="1509544122210" MODIFIED="1509544169660"/>
 </node>
 <node TEXT="s0 Check the numberingEnabled property in the api, maybe the sections could be numbered optionnaly" ID="ID_388254190" CREATED="1508261461420" MODIFIED="1508261496789"/>
@@ -2325,7 +2324,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="s0 Maybe get plainText or getRawText instead of my own function to get raw text." FOLDED="true" ID="ID_695176146" CREATED="1508094008095" MODIFIED="1508094030656">
+<node TEXT="s0 Maybe get plainText or getRawText instead of my own function to get raw text." ID="ID_695176146" CREATED="1508094008095" MODIFIED="1508094030656">
 <node TEXT="s0 Also maybe use the freeplane logging function instead of my own debug function." ID="ID_204257375" CREATED="1508094151038" MODIFIED="1508094172707"/>
 <node TEXT="s0 There are also functions to get text from html... so maybe this instead of rawNote...?" ID="ID_1506095464" CREATED="1508094076529" MODIFIED="1508094104909"/>
 </node>
@@ -2372,7 +2371,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node FOLDED="true" ID="ID_1979560022" CREATED="1491381602871" MODIFIED="1492507259075"><richcontent TYPE="NODE">
+<node ID="ID_1979560022" CREATED="1491381602871" MODIFIED="1492507259075"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2414,7 +2413,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node FOLDED="true" ID="ID_1385998716" CREATED="1491377909323" MODIFIED="1491857861013"><richcontent TYPE="NODE">
+<node ID="ID_1385998716" CREATED="1491377909323" MODIFIED="1491857861013"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2501,17 +2500,17 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="s0 Once the HTML export is done, make sure it converts nice in PDF using prince xml." FOLDED="true" ID="ID_1527205181" CREATED="1491385782079" MODIFIED="1491385805485">
-<node TEXT="s0 The export to pdf is not nice, the pre statements are not wrapped.... check for that maybe..." FOLDED="true" ID="ID_1214898974" CREATED="1491379876748" MODIFIED="1491379893839">
-<node TEXT="Try this maybe" FOLDED="true" ID="ID_1375656472" CREATED="1491379956510" MODIFIED="1491379959156">
+<node TEXT="s0 Once the HTML export is done, make sure it converts nice in PDF using prince xml." ID="ID_1527205181" CREATED="1491385782079" MODIFIED="1491385805485">
+<node TEXT="s0 The export to pdf is not nice, the pre statements are not wrapped.... check for that maybe..." ID="ID_1214898974" CREATED="1491379876748" MODIFIED="1491379893839">
+<node TEXT="Try this maybe" ID="ID_1375656472" CREATED="1491379956510" MODIFIED="1491379959156">
 <node TEXT="pre {&#xa;    white-space: pre-wrap;       /* Since CSS 2.1 */&#xa;    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */&#xa;    white-space: -pre-wrap;      /* Opera 4-6 */&#xa;    white-space: -o-pre-wrap;    /* Opera 7 */&#xa;    word-wrap: break-word;       /* Internet Explorer 5.5+ */&#xa;}" ID="ID_1993698142" CREATED="1491379960061" MODIFIED="1491379960765"/>
 </node>
 </node>
 </node>
-<node TEXT="// Todo" FOLDED="true" ID="ID_1211613002" CREATED="1491506376553" MODIFIED="1492507259073">
-<node TEXT="s0 Main todos" FOLDED="true" ID="ID_1533377108" CREATED="1491561047413" MODIFIED="1491561050179">
-<node TEXT="The groovy script to export to html should" FOLDED="true" ID="ID_1435406502" CREATED="1492506676658" MODIFIED="1492506676658">
-<node FOLDED="true" ID="ID_1596859414" CREATED="1492506676658" MODIFIED="1492506704806"><richcontent TYPE="NODE">
+<node TEXT="// Todo" ID="ID_1211613002" CREATED="1491506376553" MODIFIED="1492507259073">
+<node TEXT="s0 Main todos" ID="ID_1533377108" CREATED="1491561047413" MODIFIED="1491561050179">
+<node TEXT="The groovy script to export to html should" ID="ID_1435406502" CREATED="1492506676658" MODIFIED="1492506676658">
+<node ID="ID_1596859414" CREATED="1492506676658" MODIFIED="1492506704806"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2587,7 +2586,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node FOLDED="true" ID="ID_1762569686" CREATED="1491576573950" MODIFIED="1491577071478"><richcontent TYPE="NODE">
+<node ID="ID_1762569686" CREATED="1491576573950" MODIFIED="1491577071478"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2729,14 +2728,14 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="s0 Voir pourquoi il y a trop d&apos;espacement apres le toc" ID="ID_1499882774" CREATED="1492164987885" MODIFIED="1492164999910"/>
 <node TEXT="s0 Mettre les section dans des div pour mettre des espacement entre les section.... utiliser plus de css... et aussi pour les les sections ne se brise pas... comme pour avoir les separateurs toujours sur la meme page que les titres." ID="ID_1160789203" CREATED="1492165825749" MODIFIED="1492166272634"/>
 </node>
-<node TEXT="// Notes" FOLDED="true" ID="ID_1552958637" CREATED="1491506376553" MODIFIED="1491506376553">
-<node TEXT="// If I have a big paragraph, add an empty node as its parent, or a node with s-1 for example so that I can fold it." FOLDED="true" ID="ID_241885775" CREATED="1491506376555" MODIFIED="1491506376555">
+<node TEXT="// Notes" ID="ID_1552958637" CREATED="1491506376553" MODIFIED="1491506376553">
+<node TEXT="// If I have a big paragraph, add an empty node as its parent, or a node with s-1 for example so that I can fold it." ID="ID_241885775" CREATED="1491506376555" MODIFIED="1491506376555">
 <node TEXT="// s0 Maybe add another way of ignoring the nodes like nodes starting with &lt; and ending with &gt; for example." ID="ID_534007137" CREATED="1491506376555" MODIFIED="1491506376555"/>
 </node>
 <node TEXT="// I can copy paste the html generated by the html doc script in freeplane to an email and it will keep the links and images from the toc etc... interesting maybe to do complex emails, I could compose emails using maps." ID="ID_1958177442" CREATED="1491506376555" MODIFIED="1491506376555"/>
 <node TEXT="It is possible to link any section of the document to any other using the nodeid of a node. It is even possible to press f9 to add nodes and these will be converted to html links." ID="ID_1991018859" CREATED="1491514280876" MODIFIED="1491514380379"/>
 <node TEXT="Nodes to link can be created inside paragraph, but i have to edit the html of the paragraph and add the link manually and it is possible to link to another node (section or item) of the current document using the nodeid." ID="ID_626153677" CREATED="1491514930057" MODIFIED="1491514985854"/>
-<node TEXT="When I do docs for cases add them like this in fp in the same sub tab line" FOLDED="true" ID="ID_212532605" CREATED="1491570910946" MODIFIED="1491570946248">
+<node TEXT="When I do docs for cases add them like this in fp in the same sub tab line" ID="ID_212532605" CREATED="1491570910946" MODIFIED="1491570946248">
 <node TEXT="Image 4912.png" ID="ID_689296286" CREATED="1491570932827" MODIFIED="1491570932848">
 <hook URI="file:/C:/Screenshots/Image%204912.png" SIZE="1.0" NAME="ExternalObject"/>
 </node>
@@ -2744,7 +2743,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="s0 Add a constant to specify if we want to use the memory or a file for" ID="ID_689971079" CREATED="1507715785689" MODIFIED="1507715804811"/>
 </node>
-<node FOLDED="true" ID="ID_1498185772" CREATED="1507097066835" MODIFIED="1507668010506"><richcontent TYPE="NODE">
+<node ID="ID_1498185772" CREATED="1507097066835" MODIFIED="1507668010506"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2772,7 +2771,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </richcontent>
 </node>
 </node>
-<node FOLDED="true" ID="ID_1143598948" CREATED="1507028360774" MODIFIED="1507568700171"><richcontent TYPE="NODE">
+<node ID="ID_1143598948" CREATED="1507028360774" MODIFIED="1507568700171"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2804,10 +2803,10 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="Logs" FOLDED="true" ID="ID_945105403" CREATED="1502874364781" MODIFIED="1507028507807">
+<node TEXT="Logs" ID="ID_945105403" CREATED="1502874364781" MODIFIED="1507028507807">
 <node TEXT="s0 Add AMT logs and maybe eventually central and pam logs?" ID="ID_1594451373" CREATED="1502714521215" MODIFIED="1507028507804"/>
 </node>
-<node TEXT="MAMDoc" FOLDED="true" ID="ID_320449551" CREATED="1502874369049" MODIFIED="1502874373243">
+<node TEXT="MAMDoc" ID="ID_320449551" CREATED="1502874369049" MODIFIED="1502874373243">
 <node ID="ID_398035361" CREATED="1497203378676" MODIFIED="1508779361865"><richcontent TYPE="NODE">
 
 <html>
@@ -2844,7 +2843,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_116559259" STARTINCLINATION="637;0;" ENDINCLINATION="637;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 </node>
 <node TEXT="s0 Maybe add bread crums in subsections" ID="ID_903096154" CREATED="1497264238427" MODIFIED="1497264254049"/>
-<node FOLDED="true" ID="ID_1856277357" CREATED="1497110730335" MODIFIED="1497110752600"><richcontent TYPE="NODE">
+<node ID="ID_1856277357" CREATED="1497110730335" MODIFIED="1497110752600"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2864,13 +2863,13 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="s0 Add the exporting of attributes as html tables with 2 columns" ID="ID_120060087" CREATED="1495091288409" MODIFIED="1495091309275"/>
 <node TEXT="s0 Maybe have the gray boxes indended as well?" ID="ID_148067304" CREATED="1497279052797" MODIFIED="1497279062045"/>
 <node TEXT="s0 Put the todo elements in the code file..." ID="ID_1138744771" CREATED="1497279062192" MODIFIED="1497279071825"/>
-<node TEXT="s0 When there are 2 links one after another they appear too close to each other, maybe add spacing." FOLDED="true" ID="ID_785364774" CREATED="1497428298837" MODIFIED="1497428335804">
+<node TEXT="s0 When there are 2 links one after another they appear too close to each other, maybe add spacing." ID="ID_785364774" CREATED="1497428298837" MODIFIED="1497428335804">
 <node TEXT="Image 5245.png" ID="ID_1224112368" CREATED="1497428325837" MODIFIED="1497428325856">
 <hook URI="file:/C:/Screenshots/Image%205245.png" SIZE="1.0" NAME="ExternalObject"/>
 </node>
 </node>
-<node TEXT="Code Browser" FOLDED="true" ID="ID_1949937400" CREATED="1491595454015" MODIFIED="1491595457359">
-<node TEXT="s0" FOLDED="true" ID="ID_218020315" CREATED="1491595465257" MODIFIED="1491595468801">
+<node TEXT="Code Browser" ID="ID_1949937400" CREATED="1491595454015" MODIFIED="1491595457359">
+<node TEXT="s0" ID="ID_218020315" CREATED="1491595465257" MODIFIED="1491595468801">
 <node TEXT="Or use as a browser, for example, it would just import the code file and add the line number as an attribute" ID="ID_553434427" CREATED="1491595458215" MODIFIED="1491595458215"/>
 <node TEXT="But it is good to explore the structure of the file side by side with the text editor. And to annotate the code and link it." ID="ID_1214157481" CREATED="1491595458215" MODIFIED="1491595458215"/>
 <node TEXT="Maybe add node its after the first import and create a temp code file to work with (side-by-side)..." ID="ID_196724902" CREATED="1491595458219" MODIFIED="1491595458219"/>
@@ -2933,7 +2932,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node FOLDED="true" ID="ID_692479604" CREATED="1491379142227" MODIFIED="1491382247036"><richcontent TYPE="NODE">
+<node ID="ID_692479604" CREATED="1491379142227" MODIFIED="1491382247036"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -2976,7 +2975,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="s0 Documents to produce" FOLDED="true" ID="ID_374778695" CREATED="1491471635114" MODIFIED="1491471639795">
+<node TEXT="s0 Documents to produce" ID="ID_374778695" CREATED="1491471635114" MODIFIED="1491471639795">
 <node TEXT="s0 Redo my CV using a mind map" ID="ID_357430775" CREATED="1491471640369" MODIFIED="1491471647143"/>
 <node TEXT="s0 I can write emails using maps, and then paste the html from chrome to a new email in outlook and it will keep the format. So I could write my emails using it if it is complex email, just to add sub maps in case map folders as emails." ID="ID_628992756" CREATED="1491471647705" MODIFIED="1491471712153"/>
 <node ID="ID_1762387980" CREATED="1491471672906" MODIFIED="1497264188386"><richcontent TYPE="NODE">
@@ -3012,16 +3011,16 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="s0 For some reason the format doesn&apos;t keep. When set directly without the modal (ctrl+backspace)." ID="ID_823086919" CREATED="1498025073503" MODIFIED="1498027970585"/>
 <node TEXT="s0 When I set some X nodes to exlude them, then they are still accounted as a level, so for the nodes under they are not for example level 2 if all the nodes before have X so I don&apos;t get the h1 in the list." ID="ID_1546358467" CREATED="1498027974481" MODIFIED="1498028089478"/>
-<node TEXT="s0 The script doesn&apos;t take into account the formats that are applied using conditions." FOLDED="true" ID="ID_1763026263" CREATED="1498323244667" MODIFIED="1498323350938">
+<node TEXT="s0 The script doesn&apos;t take into account the formats that are applied using conditions." ID="ID_1763026263" CREATED="1498323244667" MODIFIED="1498323350938">
 <node TEXT="s0 Maybe ask the freeplane list about it" ID="ID_1205844362" CREATED="1498323353766" MODIFIED="1498323398469"/>
 </node>
-<node TEXT="s0 Problem with tag closure" FOLDED="true" ID="ID_64632366" CREATED="1495724178998" MODIFIED="1495724184475">
+<node TEXT="s0 Problem with tag closure" ID="ID_64632366" CREATED="1495724178998" MODIFIED="1495724184475">
 <node TEXT="Image 5120.png" ID="ID_768831087" CREATED="1495724188879" MODIFIED="1495724188902">
 <hook URI="file:/C:/Screenshots/Image%205120.png" SIZE="0.97402596" NAME="ExternalObject"/>
 </node>
 </node>
 </node>
-<node FOLDED="true" ID="ID_332879538" CREATED="1497271691174" MODIFIED="1497272104400"><richcontent TYPE="NODE">
+<node ID="ID_332879538" CREATED="1497271691174" MODIFIED="1497272104400"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -3078,7 +3077,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </html>
 </richcontent>
 </node>
-<node TEXT="D:\Work\MindMaps\Doc" FOLDED="true" ID="ID_1313777456" CREATED="1497271772588" MODIFIED="1497271775049" LINK="file:/D:/Work/MindMaps/Doc">
+<node TEXT="D:\Work\MindMaps\Doc" ID="ID_1313777456" CREATED="1497271772588" MODIFIED="1497271775049" LINK="file:/D:/Work/MindMaps/Doc">
 <node ID="ID_1610581873" CREATED="1497271779011" MODIFIED="1497272011316" LINK="file:/D:/Work/MindMaps/Doc/MapToHtmlDocDemoMap.mm"><richcontent TYPE="NODE">
 
 <html>
@@ -3095,7 +3094,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="Screenshot.png" ID="ID_671664696" CREATED="1497271781743" MODIFIED="1497271781743" LINK="file:/D:/Work/MindMaps/Doc/Screenshot.png"/>
 </node>
-<node TEXT="scripts" FOLDED="true" ID="ID_590046166" CREATED="1497271798618" MODIFIED="1497271798620" LINK="file:/C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.5.x/scripts/">
+<node TEXT="scripts" ID="ID_590046166" CREATED="1497271798618" MODIFIED="1497271798620" LINK="file:/C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.5.x/scripts/">
 <node ID="ID_1940712545" CREATED="1497271817475" MODIFIED="1497272016441" LINK="file:/C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.5.x/scripts/MapToHtmlDoc.groovy"><richcontent TYPE="NODE">
 
 <html>
@@ -3112,13 +3111,13 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
-<node TEXT="NOTES" FOLDED="true" ID="ID_1962099516" CREATED="1491378101457" MODIFIED="1491379281290">
+<node TEXT="NOTES" ID="ID_1962099516" CREATED="1491378101457" MODIFIED="1491379281290">
 <cloud COLOR="#ffffcc" SHAPE="ARC"/>
-<node TEXT="Use this export format" FOLDED="true" ID="ID_663919899" CREATED="1491380045067" MODIFIED="1491380049449">
+<node TEXT="Use this export format" ID="ID_663919899" CREATED="1491380045067" MODIFIED="1491380049449">
 <node TEXT="Export to HTML (.html)" ID="ID_1991758760" CREATED="1491380040094" MODIFIED="1491380041496"/>
 </node>
 <node TEXT="In the documents, use the automatic format so I get title size and colors, and put empty subtitle 1 and subtitle 2 if there are none, so the paragraphs have the same fonts and colors." ID="ID_1256301890" CREATED="1491380112674" MODIFIED="1491380162156"/>
-<node TEXT="Use the html snippets to add html code in the notes, like tables for example" FOLDED="true" ID="ID_1036740319" CREATED="1491378111609" MODIFIED="1491378112699">
+<node TEXT="Use the html snippets to add html code in the notes, like tables for example" ID="ID_1036740319" CREATED="1491378111609" MODIFIED="1491378112699">
 <node TEXT="Html" ID="ID_1256676068" CREATED="1491378033956" MODIFIED="1491378033960" LINK="file:/D:/Work/MindMaps/Snippets.mm#ID_967614626"/>
 </node>
 <node TEXT="Show the notes panel at the bottom" ID="ID_1590612009" CREATED="1491378119695" MODIFIED="1491378128833"/>
@@ -3127,6 +3126,9 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Use also templates to read code files like workflows etc (add automatic formats...)" ID="ID_788498621" CREATED="1491742057344" MODIFIED="1491742082450"/>
 </node>
 </node>
+</node>
+<node TEXT="Menu" POSITION="right" ID="ID_467562237" CREATED="1513175041357" MODIFIED="1513175041359" LINK="file:/D:/Work/MindMaps/Maps.mm#ID_1385663791">
+<edge COLOR="#808080"/>
 </node>
 </node>
 </map>
