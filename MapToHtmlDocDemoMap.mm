@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1513759150741" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1514371980029" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
 <icon BUILTIN="executable"/>
 <icon BUILTIN="pencil"/>
 <font NAME="Rockwell" SIZE="36" BOLD="true"/>
@@ -16,7 +16,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <hook NAME="MapStyle" background="#ffffff" zoom="0.623">
     <conditional_styles>
@@ -712,7 +711,7 @@
 </node>
 </node>
 </node>
-<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1512601643126">
+<node TEXT="More features" POSITION="right" ID="ID_106028219" CREATED="1497029381635" MODIFIED="1513759192724">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="PalmIcons/dFileMan/Misc/Spark"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_797831984" STARTINCLINATION="-1333;-313;" ENDINCLINATION="-186;-126;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
@@ -2025,6 +2024,10 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </richcontent>
 </node>
 </node>
+</node>
+<node TEXT="s0 Add that videos are displayed as videos (embedded) only if they have a video icon, so that otherwise they are dipslayed as links." ID="ID_428109722" CREATED="1514546135584" MODIFIED="1514546186470">
+<node TEXT="s0 Do same for images?" ID="ID_1199490296" CREATED="1514547661104" MODIFIED="1514547666047"/>
+<node TEXT="s0 I could also do the opposite, to have them displayed by default, but if a link icon is put then they are displayed as link." ID="ID_120776661" CREATED="1514547667967" MODIFIED="1514547700414"/>
 </node>
 <node TEXT="s0 I cannot link a groovy script from the web because the script tries to include its code in the note.... maybe don&apos;t do that for groovy files on the web? or put an icon to exlude them" ID="ID_1994479272" CREATED="1513759033335" MODIFIED="1513759074441"/>
 <node ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511992763067"><richcontent TYPE="NODE">

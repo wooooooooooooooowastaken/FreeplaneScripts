@@ -3,6 +3,9 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2017-12-29_11.29.27
+            // Added the possibility to add videos that have the address m.youtube.com instead of www.youtube.com.
+            // Added text to the input box to tell how to focus to the textbox using only the keyboard.
         // Version 2017-12-18_14.13.50
             // Added more short link text for connectors. 
         // Version 2017-12-07_10.30.58
@@ -248,7 +251,7 @@
             def ADD_H4_BREADCRUMBS = false
     
         // For Markdown (enable export to Markdown, .md files will be also create with the .html files)
-            @Field def MARKDOWN = true
+            @Field def MARKDOWN = false
             def NOTE_IS_HTML = '<b>|<a href|<i>|<small>|<font' // To identify that a note contains html (to select the display method for the markdown notes: bloquote or code)
 
 		// To copy files or images to the output directory
@@ -361,9 +364,9 @@
             }
 
         // ====================================================================================================
-        def passwordPrompt(label) { // = Input box
+        def passwordPrompt(label) { // = Input box for password
         // ==================================================================================================== 
-            JLabel jPassword = new JLabel("Please enter the password required for the script in the branch root node:")
+            JLabel jPassword = new JLabel(label)
             JTextField password = new JPasswordField()
             Object[] ob = [jPassword, password]
             int result = JOptionPane.showConfirmDialog(null, ob, "Password", JOptionPane.OK_CANCEL_OPTION)
@@ -1106,11 +1109,11 @@
                                     if (hasVideoLink) {
                                         // Adapt the Youtube URL to an embedded Youtube URL 
                                             if (linkPath =~ /youtube|youtu\.be/) {
+                                                linkPath = linkPath.replaceAll('m.youtube.com', 'www.youtube.com') // Remove the seconds that could be appended
                                                 linkPath = linkPath.replace('watch?v=', 'embed/')
                                                 linkPath = linkPath.replaceAll('&t=\\d+s', '') // Remove the seconds that could be appended
-                                                // If link is youtu.be
-                                                    linkPath = linkPath.replace('youtu.', 'www.youtube.com')
-                                                    linkPath = linkPath.replace('be/', '/embed/')
+                                                linkPath = linkPath.replace('youtu.', 'www.youtube.com')
+                                                linkPath = linkPath.replace('be/', '/embed/')
                                             }
                                         sTag = indentSp + indentNbsp + aName + '<iframe src="' + linkPath + '" width="560" height="315" allowfullscreen="allowfullscreen">'
                                         eTag = '</iframe><br>' + EOL
@@ -1409,7 +1412,7 @@
             // ···································································································· 
                 def password = ''
                 if (shellScript.contains('$password')) {
-                    password = passwordPrompt('Enter the password:')
+                    password = passwordPrompt("Please enter the password required for the script in the branch root node (Press shift-tab or tab 2 times to focus on the textbox):")
                     if (password != null) 
                         runScript = true
                 }
