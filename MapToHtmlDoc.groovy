@@ -4,6 +4,7 @@
 // # Version History:
 // #################################################################################################### 
         // Version 2017-12-29_11.29.27
+            // Upload to GitHub deactivated for now because the shell script should be fixed. 
             // Added the possibility to add videos that have the address m.youtube.com instead of www.youtube.com.
             // Added text to the input box to tell how to focus to the textbox using only the keyboard.
         // Version 2017-12-18_14.13.50
@@ -1428,8 +1429,9 @@
                     scriptWriter.write(shellScript, 'utf-8')
                 // Run the script
                     def bashCmd = "$BASH_PATH $SHELL_SCRIPT_PATH"
-                    def proc = bashCmd.execute()
-                    proc.waitFor() 
+                    /* def proc = bashCmd.execute() */
+                    /* proc.waitFor() */ 
+                        m('Upload to GitHub is deactivated for now because of issues with the shell script uploading files it should not.')
                 // Delete so that the password is not available in it.
                     scriptWriter.delete()
                 }
