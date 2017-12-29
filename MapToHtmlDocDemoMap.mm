@@ -331,7 +331,7 @@
 <node TEXT="system.ini" ID="ID_1760686471" CREATED="1497106529589" MODIFIED="1497106529589" LINK="file:/C:/Windows/system.ini"/>
 </node>
 <node TEXT="If it doesn&apos;t match the pattern above, a link to the file is created:" ID="ID_65756803" CREATED="1497108744943" MODIFIED="1497112599709">
-<node TEXT="system.ini" ID="ID_1123310148" CREATED="1514549636227" MODIFIED="1514549636228" LINK="file:/C:/Windows/system.ini"/>
+<node TEXT="services.msc" ID="ID_1875270419" CREATED="1514549833169" MODIFIED="1514549833170" LINK="file:/C:/Windows/System32/services.msc"/>
 </node>
 </node>
 <node ID="ID_1964841208" CREATED="1497029651216" MODIFIED="1497108883923"><richcontent TYPE="NODE">
