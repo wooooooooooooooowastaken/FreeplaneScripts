@@ -3,6 +3,12 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2018-01-17_16.58.30
+            // Added a new variable rHtml, to distinguish rawtext from rawhtml. Raw text is text without any tags, raw html is the html extracted from a node text (without the html and body tags and enclosing paragraph.
+            // List items (nodes starting with * are now replaced by the bullet char instead of the <li> tag, this allows indentation of list item)
+            // The rawText() function now removes the <b> tag, this was necessary to have text starting with '* ' in bold to be detected as a list item (as starting with '* ' so '* ' can be replaced by the bullet char.
+        // Version 2018-01-03_15.25.02
+            // I reactivated the upload to github as the shell script has been corrected.
         // Version 2017-12-29_11.29.27
             // Upload to GitHub deactivated for now because the shell script should be fixed. 
             // Added the possibility to add videos that have the address m.youtube.com instead of www.youtube.com.
@@ -333,6 +339,7 @@
         def runBranchRootScript = false
         def text = ''
         def rText = '' // Raw text
+        def rHtml = '' // Raw html
         def htmlStr = '<html><meta charset="UTF-8"><body style="' + STYLE_BODY + '">' + EOL
         def htmlFileTmp = null
         def mdFileTmp = null // Markdown
@@ -390,19 +397,28 @@
             }
 
         // ====================================================================================================
-        def rawText(text, removeStatus) { // = To get only the main text in the nodes without some html and the status 
+        def rawHtml(text, removeStatus) { // = To get only the main html in the nodes without some structural html and the status 
         // ==================================================================================================== 
             // Remove html tags
-                def rawText = text.replaceAll('<(html|head|body|p|span).*?>', '')
-                rawText = rawText.replaceAll('</(html|head|body|p|span)>', '')
-                rawText = rawText.replaceAll('^\\s*', '')
+                def rawHtml = text.replaceAll('<(html|head|body|p|span).*?>', '')
+                rawHtml = rawHtml.replaceAll('</(html|head|body|p|span)>', '')
+                rawHtml = rawHtml.replaceAll('^\\s*', '')
             // Remove the status
                 if (removeStatus)
-                    rawText = rawText.replaceAll('(s-1|s0|s1|s2|s3) ', '')
+                    rawHtml = rawHtml.replaceAll('(s-1|s0|s1|s2|s3) ', '')
             // Allows to add end of lines to nodes, so add $$ to have a end of line in the text of the node. It could be possible to have end of lines in core text, but freeplane set automatically end of lines to wrap the nodes, and these appear in the html... so I have no way of differenciating my own end of lines with those of FP...
-                rawText = rawText.replaceAll('\\$\\$', '<br>')
-            return rawText.trim()
+                rawHtml = rawHtml.replaceAll('\\$\\$', '<br>')
+            return rawHtml.trim()
             }
+            
+            // ====================================================================================================
+            def removeHtmlFormatting(text) { // = To remove formatting tags from the html
+            // ==================================================================================================== 
+                // Remove html formatting
+                    def rawText = text.replaceAll('<(b).*?>', '')
+                    rawText = rawText.replaceAll('</(b)>', '')
+                return rawText
+                }
 
         // ====================================================================================================
         def rawNote(node) { // = To get only the some html tags from notes
@@ -661,7 +677,8 @@
                     // ----------------------------------------------------------------------------------------------------
                     // - Text
                     // ---------------------------------------------------------------------------------------------------- 
-                        rText = rawText(text, false)
+                        rHtml = rawHtml(text, false)
+                        rText = removeHtmlFormatting(rHtml)
 
                     // ----------------------------------------------------------------------------------------------------
                     // - Link
@@ -724,7 +741,7 @@
                     // ----------------------------------------------------------------------------------------------------
                     // - Personal note (Allows to add my notes to the documentation without having it appearing on the final doc. It allows also to disable (hide) nodes (add s-1 for example) from the final doc.)
                     // ---------------------------------------------------------------------------------------------------- 
-                        if (rText =~ /^(s-1|s0|s1|s2|s3)\s/)
+                        if (rHtml =~ /^(s-1|s0|s1|s2|s3)\s/)
                             return
 
                     // ----------------------------------------------------------------------------------------------------
@@ -737,7 +754,7 @@
             // BranchRoot: Set the current selected node when the script is run as the branchRoot node (it is set only once) 
                 if (branchRootNode == null) {
                     branchRootNode = n
-                    branchRootName = truncateText(rText, SHORT_TEXT_MAX_SIZE, false, true)  // I use truncateText but really it was meant for another usage.
+                    branchRootName = truncateText(rHtml, SHORT_TEXT_MAX_SIZE, false, true)  // I use truncateText but really it was meant for another usage.
                     // If the root node has a note (script?) + the icon 'Executable' then it is a script to run at the end 
                         if (branchRootNode.noteText != null && n.icons.collect{it.toString()}.join(';').contains('executable'))
                             runBranchRootScript = true
@@ -785,11 +802,11 @@
                     }
 
                 if (n.icons.collect{it.toString()}.join(';') =~ '(^|;)(pencil)') { // Icons with the red pencil will be styled using CSS 
-                    iText = getStyledTextWithCss(n, rText, false)
-                    iTextToc = getStyledTextWithCss(n, rText, true)
+                    iText = getStyledTextWithCss(n, rHtml, false)
+                    iTextToc = getStyledTextWithCss(n, rHtml, true)
                 }
                 else {
-                    iText = rText
+                    iText = rHtml
                     iTextToc = iText
                 }
 
@@ -885,7 +902,7 @@
                             if (MARKDOWN)
                                 mdStr += '@@TOC@@' + EOL
                         }
-                        if (rText != '' ) {
+                        if (rHtml != '' ) {
                             // Get breadcrumbs
                                 def breadcrumbs = ''
                                 def mdBreadcrumbs = ''
@@ -905,14 +922,14 @@
 
                             if (MARKDOWN) {
                                 mdStr += "***$EOL"
-                                mdStr += "## $aName$iconsMd$rText$EOL"
+                                mdStr += "## $aName$iconsMd$rHtml$EOL"
                                 mdStr += "***$EOL"
                                 if (ADD_H2_BREADCRUMBS)
                                     mdStr += "*$breadcrumbs*$EOL$EOL"
-                                mdToc += "* **[$rText](#$id)** $iconsMd$EOL" // TOC: List element
+                                mdToc += "* **[$rHtml](#$id)** $iconsMd$EOL" // TOC: List element
                             }
                         }
-                        // If H2's rText is empty then add an empty line
+                        // If H2's rHtml is empty then add an empty line
                             else
                                 sTag += '<br>' + EOL
                     }
@@ -921,7 +938,7 @@
                 // - H3
                 // ---------------------------------------------------------------------------------------------------- 
                     else if (depth == 3) {
-                        if (rText != '') {
+                        if (rHtml != '') {
                             // Get breadcrumbs
                                 def breadcrumbs = ''
                                 def mdBreadcrumbs = ''
@@ -937,17 +954,17 @@
                             toc += indentSp + '&#9675; ' + ' <a style="' + STYLE_H3 + '" href="#' + id + '">' + iTextToc + '</a> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
-                                mdStr += "### $aName$iconsMd$rText$EOL"
+                                mdStr += "### $aName$iconsMd$rHtml$EOL"
                                 mdStr += "---$EOL"
                                 if (ADD_H3_BREADCRUMBS)
                                     mdStr += "*$mdBreadcrumbs*$EOL$EOL"
-                                mdToc += '  * ' + "[$rText](#$id) $iconsMd$EOL" // TOC: List element
+                                mdToc += '  * ' + "[$rHtml](#$id) $iconsMd$EOL" // TOC: List element
                             }
                         }
-                        // If H3's rText is empty then maybe add an empty line
+                        // If H3's rHtml is empty then maybe add an empty line
                             else
                                 // If parent was not empty but this node is empty, then add empty line
-                                    if (rawText(n.parent.text, false) != '')
+                                    if (rawHtml(n.parent.text, false) != '')
                                         sTag += '<br>' + EOL
                     }
 
@@ -955,7 +972,7 @@
                 // - H4
                 // ---------------------------------------------------------------------------------------------------- 
                     else if (depth == 4) {
-                        if (rText != '') {
+                        if (rHtml != '') {
                             // Get breadcrumbs
                                 def breadcrumbs = ''
                                 def mdBreadcrumbs = ''
@@ -968,22 +985,22 @@
                                 }
                             sTag = EOL + indentSp + SEP4 + '<h4 style="' + STYLE_H4 + '" style="' + STYLE_H4 + '">' + aName
                             eTag = '</h4>' + breadcrumbs + EOL
-                            //toc += indentSp + '&#183; <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + rText + '</a></small></i>' + EOL
+                            //toc += indentSp + '&#183; <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + rHtml + '</a></small></i>' + EOL
                             toc += indentSp + '&#183; ' + ' <i><small><a style="' + STYLE_H4 + '" href="#' + id + '">' + iTextToc + '</a></small></i> ' + iconsHtml + EOL
 
                             if (MARKDOWN) {
-                                mdStr += "#### $aName$iconsMd$rText$EOL"
+                                mdStr += "#### $aName$iconsMd$rHtml$EOL"
                                 if (ADD_H4_BREADCRUMBS)
                                     mdStr += "*$mdBreadcrumbs*$EOL$EOL"
-                                mdToc += "      * *[$rText](#$id)* $iconsMd$EOL" // TOC: List element
+                                mdToc += "      * *[$rHtml](#$id)* $iconsMd$EOL" // TOC: List element
                             }
                         }
-                        // If H4's rText is empty then add an empty line
+                        // If H4's rHtml is empty then add an empty line
                             else
                                 // If grand-parent was not empty but this node is empty
-                                    if (rawText(n.parent.parent.text, false) != '')
+                                    if (rawHtml(n.parent.parent.text, false) != '')
                                     // If parent was not empty but this node is empty
-                                        if (rawText(n.parent.text, false) != '')
+                                        if (rawHtml(n.parent.text, false) != '')
                                             sTag += '<br>' + EOL
                     }
 
@@ -1004,13 +1021,13 @@
                                     }
                             // Html
                                 p = ''
-                                if (rText != '')
-                                    p = '<p>' + indentNbsp + rText + '</p>' + EOL
-                                sTag = indentSp + p + indentNbsp + '<img src="' + linkPath + '" alt="' + rText + '" style="' + STYLE_IMG + '">' + aName
+                                if (rHtml != '')
+                                    p = '<p>' + indentNbsp + rHtml + '</p>' + EOL
+                                sTag = indentSp + p + indentNbsp + '<img src="' + linkPath + '" alt="' + rHtml + '" style="' + STYLE_IMG + '">' + aName
                                 eTag = '</img><br><br>' + EOL
                                 iText = ''
                             if (MARKDOWN)
-                                mdStr += "![$rText]($linkPath)$EOL" // Markdown image
+                                mdStr += "![$rHtml]($linkPath)$EOL" // Markdown image
                         }
 
                     // ----------------------------------------------------------------------------------------------------
@@ -1019,12 +1036,12 @@
                         else if (!hasLink && !hasNote) {
                             // List element
                                 if (rText.take(2) == '* ') {
-                                    sTag = indentSp + '<li>' + aName
-                                    eTag = '</li>' + EOL
-                                    iText = rText.substring(2) // Remove 2 first chars '* ' 
+                                    sTag = indentSp +  indentNbsp + '&#8226; ' + aName
+                                    eTag = '<br>' + EOL
+                                    iText = rHtml.replace('* ', ' ')
 
                                     if (MARKDOWN)
-                                        mdStr += "$rText$EOL" // No need to add the * it is already in the text
+                                        mdStr += "$rHtml$EOL" // No need to add the * it is already in the text
                                 }
                             // Paragraph
                                 else {
@@ -1032,7 +1049,7 @@
                                     eTag = '</p>' + EOL
 
                                     if (MARKDOWN)
-                                        mdStr += "$iconsMd$rText$EOL$EOL"
+                                        mdStr += "$iconsMd$rHtml$EOL$EOL"
                                 }
                         }
 
@@ -1071,13 +1088,13 @@
                                                 }
                                     // Html
                                          p = ''
-                                        if (rText != '')
-                                            p = '<p>' + indentNbsp + rText + '</p>' + EOL
-                                        sTag = indentSp + p + indentNbsp + '<img src="' + linkPath + '" alt="' + rText + '" style="' + STYLE_IMG + '">' + aName
+                                        if (rHtml != '')
+                                            p = '<p>' + indentNbsp + rHtml + '</p>' + EOL
+                                        sTag = indentSp + p + indentNbsp + '<img src="' + linkPath + '" alt="' + rHtml + '" style="' + STYLE_IMG + '">' + aName
                                         eTag = '</img><br><br>' + EOL
                                         iText = ''
                                     if (MARKDOWN)
-                                        mdStr += "![$rText]($linkPath)$EOL" // Markdown image
+                                        mdStr += "![$rHtml]($linkPath)$EOL" // Markdown image
                                 }
                             // Freeplane link
                                 else if (link =~ /mm#ID_/) {
@@ -1085,13 +1102,13 @@
                                     sTag = indentSp + aName + indentNbsp + '<a href="#' + linkId + '">'
                                     eTag = '</a><br>' + EOL
                                     if (MARKDOWN)
-                                        mdStr += "[$iconsMd$rText](#$linkId)$EOL$EOL"
+                                        mdStr += "[$iconsMd$rHtml](#$linkId)$EOL$EOL"
                                 }
                            // List element with link
                                 else if (rText.take(2) == '* ') {
-                                    sTag = indentSp + '<li>' + aName + '<a href="' + link + '">'
-                                    eTag = '</li></a>' + EOL
-                                    iText = rText.substring(2) // Remove 2 first chars '* ' 
+                                    sTag = indentSp + indentNbsp + '&#8226; ' + aName + '<a href="' + link + '">'
+                                    eTag = '</a><br>' + EOL
+                                    iText = rHtml.replace('* ', ' ')
 
                                     if (MARKDOWN)
                                         mdStr += "* [$iText]($link)$EOL"
@@ -1125,7 +1142,7 @@
                                     }
                                     if (MARKDOWN) {
                                         if (!hasFolderLink) // Ignore links to folder because they don't work in Markdown (at least in Windows with the Firefox plugin)
-                                            mdStr += "[$rText]($linkPath)$EOL$EOL"
+                                            mdStr += "[$rHtml]($linkPath)$EOL$EOL"
                                     }
                                 }
                             }
@@ -1429,9 +1446,8 @@
                     scriptWriter.write(shellScript, 'utf-8')
                 // Run the script
                     def bashCmd = "$BASH_PATH $SHELL_SCRIPT_PATH"
-                    /* def proc = bashCmd.execute() */
-                    /* proc.waitFor() */ 
-                        m('Upload to GitHub is deactivated for now because of issues with the shell script uploading files it should not.')
+                    def proc = bashCmd.execute()
+                    proc.waitFor() 
                 // Delete so that the password is not available in it.
                     scriptWriter.delete()
                 }
