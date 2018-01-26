@@ -1,6 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1514371980029" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1516978963281" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
 <icon BUILTIN="executable"/>
 <icon BUILTIN="pencil"/>
 <font NAME="Rockwell" SIZE="36" BOLD="true"/>
@@ -12,12 +12,13 @@
   </head>
   <body>
     <p>
-      Version: 2017-12-20_10:38:44
+      Version: 2018-01-26_17:02:03
     </p>
   </body>
 </html>
+
 </richcontent>
-<hook NAME="MapStyle" background="#ffffff" zoom="0.623">
+<hook NAME="MapStyle" background="#ffffff" zoom="0.754">
     <conditional_styles>
         <conditional_style ACTIVE="true" STYLE_REF="s-1: Abandonned" LAST="false">
             <node_contains_condition VALUE="s-1" ITEM="filter_node" MATCH_APPROXIMATELY="false"/>
@@ -44,7 +45,7 @@
             <node_compare_condition user_name="IGNORE (BAK)" VALUE="BAK" MATCH_CASE="true" MATCH_APPROXIMATELY="false" COMPARATION_RESULT="0" SUCCEED="true" ITEM="filter_node"/>
         </conditional_style>
     </conditional_styles>
-    <properties show_icon_for_attributes="true" fit_to_viewport="false;" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
+    <properties fit_to_viewport="false;" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -137,56 +138,45 @@
   </head>
   <body>
     <pre># Shell Script to upload to GitHub
-            
-            # ####################################################################################################
-            echo 'Initialization'
-            # ####################################################################################################
-                GIT_SITE='viaa'
-                GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
-                GIT_PASSWORD='$password'
-            
-            # ####################################################################################################
-            echo 'Uploading the html document to Github pages'
-            # ####################################################################################################
-            
-                # ====================================================================================================
-                # = Local
-                # ====================================================================================================
-                    echo 'Copying the files to the local git repository'
-                        cp /c/Temp/MapToHtmlDoc/${branchRootName}* /d/GitHubWebsites/$GIT_SITE
-                        cd /d/GitHubWebsites/$GIT_SITE
-            
-                    # ----------------------------------------------------------------------------------------------------
-                    # - Git
-                    # ----------------------------------------------------------------------------------------------------
-                        echo 'Adding files...'
-                            git add ${branchRootName}*
-            
-                        echo 'Commiting...'
-                            git commit -am 'Page update'
-            
-                # ====================================================================================================
-                # = Remote
-                # ====================================================================================================
-                    echo 'Pushing...'
-                        git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/${GIT_SITE}.github.io.git&quot; master --force
-            
 
-            # ####################################################################################################
-            echo 'Upload the map (.mm) to Github'
-            # ####################################################################################################
+# ####################################################################################################
+# # Initialization
+# ####################################################################################################
+    GIT_SITE='viaa'
+    GIT_USERNAME='alexandreviau%40gmail.com' # @ should be replaced by %40
+    GIT_PASSWORD='$password'
 
-                cd /c/Users/alexandre.viau/AppData/Roaming/Freeplane/1.6.x/scripts
-                git add MapToHtmlDocDemoMap.mm
-                git commit -am 'Map update'
-                git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/FreeplaneScripts.git&quot; master --force
+# ####################################################################################################
+# # Main
+# ####################################################################################################
 
-            echo 'Finished'
+    # ====================================================================================================
+    # = Local
+    # ====================================================================================================
+        echo 'Copying the files to the local git repository'
+            mkdir /d/GitHubWebsites/$GIT_SITE/$branchRootName
+            cp /c/Temp/MapToHtmlDoc/$branchRootName* /d/GitHubWebsites/$GIT_SITE/$branchRootName
+            cp /c/Temp/MapToHtmlDoc/$branchRootName.html /d/GitHubWebsites/$GIT_SITE/$branchRootName/index.html
+            cd /d/GitHubWebsites/$GIT_SITE/$branchRootName
 
-        </pre>
+        # ----------------------------------------------------------------------------------------------------
+        # - Git
+        # ----------------------------------------------------------------------------------------------------
+            echo 'Adding files...'
+                git add *
+
+            echo 'Commiting...'
+                git commit -am 'Page update'
+
+    # ====================================================================================================
+    # = Remote
+    # ====================================================================================================
+        echo 'Pushing...'
+            git push &quot;https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_SITE}/$branchRootName.github.io.git&quot; master --force
+
+echo 'Finished'</pre>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Introduction" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
 <edge COLOR="#808080"/>
@@ -787,7 +777,9 @@
 <node TEXT="Videos" ID="ID_620410827" CREATED="1511304604341" MODIFIED="1511304607442">
 <node TEXT="Youtube" ID="ID_634047388" CREATED="1511304608900" MODIFIED="1511304610842">
 <node TEXT="Youtube videos are supported:" ID="ID_1358081176" CREATED="1511304613582" MODIFIED="1511305475433">
-<node TEXT="https://www.youtube.com/watch?v=yUsaWHyvxOY&amp;t=12s" ID="ID_1513305822" CREATED="1511304626659" MODIFIED="1511305588042" LINK="https://www.youtube.com/watch?v=yUsaWHyvxOY&amp;t=12s"><richcontent TYPE="DETAILS">
+<node TEXT="https://www.youtube.com/watch?v=yUsaWHyvxOY&amp;t=12s" ID="ID_1513305822" CREATED="1511304626659" MODIFIED="1516978239416" LINK="https://www.youtube.com/watch?v=yUsaWHyvxOY&amp;t=12s">
+<icon BUILTIN="video"/>
+<richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -800,6 +792,25 @@
   </body>
 </html>
 </richcontent>
+<node TEXT="In order to have the video displayed as an embedded video in the page, the user should add the video icon to the node with the link to the video otherwise it will be displayed as a link to the video. This is to avoid having too many videos embedded in a page." ID="ID_1167176228" CREATED="1516978792659" MODIFIED="1516978799975">
+<node TEXT="This is the video icon." ID="ID_1314698730" CREATED="1516978805773" MODIFIED="1516979115461">
+<hook URI="file:/C:/Screenshots2/Image%20876.png" SIZE="1.0" NAME="ExternalObject"/>
+<richcontent TYPE="DETAILS">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Video icon
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
 </node>
 </node>
 </node>
@@ -1382,6 +1393,9 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 <node TEXT="Version: 2017-12-20_10:38:44:" ID="ID_695473143" CREATED="1513759120693" MODIFIED="1513759125950">
 <node TEXT="Added link to files groovy and mindmap files." ID="ID_1575682268" CREATED="1513759126532" MODIFIED="1513759142975"/>
 </node>
+<node TEXT="Version: 2018-01-26_17:02:03:" ID="ID_1377380740" CREATED="1516978920823" MODIFIED="1516978924820">
+<node TEXT="Added documentation for the video icon that is required now to display the video as embedded video otherwise they are displayed as links." ID="ID_1581498751" CREATED="1516978925839" MODIFIED="1516978951246"/>
+</node>
 </node>
 </node>
 <node TEXT="I hope you&apos;ll find it useful too" POSITION="right" ID="ID_495374163" CREATED="1497112090702" MODIFIED="1508142077622">
@@ -1395,14 +1409,74 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="IGNORE" POSITION="left" ID="ID_1580845514" CREATED="1502874538458" MODIFIED="1502874539764">
 <edge COLOR="#808080"/>
-<node TEXT="Github pages" ID="ID_327047891" CREATED="1511252223302" MODIFIED="1511257938143">
+<node TEXT="Links" ID="ID_1557376757" CREATED="1511252223302" MODIFIED="1512547700344">
 <cloud COLOR="#ccffff" SHAPE="ARC"/>
-<node TEXT="Links" ID="ID_359900307" CREATED="1511252906173" MODIFIED="1511252907870">
-<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1149562625" CREATED="1511212611461" MODIFIED="1512600930350" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ffff00"/>
-<node TEXT="FreeplaneScripts (upload the map .mm)" ID="ID_1949924066" CREATED="1511307312046" MODIFIED="1511307327633" LINK="file:/D:/Work/MindMaps/Commands.mm#ID_262304796"/>
-<node ID="ID_68851427" CREATED="1459638281712" MODIFIED="1512032772876" LINK="https://github.com/viaa/FreeplaneScripts">
-<icon BUILTIN="internet"/>
-<richcontent TYPE="NODE">
+<node TEXT="Doc" ID="ID_765761429" CREATED="1514985195595" MODIFIED="1514985196923">
+<node TEXT="s0 Git repo not working for this map..." ID="ID_1518187183" CREATED="1514987123732" MODIFIED="1514987138765">
+<font SIZE="18"/>
+</node>
+<node TEXT="file:/C:/temp/MapToHtmlDoc/out.html" ID="ID_398677771" CREATED="1514985197561" MODIFIED="1514985197561" LINK="file:/C:/temp/MapToHtmlDoc/out.html"/>
+<node TEXT="file:/C:/temp/MapToHtmlDoc/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1330303560" CREATED="1514985200747" MODIFIED="1514985671049" LINK="file:/C:/temp/MapToHtmlDoc/MapToHtmlDoc_-_Demo_Map.html"/>
+</node>
+<node TEXT="Git" ID="ID_1487288115" CREATED="1511180959192" MODIFIED="1511253028935">
+<node TEXT="Init" ID="ID_1569066843" CREATED="1514982290866" MODIFIED="1514982292130">
+<node TEXT="mkdir /d/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map" ID="ID_1783463166" CREATED="1514982310783" MODIFIED="1514986105986"/>
+<node TEXT="cd /d/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map" ID="ID_126539037" CREATED="1514982310783" MODIFIED="1514985712765"/>
+<node TEXT="git init" ID="ID_816230331" CREATED="1511203646592" MODIFIED="1511203648681"/>
+<node ID="ID_308086531" CREATED="1514981312399" MODIFIED="1516215651204"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target"><span class="user-select-contain">git remote add origin </span><span class="js-git-clone-help-text">https://github.com/viaa/MapToHtmlDoc.github.io.git</span></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="s0 Add this to the shell script, so that we don&apos;t need to initialize manually the directory" ID="ID_1019771023" CREATED="1514986249431" MODIFIED="1514986265102"/>
+</node>
+<node TEXT="Links" ID="ID_372610046" CREATED="1514984148071" MODIFIED="1514984149205">
+<node ID="ID_301168726" CREATED="1514984149620" MODIFIED="1516215751249" LINK="https://github.com/viaa"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target"><span class="js-git-clone-help-text">https://github.com/viaa</span></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Folders" ID="ID_1708567924" CREATED="1514984338536" MODIFIED="1514984354308">
+<node TEXT="cd /d/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map" ID="ID_1126504038" CREATED="1514982310783" MODIFIED="1514985712765"/>
+<node TEXT="Temp" ID="ID_1363824914" CREATED="1514984420041" MODIFIED="1514984420041" LINK="file:/C:/Temp/">
+<node TEXT="MapToHtmlDoc" ID="ID_405494615" CREATED="1514984352113" MODIFIED="1514984352114" LINK="file:/C:/Temp/MapToHtmlDoc/">
+<node TEXT="GitHubWebsites" ID="ID_492160916" CREATED="1514984382642" MODIFIED="1514984382642" LINK="file:/D:/GitHubWebsites/">
+<node TEXT="viaa" ID="ID_496726707" CREATED="1514984404033" MODIFIED="1514985694296" LINK="file:/D:/GitHubWebsites/viaa/">
+<node TEXT="MapToHtmlDoc_-_Demo_Map" ID="ID_628366295" CREATED="1514984411921" MODIFIED="1514985704904" LINK="file:/D:/GitHubWebsites/BankKartel/MapToHtmlDoc_-_Demo_Map/"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Push" ID="ID_744600646" CREATED="1514984444566" MODIFIED="1514984445692">
+<node TEXT="git add *" ID="ID_1338918515" CREATED="1511211568716" MODIFIED="1514984696634"/>
+<node TEXT="git commit -am &apos;Page update&apos;" ID="ID_1100090380" CREATED="1514984498244" MODIFIED="1514984498244"/>
+<node TEXT="git push &quot;https://alexandreviau%40gmail.com:Charlik2a@github.com/viaa/MapToHtmlDoc_-_Demo_Map.github.io.git&quot; master --force" ID="ID_921548659" CREATED="1514984523685" MODIFIED="1514986916699"/>
+</node>
+<node TEXT="Links" ID="ID_1827032793" CREATED="1514984748058" MODIFIED="1514984749131">
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.github.io" ID="ID_1600419748" CREATED="1514984752457" MODIFIED="1514985780817" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.github.io">
+<node TEXT="OR" ID="ID_696699472" CREATED="1514984963434" MODIFIED="1514984965727">
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1499099257" CREATED="1514984750166" MODIFIED="1514985831809" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.github.io/MapToHtmlDoc_-_Demo_Map.html"/>
+</node>
+</node>
+</node>
+<node TEXT="OLD" ID="ID_1246283732" CREATED="1511252274629" MODIFIED="1512547725006">
+<node ID="ID_158036820" CREATED="1511212497050" MODIFIED="1511212497050" LINK="https://viaa.github.io/test.html"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -1410,34 +1484,161 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
   </head>
   <body>
     <p>
-      https://github.com/viaa/<font color="#ff0000">FreeplaneScripts</font>
+      https://viaa.github.io/test.html
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="# 1" ID="ID_71791988" CREATED="1511212360128" MODIFIED="1511212434210">
+<node TEXT="git add test.html" ID="ID_1046412118" CREATED="1511211568716" MODIFIED="1511212389244"/>
+<node TEXT="git commit -m &apos;Initial commit&apos;" ID="ID_1234172540" CREATED="1511211359512" MODIFIED="1511211558787"/>
+<node ID="ID_478024085" CREATED="1511203632260" MODIFIED="1511212430244"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target" style="font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace; font-size: 14px; margin-top: 0px; margin-bottom: 0px; color: rgb(36, 41, 46); font-style: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><span class="user-select-contain">git push -u <font color="#ff0000">viaa</font> master --force</span></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="# Fix auhentication issue" ID="ID_986658104" CREATED="1511268959074" MODIFIED="1511268969931">
+<node TEXT="git remote add origin git@github.com:BankKartel/BankKartel.github.io.git" ID="ID_1502893281" CREATED="1511268975823" MODIFIED="1511269080089"/>
+<node TEXT="git remote -v" ID="ID_176237690" CREATED="1511268975819" MODIFIED="1511268975819"/>
+<node TEXT="git remote remove BankKartel" ID="ID_1728568662" CREATED="1511268975819" MODIFIED="1511269125458"/>
+<node TEXT="git remote remove BankKartel.github.io.git" ID="ID_1605336465" CREATED="1511268975819" MODIFIED="1511269328883"/>
+</node>
+<node TEXT="# Reinitialize (there was wrong username password)" ID="ID_1415532101" CREATED="1511222981459" MODIFIED="1511222995238">
+<node TEXT="git remote set-url BankKartel https://github.com/BankKartel/BankKartel.github.io.git" ID="ID_306081143" CREATED="1511222997442" MODIFIED="1511223018501"/>
+</node>
+<node ID="ID_1810243703" CREATED="1511203632260" MODIFIED="1511264409323"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target" style="font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace; font-size: 14px; margin-top: 0px; margin-bottom: 0px; color: rgb(36, 41, 46); font-style: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><span class="user-select-contain">git push -u BankKartel master</span></pre>
+  </body>
+</html>
+</richcontent>
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      gultron@hotmail.com
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="" ID="ID_640451079" CREATED="1511222314080" MODIFIED="1511222314080"/>
+</node>
+<node TEXT="# Initialize" ID="ID_1099540640" CREATED="1511203602754" MODIFIED="1512547725006">
+<node TEXT="cd /d/GitHubWebsites/BankKartel" ID="ID_1370379986" CREATED="1511203610727" MODIFIED="1511221698771"/>
+<node TEXT="git init" ID="ID_1329118203" CREATED="1511203646592" MODIFIED="1511203648681"/>
+<node ID="ID_1237026054" CREATED="1511203605776" MODIFIED="1511221691706"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target" style="font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace; font-size: 14px; margin-top: 0px; margin-bottom: 0px; color: rgb(36, 41, 46); font-style: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><span class="user-select-contain">git remote add BankKartel</span><span class="js-git-clone-help-text"> https://github.com/BankKartel/BankKartel.github.io.git</span></pre>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="# Upload" ID="ID_1997400177" CREATED="1511212350625" MODIFIED="1511257999996" BACKGROUND_COLOR="#ffff00">
+<cloud COLOR="#99ffff" SHAPE="ARC"/>
+<node TEXT="cp /c/temp/OrthodoxChristianity* /d/GitHubWebsites/BankKartel" ID="ID_511726983" CREATED="1511220257701" MODIFIED="1511221728407"/>
+<node TEXT="cd /d/GitHubWebsites/BankKartel" ID="ID_660801380" CREATED="1511203610727" MODIFIED="1511221698771"/>
+<node ID="ID_234347541" CREATED="1511211568716" MODIFIED="1511270866972"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      git add <font color="#ff0000">OrthodoxChristianity*</font>
     </p>
   </body>
 </html>
 </richcontent>
 </node>
-<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1088468944" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
+<node TEXT="git commit -m &apos;Page update&apos;" ID="ID_1631225160" CREATED="1511211359512" MODIFIED="1511341133193"/>
+<node ID="ID_1984208756" CREATED="1511203632260" MODIFIED="1511275910658"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <pre class="f5 js-zeroclipboard-target" style="font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace; font-size: 14px; margin-top: 0px; margin-bottom: 0px; color: rgb(36, 41, 46); font-style: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><span class="user-select-contain">git push -u BankKartel master --force</span></pre>
+  </body>
+</html>
+</richcontent>
+<richcontent TYPE="DETAILS">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      gultron@hotmail.com
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="cp /c/temp/OrthodoxChristianity* /d/GitHubWebsites/BankKartel" ID="ID_1824075547" CREATED="1511220257701" MODIFIED="1511221728407"/>
+<node TEXT="# Copy" ID="ID_1039892647" CREATED="1511270732690" MODIFIED="1511270734755"/>
+<node TEXT="Folders" ID="ID_165894890" CREATED="1511220383830" MODIFIED="1511220387084">
+<node TEXT="BankKartel" ID="ID_371151497" CREATED="1511220394399" MODIFIED="1511222091837" LINK="file:/D:/GitHubWebsites/BankKartel/">
+<node TEXT="Files" ID="ID_1011765275" CREATED="1511222096189" MODIFIED="1511222096190" LINK="file:/D:/GitHubWebsites/BankKartel/Files/"/>
+<node TEXT=".git" ID="ID_377869507" CREATED="1511222910562" MODIFIED="1511222910562" LINK="file:/D:/GitHubWebsites/BankKartel/.git/"/>
+</node>
+<node TEXT="Perso" ID="ID_722926077" CREATED="1511275485795" MODIFIED="1511275485795" LINK="file:/D:/Perso/">
+<node TEXT="Orthodoxy" ID="ID_1519010965" CREATED="1511275503210" MODIFIED="1511275503210" LINK="file:/D:/Perso/Orthodoxy/"/>
+</node>
+</node>
+<node TEXT="Links" ID="ID_179174382" CREATED="1511221174036" MODIFIED="1511221176016">
+<node TEXT="Profile" ID="ID_394804425" CREATED="1511222707715" MODIFIED="1511222755416" LINK="https://github.com/BankKartel"/>
+<node TEXT="https://BankKartel.github.io/OrthodoxChristianity.html" ID="ID_886318451" CREATED="1511221242235" MODIFIED="1512034713470" LINK="https://BankKartel.github.io/OrthodoxChristianity.html">
 <icon BUILTIN="internet"/>
 </node>
-<node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/" ID="ID_1202276746" CREATED="1511989287933" MODIFIED="1511989420904" LINK="https://sourceforge.net/p/freeplane/discussion/758437/">
-<icon BUILTIN="internet"/>
-<node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/?page=3" ID="ID_1443494206" CREATED="1511989261936" MODIFIED="1511989442599" LINK="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/?page=3">
-<icon BUILTIN="internet"/>
+<node TEXT="https://BankKartel.github.io/OrthodoxChristianity.html" ID="ID_1877599038" CREATED="1511221242235" MODIFIED="1511221765093" LINK="https://BankKartel.github.io/OrthodoxChristianity.html"/>
+<node ID="ID_1253938467" CREATED="1511222356920" MODIFIED="1511222356920" LINK="http://orthodoxchristianresources.blogspot.fr/"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <a href="http://orthodoxchristianresources.blogspot.fr/">http://orthodoxchristianresources.blogspot.fr/</a>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="My Blogs (use the bookmarks toolbar, it makes blogging more easy)" ID="ID_881086886" CREATED="1511273364045" MODIFIED="1511273378915" LINK="file:/D:/Work/MindMaps/Bookmarks.mm#ID_659278175"/>
+<node TEXT="Github Profile" ID="ID_1987908628" CREATED="1511222707715" MODIFIED="1512407736308" LINK="https://github.com/BankKartel" BACKGROUND_COLOR="#66ff00">
+<node TEXT="OLD My Blogs (use the bookmarks toolbar, it makes blogging more easy)" ID="ID_632651640" CREATED="1511273364045" MODIFIED="1511991667360" LINK="file:/D:/Work/MindMaps/Bookmarks.mm#ID_659278175"/>
+<node TEXT="Orthodox Christian Resources" ID="ID_1688745543" CREATED="1511288986718" MODIFIED="1511288986719" LINK="file:/D:/Work/MindMaps/Old/Projects/OLD/Blogs_Orthodox%20Christian%20Resources.mm#ID_1723255651"/>
 </node>
 </node>
-<node TEXT="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1659416143" CREATED="1511989032672" MODIFIED="1511989032672" LINK="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html"/>
-<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_136622126" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
-<icon BUILTIN="internet"/>
-</node>
-<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_720281073" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
-<icon BUILTIN="internet"/>
-</node>
-<node TEXT="Github Profile" ID="ID_1403371481" CREATED="1511222707715" MODIFIED="1512407736308" LINK="https://github.com/BankKartel" BACKGROUND_COLOR="#66ff00"/>
-</node>
-<node TEXT="Folders" ID="ID_1277631006" CREATED="1511252926293" MODIFIED="1511253023049">
-<node TEXT="Temp" ID="ID_1346148829" CREATED="1511253019789" MODIFIED="1511253019790" LINK="file:/C:/Temp/"/>
-<node TEXT="viaa" ID="ID_197871103" CREATED="1511253005381" MODIFIED="1511253005381" LINK="file:/D:/GitHubWebsites/viaa/"/>
-</node>
+<node TEXT="Github pages" ID="ID_327047891" CREATED="1511252223302" MODIFIED="1511257938143">
+<cloud COLOR="#ccffff" SHAPE="ARC"/>
 <node TEXT="Git" ID="ID_1351456244" CREATED="1511180959192" MODIFIED="1511253028935">
 <node TEXT="OLD" ID="ID_1713268961" CREATED="1511252274629" MODIFIED="1511252275462">
 <node ID="ID_1545516430" CREATED="1511212497050" MODIFIED="1511212497050" LINK="https://viaa.github.io/test.html"><richcontent TYPE="NODE">
@@ -1589,6 +1790,50 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
   </body>
 </html>
 </richcontent>
+</node>
+<node TEXT="Folders" ID="ID_1277631006" CREATED="1511252926293" MODIFIED="1511253023049">
+<node TEXT="Temp" ID="ID_1346148829" CREATED="1511253019789" MODIFIED="1511253019790" LINK="file:/C:/Temp/"/>
+<node TEXT="viaa" ID="ID_197871103" CREATED="1511253005381" MODIFIED="1511253005381" LINK="file:/D:/GitHubWebsites/viaa/"/>
+</node>
+<node TEXT="Links" ID="ID_359900307" CREATED="1511252906173" MODIFIED="1511252907870">
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1149562625" CREATED="1511212611461" MODIFIED="1512600930350" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ffff00"/>
+<node TEXT="FreeplaneScripts (upload the map .mm)" ID="ID_1949924066" CREATED="1511307312046" MODIFIED="1511307327633" LINK="file:/D:/Work/MindMaps/Commands.mm#ID_262304796"/>
+<node ID="ID_68851427" CREATED="1459638281712" MODIFIED="1512032772876" LINK="https://github.com/viaa/FreeplaneScripts">
+<icon BUILTIN="internet"/>
+<richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      https://github.com/viaa/<font color="#ff0000">FreeplaneScripts</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1088468944" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
+<icon BUILTIN="internet"/>
+</node>
+<node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/" ID="ID_1202276746" CREATED="1511989287933" MODIFIED="1511989420904" LINK="https://sourceforge.net/p/freeplane/discussion/758437/">
+<icon BUILTIN="internet"/>
+<node TEXT="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/?page=3" ID="ID_1443494206" CREATED="1511989261936" MODIFIED="1511989442599" LINK="https://sourceforge.net/p/freeplane/discussion/758437/thread/67f8576c/?page=3">
+<icon BUILTIN="internet"/>
+</node>
+</node>
+<node TEXT="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html" ID="ID_1659416143" CREATED="1511989032672" MODIFIED="1511989032672" LINK="file:/D:/GitHubWebsites/viaa/MapToHtmlDoc_-_Demo_Map.html"/>
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_136622126" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
+<icon BUILTIN="internet"/>
+</node>
+<node TEXT="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" ID="ID_720281073" CREATED="1511989041058" MODIFIED="1512034628679" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html">
+<icon BUILTIN="internet"/>
+</node>
+<node TEXT="Github Profile" ID="ID_1403371481" CREATED="1511222707715" MODIFIED="1512407736308" LINK="https://github.com/BankKartel" BACKGROUND_COLOR="#66ff00"/>
+</node>
+</node>
+</node>
 </node>
 </node>
 </node>
@@ -2025,11 +2270,16 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
+<node TEXT="s0 Upload to gitbub deactivated for now.... I should fix the shell script as files from other repositories get mixed up in other repositories, and also files from other branches exported as htmldoc........." ID="ID_833389119" CREATED="1514551931461" MODIFIED="1514551997529">
+<font SIZE="18"/>
+</node>
 <node TEXT="s0 Add that videos are displayed as videos (embedded) only if they have a video icon, so that otherwise they are dipslayed as links." ID="ID_428109722" CREATED="1514546135584" MODIFIED="1514546186470">
 <node TEXT="s0 Do same for images?" ID="ID_1199490296" CREATED="1514547661104" MODIFIED="1514547666047"/>
 <node TEXT="s0 I could also do the opposite, to have them displayed by default, but if a link icon is put then they are displayed as link." ID="ID_120776661" CREATED="1514547667967" MODIFIED="1514547700414"/>
 </node>
 <node TEXT="s0 I cannot link a groovy script from the web because the script tries to include its code in the note.... maybe don&apos;t do that for groovy files on the web? or put an icon to exlude them" ID="ID_1994479272" CREATED="1513759033335" MODIFIED="1513759074441"/>
+<node TEXT="s0 Add the possibility to add tables in the notes, and display them in the redered html" ID="ID_1082041988" CREATED="1516790329613" MODIFIED="1516790348892"/>
+<node TEXT="s0 Instead of replacing the * by &lt;li&gt; tag, replace it by the &#x2022; character." ID="ID_1855477077" CREATED="1516205244440" MODIFIED="1516205274144"/>
 <node ID="ID_1465741372" CREATED="1511886736214" MODIFIED="1511992763067"><richcontent TYPE="NODE">
 
 <html>
@@ -2090,6 +2340,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="s0 If a list item is the last of the section it is very closed to the hr separator..." ID="ID_1741009248" CREATED="1512580482363" MODIFIED="1512580502492"/>
 <node TEXT="s0 Maybe add a variable for the temp directory in the shell script so the user don&apos;t have to risk to do a mistake" ID="ID_294986917" CREATED="1512396679870" MODIFIED="1512396705423"/>
+<node TEXT="s0 There is a big problem with uploading to github, it uploads files from viaa to bankkartel and vice versa and also files from cases if I was displaying branches as dochtml.... so fix that before using again the upload to github... I will dactivate it for now." ID="ID_277011568" CREATED="1514550522348" MODIFIED="1514550589385"/>
 <node TEXT="s0 Maybe add folding like this?" ID="ID_1041786058" CREATED="1512031142212" MODIFIED="1512031147126">
 <node TEXT="https://vifm.info/" ID="ID_1191358411" CREATED="1512031140215" MODIFIED="1512031140215" LINK="https://vifm.info/"/>
 </node>
