@@ -3,6 +3,9 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2018-01-26_16.45.55
+            // Changed variable for video link url to showVideoEmbedded variable, and now to have a video appear has embedded in the html document created the user should add the video icon to the link. This will avoid to have too many embedded videos in a page which slows down the page loading/rendering.
+            // Moved a verification for the red x up before the check for embedded video, to make the iconText available before.
         // Version 2018-01-17_16.58.30
             // Added a new variable rHtml, to distinguish rawtext from rawhtml. Raw text is text without any tags, raw html is the html extracted from a node text (without the html and body tags and enclosing paragraph.
             // List items (nodes starting with * are now replaced by the bullet char instead of the <li> tag, this allows indentation of list item)
@@ -661,6 +664,13 @@
                     text = n.text
 
                     // ----------------------------------------------------------------------------------------------------
+                    // - If icon is the red x then dont include this node
+                    // ---------------------------------------------------------------------------------------------------- 
+                        iconsText = n.icons.collect{it.toString()}.join(';')
+                        if (iconsText =~ '(^|;)(button_cancel)')
+                            return
+               
+                    // ----------------------------------------------------------------------------------------------------
                     // - Formula
                     // ---------------------------------------------------------------------------------------------------- 
                         if (text.startsWith('=')) {
@@ -688,14 +698,14 @@
                             hasUrlLink = false
                             hasFileLink = false
                             hasFolderLink = false
-                            hasVideoLink = false
+                            showVideoEmbedded = false
                         if (n.link.text != null) { // There is a link
                             hasLink = true
                             link = n.link.text
                             if (link =~ /http/) { // Is URL
                                 hasUrlLink = true
-                                if (link =~ /youtube|youtu\.be/) // Is a video
-                                    hasVideoLink = true
+                                if (link =~ /youtube|youtu\.be/ && iconsText =~ '(^|;)(video)') // Is a video and to display as embedded 
+                                    showVideoEmbedded = true
                             }
                             else { // Is file or folder
                                 File fileTypeCheck = new File(link.replace('file:/', '').replace('%20', ' '))
@@ -744,13 +754,6 @@
                         if (rHtml =~ /^(s-1|s0|s1|s2|s3)\s/)
                             return
 
-                    // ----------------------------------------------------------------------------------------------------
-                    // - If icon is the red x then dont include this node
-                    // ---------------------------------------------------------------------------------------------------- 
-                        iconsText = n.icons.collect{it.toString()}.join(';')
-                        if (iconsText =~ '(^|;)(button_cancel)')
-                            return
-               
             // BranchRoot: Set the current selected node when the script is run as the branchRoot node (it is set only once) 
                 if (branchRootNode == null) {
                     branchRootNode = n
@@ -1124,7 +1127,7 @@
                                                 linkPath = outDirFilename // If we copy the images to the OUT_DIR then the path becomes only the filename because it is the same directory as the output file.
                                                 }
                                         }
-                                    if (hasVideoLink) {
+                                    if (showVideoEmbedded) {
                                         // Adapt the Youtube URL to an embedded Youtube URL 
                                             if (linkPath =~ /youtube|youtu\.be/) {
                                                 linkPath = linkPath.replaceAll('m.youtube.com', 'www.youtube.com') // Remove the seconds that could be appended
