@@ -5,6 +5,7 @@
 // #################################################################################################### 
 
     // History
+        // 2018-02-01_23.28.32: Added the 'Edit nodes' features which basically create 4 child nodes that are used to open the html files created (3 nodes) and 1 node to browse to the folder. This helps open the html files more quickly instead of having to lookup for them in the temp directory. These 'Edit nodes' are remove when the script is executed again to read back the html files into the node. 
         // 2018-02-01_16.27.29: Changed a condition to check if html tags exists in the core text, and changed the regex to match the body tag (to lazy matching) because it was removing the text from the core text. 
         // 2018-01-31_18.20.42: Initial version.
 
@@ -12,6 +13,28 @@
 
     // Todo
         // s0 Fix issue that we need to click or edit the text and details so it renders the html, otherwise the html code is displayed. 
+
+// ####################################################################################################
+// # Imports
+// #################################################################################################### 
+
+    // To use global Constants (the other option is just to remove '@Field def', not defining the variable will make it "global".
+        import groovy.transform.Field
+
+// ####################################################################################################
+// # Declarations
+// #################################################################################################### 
+
+    // ====================================================================================================
+    // = Constants
+    // ==================================================================================================== 
+        @Field def OUT_DIR = 'c:/Temp/'
+        @Field def FLAG_ICON = 'PalmIcons/aOffice/Computer/Word'
+
+    // ====================================================================================================
+    // = Variables
+    // ==================================================================================================== 
+        def iconsText = node.icons.collect{it.toString()}.join(';')
 
 // ####################################################################################################
 // # Functions
@@ -51,16 +74,30 @@
         return htmlStr
     }
 
+    // ====================================================================================================
+    def makeEdit(type, pNode, text, mapName, editNode) { // =
+    // ==================================================================================================== 
+        if (text == null)
+            nodeText = '<html><body></body></html>'
+        else {
+            nodeText = text
+            // Add html tags if it is only text or OpenOffice will open writer instead of sweb
+                if (!(nodeText =~ /<html>/))
+                    nodeText = "<html><body>$nodeText</body></html>"
+        }
+        def fileName = mapName + '_' + pNode.id + '_' + type + '.html'
+        def filePath = OUT_DIR + fileName 
+        writeToHtmlFile(filePath, nodeText)
+        // Add the child node
+            childNode = editNode.createChild()
+            childNode.text = 'Edit ' + type + ' (' + fileName + ')'
+            childNode.link.text = 'file:/' + filePath
+            childNode.icons.add(FLAG_ICON)
+    }
+
 // ####################################################################################################
 // # Main
 // #################################################################################################### 
-
-    // Constants
-        def FLAG_ICON = 'PalmIcons/aOffice/Computer/Word'
-        def OUT_DIR = 'c:/Temp/'
-
-    // Variables
-        def iconsText = node.icons.collect{it.toString()}.join(';')
 
     // Get the filename
         import org.apache.commons.io.FilenameUtils
@@ -76,40 +113,29 @@
             node.text = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_text.html')
             node.details = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_details.html')
             node.note = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_note.html')
-            
+            // Remove the edit node            
+                node.children.find{ it.text == 'Edit nodes' && it.icons[0].toString() == FLAG_ICON }.delete()
         }
     // ====================================================================================================
     // = WRITE: If there is NOT the flag icon, then WRITE the html files 
     // ==================================================================================================== 
         else {
-            // ----------------------------------------------------------------------------------------------------
-            // - Text
-            // ---------------------------------------------------------------------------------------------------- 
-                if (node.text == null)
-                    nodeText = '<html><body></body></html>'
-                else {
-                    nodeText = node.text
-                    // Add html tags if it is only text or OpenOffice will open writer instead of sweb
-                        if (!(nodeText =~ /<html>/))
-                            nodeText = "<html><body>$nodeText</body></html>"
-                }
-                writeToHtmlFile(OUT_DIR + mapName + '_' + node.id + '_text.html', nodeText)
-            // ----------------------------------------------------------------------------------------------------
-            // - Details
-            // ---------------------------------------------------------------------------------------------------- 
-                if (node.detailsText == null)
-                    nodeDetails = '<html><body></body></html>'
-                else
-                    nodeDetails = node.detailsText
-                writeToHtmlFile(OUT_DIR + mapName + '_' + node.id + '_details.html', nodeDetails)
-            // ----------------------------------------------------------------------------------------------------
-            // - Note
-            // ---------------------------------------------------------------------------------------------------- 
-                if (node.noteText == null)
-                    nodeNote = '<html><body></body></html>'
-                else
-                    nodeNote = node.noteText
-                writeToHtmlFile(OUT_DIR + mapName + '_' + node.id + '_note.html', nodeNote)
+            // Add the child node that will contains the other nodes
+                editNode = node.createChild()
+                editNode.text = 'Edit nodes'
+                editNode.icons.add(FLAG_ICON)
+                editNode.noteText = 'Tip: In Windows Explorer associate html file type with Open Office Html Editor (sweb.exe) which produce html that is compatible with Freeplane.'
+                // Add the folder node
+                    folderNode = editNode.createChild()
+                    folderNode.text = 'Browse...'
+                    folderNode.link.text = 'file:/' + OUT_DIR
+                    folderNode.icons.add('folder')
+            // Text
+                makeEdit('text', node, node.text, mapName, editNode)
+            // Details
+                makeEdit('details', node, node.detailsText, mapName, editNode)
+            // Note
+                makeEdit('note', node, node.noteText, mapName, editNode)
             icons.removeIcon(FLAG_ICON)
             icons.addIcon(FLAG_ICON)
         }
