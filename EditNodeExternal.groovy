@@ -74,7 +74,6 @@
         if (iconsText =~ '(^|;)(' + FLAG_ICON + ')') {
             icons.removeIcon(FLAG_ICON)
             node.text = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_text.html')
-            m(node.text)
             node.details = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_details.html')
             node.note = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_note.html')
             
