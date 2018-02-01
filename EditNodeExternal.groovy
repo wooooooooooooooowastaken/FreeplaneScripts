@@ -5,6 +5,7 @@
 // #################################################################################################### 
 
     // History
+        // 2018-02-01_16.27.29: Changed a condition to check if html tags exists in the core text, and changed the regex to match the body tag (to lazy matching) because it was removing the text from the core text. 
         // 2018-01-31_18.20.42: Initial version.
 
     // Description: This script saves the text, details and note from a node to html files for external edition. When saved, a flag icon is added to the node to indicate that the node is being edited. Once the external edition is done, the script is run again and if the flag icons is found then the script will read the external files to the text, details and note instead of writing to these files when the icon is absent. Associate the .html files with Open Office sweb.exe, then clicking the files will open them in Open Office html editor. Show the node ID in the status bar for convenience. 
@@ -43,7 +44,7 @@
                     htmlStr = htmlStr.replace('</title>', '')
                     htmlStr = htmlStr.replaceAll('<meta.*/>', '')
                 htmlStr = htmlStr.replace('</head>', '')
-                htmlStr = htmlStr.replaceAll('<body.*>', '<body>')
+                htmlStr = htmlStr.replaceAll('<body.*?>', '<body>')
             // Delete the file
                 file.delete()
         }
@@ -73,6 +74,7 @@
         if (iconsText =~ '(^|;)(' + FLAG_ICON + ')') {
             icons.removeIcon(FLAG_ICON)
             node.text = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_text.html')
+            m(node.text)
             node.details = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_details.html')
             node.note = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_note.html')
             
@@ -89,7 +91,7 @@
                 else {
                     nodeText = node.text
                     // Add html tags if it is only text or OpenOffice will open writer instead of sweb
-                        if (nodeText !=~ /<html>/)
+                        if (!(nodeText =~ /<html>/))
                             nodeText = "<html><body>$nodeText</body></html>"
                 }
                 writeToHtmlFile(OUT_DIR + mapName + '_' + node.id + '_text.html', nodeText)
