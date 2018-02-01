@@ -29,7 +29,9 @@
         htmlFile.write(htmlStr, 'utf-8')
     }
 
-    def readHtmlFileToString(path) {
+    // ====================================================================================================
+    def readHtmlFileToString(path) { // =
+    // ==================================================================================================== 
         File file = new File(path)
         def htmlStr = ''
         if (file.exists()) {
