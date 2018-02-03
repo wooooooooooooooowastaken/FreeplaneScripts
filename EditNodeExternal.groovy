@@ -5,6 +5,7 @@
 // #################################################################################################### 
 
     // History
+        // 2018-02-03_14.24.58: Added verification that the file is saved to the disk before to run the script otherwise there is no file path and mapName to use. Added also check if html is not empty and html is not the same as before when loading back the html files, to avoid for example creating a details when there was none before or setting the html for nothing when it is the same as before. 
         // 2018-02-01_23.28.32: Added the 'Edit nodes' features which basically create 4 child nodes that are used to open the html files created (3 nodes) and 1 node to browse to the folder. This helps open the html files more quickly instead of having to lookup for them in the temp directory. These 'Edit nodes' are remove when the script is executed again to read back the html files into the node. 
         // 2018-02-01_16.27.29: Changed a condition to check if html tags exists in the core text, and changed the regex to match the body tag (to lazy matching) because it was removing the text from the core text. 
         // 2018-01-31_18.20.42: Initial version.
@@ -12,11 +13,14 @@
     // Description: This script saves the text, details and note from a node to html files for external edition. When saved, a flag icon is added to the node to indicate that the node is being edited. Once the external edition is done, the script is run again and if the flag icons is found then the script will read the external files to the text, details and note instead of writing to these files when the icon is absent. Associate the .html files with Open Office sweb.exe, then clicking the files will open them in Open Office html editor. Show the node ID in the status bar for convenience. 
 
     // Todo
+        // s0 Add that if there was no details before editing and it was not edited externally, then don't create a empty detail when reading the files (if there was not before) 
         // s0 Fix issue that we need to click or edit the text and details so it renders the html, otherwise the html code is displayed. 
 
 // ####################################################################################################
 // # Imports
 // #################################################################################################### 
+
+        import org.apache.commons.io.FilenameUtils
 
     // To use global Constants (the other option is just to remove '@Field def', not defining the variable will make it "global".
         import groovy.transform.Field
@@ -30,6 +34,7 @@
     // ==================================================================================================== 
         @Field def OUT_DIR = 'c:/Temp/'
         @Field def FLAG_ICON = 'PalmIcons/aOffice/Computer/Word'
+        def EMPTY_HTML = '<html><body></body></html>'
 
     // ====================================================================================================
     // = Variables
@@ -100,19 +105,34 @@
 // #################################################################################################### 
 
     // Get the filename
-        import org.apache.commons.io.FilenameUtils
-        URI mapUri = node.map.file.absoluteFile.toURI();
-        def mapPath = mapUri.toString().replace('%20', '_')
-        def mapName = FilenameUtils.getBaseName(mapPath) // Get file name of source file
+        def mapName = ''
+        try {
+            URI mapUri = node.map.file.absoluteFile.toURI();
+            def mapPath = mapUri.toString().replace('%20', '_')
+            mapName = FilenameUtils.getBaseName(mapPath) // Get file name of source file
+        }
+        catch (all) {
+            m('Please make sure the file is saved to disk before to run the script!')
+            return
+        }
 
     // ====================================================================================================
     // = READ: If there is the flag icon, then READ the html files
     // ==================================================================================================== 
         if (iconsText =~ '(^|;)(' + FLAG_ICON + ')') {
             icons.removeIcon(FLAG_ICON)
-            node.text = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_text.html')
-            node.details = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_details.html')
-            node.note = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_note.html')
+            // Text
+                def nodeText = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_text.html')
+                    if (nodeText != EMPTY_HTML && node.text != nodeText) // Check if html is not empty and html is not the same as before
+                        node.text = nodeText
+            // Details
+                def nodeDetails = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_details.html')
+                    if (nodeDetails != EMPTY_HTML && node.details != nodeDetails) // Check if html is not empty and html is not the same as before
+                        node.details = nodeDetails
+            // Note
+                def nodeNote = readHtmlFileToString(OUT_DIR + mapName + '_' + node.id + '_note.html') // Check if html is not empty and html is not the same as before
+                    if (nodeNote != EMPTY_HTML && node.note != nodeNote)
+                        node.note = nodeNote
             // Remove the edit node            
                 node.children.find{ it.text == 'Edit nodes' && it.icons[0].toString() == FLAG_ICON }.delete()
         }
