@@ -247,13 +247,13 @@ class NodeUI { // # Class to work with nodes on the map.
                     NodeExtension nodeExt = null
                     def sorted = new ArrayList(pNode.children).sort { 
                         it.detailsText = null
-						nodeExt = new NodeExtension(it)
-						if (nodeExt?.getLink()?.getPath().getIsFile())
-							// Sort criteria
-								nodeExt?.getLink().getPath().getExtension() + nodeExt?.getLink().getPath().getExtension()
-						else
-							// Sort with this if the path is not a file that exists
-								'zzz' + it.plainText
+                        nodeExt = new NodeExtension(it)
+                        if (nodeExt?.getLink()?.getPath().getIsFile())
+                            // Sort criteria
+                                nodeExt?.getLink().getPath().getExtension() + nodeExt?.getLink().getPath().getExtension()
+                        else
+                            // Sort with this if the path is not a file that exists
+                                'zzz' + it.plainText
 					}
                     sorted.eachWithIndex { it, i ->
                         it.moveTo(pNode, i)
