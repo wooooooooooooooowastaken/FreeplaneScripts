@@ -4,7 +4,7 @@
 <node TEXT="FilePanel&#xa;Demo Map" FOLDED="false" ID="ID_1776567510" CREATED="1518640859958" MODIFIED="1518643216731" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_note_icons="true" show_icon_for_attributes="true"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -80,7 +80,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <richcontent TYPE="DETAILS">
 
@@ -112,7 +111,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Example #1&#xa;List of paths" POSITION="right" ID="ID_1152312626" CREATED="1518640958072" MODIFIED="1518643004823">
 <edge COLOR="#ff0000"/>
@@ -137,7 +135,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <font BOLD="false"/>
 <node TEXT="&quot;C:\Windows\win.ini&quot;" ID="ID_49796410" CREATED="1518641830222" MODIFIED="1518641830222"/>
@@ -176,7 +173,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <font BOLD="true"/>
 <cloud COLOR="#f0f0f0" SHAPE="RECT"/>
@@ -204,9 +200,8 @@
 </node>
 <node TEXT="file:/c:/Windows/System32" ID="ID_1151336990" CREATED="1518642290251" MODIFIED="1518642540450"/>
 </node>
-<node TEXT="Example #3&#xa;Get folder content (17)" POSITION="right" ID="ID_186699498" CREATED="1518640958072" MODIFIED="1518643110433" LINK="file:/C:/Windows/Temp" HGAP_QUANTITY="37.249999307096026 pt" VSHIFT_QUANTITY="52.499998435378124 pt">
-<icon BUILTIN="mindmap"/>
-<icon BUILTIN="folder"/>
+<node TEXT="Example #3&#xa;Get folder content" POSITION="right" ID="ID_186699498" CREATED="1518640958072" MODIFIED="1518643452631" LINK="file:/C:/Windows/Temp" HGAP_QUANTITY="37.249999307096026 pt" VSHIFT_QUANTITY="52.499998435378124 pt">
+<icon BUILTIN="PalmIcons/dFileMan/Trees/Blue-tree"/>
 <edge COLOR="#ff0000"/>
 <richcontent TYPE="DETAILS">
 
@@ -259,12 +254,8 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <font BOLD="true"/>
-<attribute NAME="FolderContentFilter" VALUE=".*\.(txt|log)"/>
-<attribute NAME="DateModified" VALUE="2/14/18 11:08 AM" OBJECT="org.freeplane.features.format.FormattedDate|2018-02-14T11:08+0200|datetime"/>
-<cloud COLOR="#f0f0f0" SHAPE="RECT"/>
 </node>
 </node>
 </map>
