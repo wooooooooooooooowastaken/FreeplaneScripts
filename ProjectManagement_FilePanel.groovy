@@ -254,7 +254,7 @@ class NodeUI { // # Class to work with nodes on the map.
                         else
                             // Sort with this if the path is not a file that exists
                                 'zzz' + it.plainText
-					}
+                        }
                     sorted.eachWithIndex { it, i ->
                         it.moveTo(pNode, i)
                     }
@@ -674,13 +674,13 @@ class Link { // #
         // - Private variables 
         // ---------------------------------------------------------------------------------------------------- 
             private utils = new Utilities()
-			
+
             private boolean isLink = false
-			private boolean isNotSet = false
-			private boolean isUrl = false
-			private boolean isLinkToFpNode = false
-			private boolean isPath = false
-			private boolean isUnknown = false
+            private boolean isNotSet = false
+            private boolean isUrl = false
+            private boolean isLinkToFpNode = false
+            private boolean isPath = false
+            private boolean isUnknown = false
 
             Path path = null
 
@@ -718,37 +718,37 @@ class Link { // #
                         isLinkToFpNode = true
                     else {
                         path = new Path(linkText)
-						// Is path 
-							if (path.getIsPath())
-								isPath = true
-						// Is unknown (could be for example that a coreText was passed to check)
-							else
-								isUnknown = true
+                        // Is path 
+                            if (path.getIsPath())
+                                isPath = true
+                        // Is unknown (could be for example that a coreText was passed to check)
+                            else
+                                isUnknown = true
                     }
                 if (isUrl || isLinkToFpNode || isPath)
                     isLink = true
             }
-			
+
             utils.d(toString())
             utils.c('Link')
         } // Constructor
-		
-		// ----------------------------------------------------------------------------------------------------
-		public String toString() { // -
-		// ----------------------------------------------------------------------------------------------------
-			utils.F('Link.toString')
-			String s = ''
 
-			s += 'isLink = ' + isLink.toString() + '\n'
-			s += 'isNotSet = ' + isNotSet.toString() + '\n'
-			s += 'isUrl = ' + isUrl.toString() + '\n'
-			s += 'isLinkToFpNode = ' + isLinkToFpNode.toString() + '\n'
-			s += 'isPath = ' + isPath.toString() + '\n'
-			s += 'isUnknown = ' + isUnknown.toString() + '\n'
+    // ----------------------------------------------------------------------------------------------------
+    public String toString() { // -
+    // ----------------------------------------------------------------------------------------------------
+        utils.F('Link.toString')
+        String s = ''
 
-			utils.f('Link.toString')
-			return s
-		}
+        s += 'isLink = ' + isLink.toString() + '\n'
+        s += 'isNotSet = ' + isNotSet.toString() + '\n'
+        s += 'isUrl = ' + isUrl.toString() + '\n'
+        s += 'isLinkToFpNode = ' + isLinkToFpNode.toString() + '\n'
+        s += 'isPath = ' + isPath.toString() + '\n'
+        s += 'isUnknown = ' + isUnknown.toString() + '\n'
+
+        utils.f('Link.toString')
+        return s
+    }
 
 } // Link
 
@@ -934,20 +934,20 @@ class Path { // # Class to work with paths and files strings.
             utils.d(toString())
             utils.c('Path')
         } // Constructor
-		
+
         // ----------------------------------------------------------------------------------------------------
         public String toString() { // -
         // ---------------------------------------------------------------------------------------------------- 
             utils.F('Path.toString')
             String s = ''
 
-			s += 'isPath = ' + isPath.toString() + '\n'
-			s += 'isLikeFpPath = ' + isLikeFpPath.toString() + '\n'
-			s += 'isLikeNormPath = ' + isLikeNormPath.toString() + '\n'
-			s += 'isFpPath = ' + isFpPath.toString() + '\n'
-			s += 'isNormPath = ' + isNormPath.toString() + '\n'
-			s += 'isFile = ' + isFile.toString() + '\n'
-			s += 'isDirectory = ' + isDirectory.toString() + '\n'
+            s += 'isPath = ' + isPath.toString() + '\n'
+            s += 'isLikeFpPath = ' + isLikeFpPath.toString() + '\n'
+            s += 'isLikeNormPath = ' + isLikeNormPath.toString() + '\n'
+            s += 'isFpPath = ' + isFpPath.toString() + '\n'
+            s += 'isNormPath = ' + isNormPath.toString() + '\n'
+            s += 'isFile = ' + isFile.toString() + '\n'
+            s += 'isDirectory = ' + isDirectory.toString() + '\n'
             s += 'volume = ' + volume + '\n'
             s += 'directory = ' + directory + '\n'
             s += 'fullPath = ' + fullPath + '\n'
@@ -956,9 +956,9 @@ class Path { // # Class to work with paths and files strings.
             s += 'extension = ' + extension + '\n'
             s += 'fpPath = ' + fpPath + '\n'
 
-			utils.f('Path.toString')
+            utils.f('Path.toString')
             return s
-		}
+        }
 
 } // Path
 
