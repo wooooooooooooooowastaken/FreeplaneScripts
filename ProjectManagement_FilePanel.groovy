@@ -5,6 +5,7 @@
     // ----------------------------------------------------------------------------------------------------
     // - Version history
     // ---------------------------------------------------------------------------------------------------- 
+        // 2018-02-14_18.14.59: Add cloud to delimit projects visually.
         // 2018-02-14_15.08.39: Initial upload.
 
     // ----------------------------------------------------------------------------------------------------
@@ -346,6 +347,9 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
                     // Add the icon for the project
                         AddIcon(pNode, nodeExt.iconsText, ICON_PROJECT)
                         pNode.style.font.bold = true
+                        // Add cloud to delimit the project visually
+                            pNode.cloud.enabled = true
+                            pNode.cloud.shape = 'RECT' // either 'ARC', 'STAR', 'RECT' or 'ROUND_RECT'
                     // s0 Create a project object? The class is already below in comments?
                 }
 
