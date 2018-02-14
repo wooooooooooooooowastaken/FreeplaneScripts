@@ -5,20 +5,21 @@
     // ----------------------------------------------------------------------------------------------------
     // - Version history
     // ---------------------------------------------------------------------------------------------------- 
-        // 2018-02-14_18.14.59: Add cloud to delimit projects visually.
+        // 2018-02-14_23.01.39: Remove the " from the sorting by name.
+        // 2018-02-14_18.14.59: Added cloud to delimit projects visually.
         // 2018-02-14_15.08.39: Initial upload.
 
     // ----------------------------------------------------------------------------------------------------
     // - Description
     // ---------------------------------------------------------------------------------------------------- 
         // This is a script that tries to deal with project files, like one would find in a text editor project panel. 
-        // NOTE: View the nodes in Outline View so it takes less horizontal space: View > View settings > Outline view
+        // NOTE: View the nodes in Outline View so it takes less horizontal space (View > View settings > Outline view).
 
     // ----------------------------------------------------------------------------------------------------
     // - Usage
     // ---------------------------------------------------------------------------------------------------- 
         // The script has 2 modes, the Project mode and the Folder content mode:
-            // - Project node: If the script is run on a node has maybe a link to a folder and has children nodes that are link to folders and files, then this will be considered a project node. Then an input menu will show that will allow to sort the files and folder by name, type, date, priority (icon 1, 2, 3, etc), path and size. This is useful if you want to know which files in a project was last modified, or the files that have the most content in the project, or the most important ones for you if sorted by priority. If for some files the linked files doesn't exist anymore, a red X icon will be added to the nodes that link to those files. Some icons are added to file types to help identify the files. The number of files in the project is added in the project core text. Also when the files are sorted, some info about the sort is added to the details of the nodes, like the size of the file or the full path for example. 
+            // - Project node: If the script is run on a node has maybe a link to a folder and has children nodes that are link to folders and files, then this will be considered a project node. Then an input menu will show that will allow to sort the files and folder by name, type, date, priority (icon 1, 2, 3, etc), path and size. This is useful if you want to know which files in a project was last modified, or the files that have the most content in the project, or the most important ones for you if sorted by priority. If for some files the linked files doesn't exist anymore, a red X icon will be added to the nodes that link to those files. Some icons are added to file types to help identify the files. The number of files in the project is added in the project core text. Also when the files are sorted, some info about the sort is added to the details of the nodes, like the size of the file or the full path for example. You may choose to hide the attributes also if you don't want to see the DateModified and the Size of the files and folders attributes (View > Node attributes > Hide all attributes).
             // - FolderContent: If the script is run on a node that has the 'blue-tree' icon and that node has a link to a folder, then an input box will be opened to input a regular expression to select files in a folder, like '.*\.java' for example to select all java files in that folder and its subfolder. Once the files are added as links to these files, the 'blue-tree' icon is removed, the regex used is added as an attribute. If the 'blue-tree' icon is added again the regex in attribute will be used to select again the files, but they will be added anew, which means that all child nodes are remove and replaced by the new ones retrieved using the regex. Once files are retrieved, the node becomes a project node and then it is treated as a project node. 
         // NOTES: The script has classes that tries to extend the Freeplane nodes, specially the Path, Link and NodeExtension classes. These can be reuse in other scripts. 
 
@@ -232,7 +233,7 @@ class NodeUI { // # Class to work with nodes on the map.
                 // ···································································································· 
                     def sorted = new ArrayList(pNode.children).sort { 
                         it.detailsText = null 
-                        def sortCriteria = it.plainText.toLowerCase()
+                        def sortCriteria = it.plainText.toLowerCase().replace('"', '')
                         sortCriteria = sortCriteria.replaceAll(TODO_INDICATORS_SIMPLE, '')
                         sortCriteria = sortCriteria.replaceAll(TODO_INDICATORS_EXTENDED, '')
                         sortCriteria
