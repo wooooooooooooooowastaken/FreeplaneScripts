@@ -1,7 +1,7 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="FilePanel&#xa;Demo Map" FOLDED="false" ID="ID_1776567510" CREATED="1518640859958" MODIFIED="1518643216731" STYLE="oval">
+<node TEXT="FilePanel&#xa;Demo Map" FOLDED="false" ID="ID_1776567510" CREATED="1518640859958" MODIFIED="1518650900234" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
@@ -107,10 +107,11 @@
       
     </p>
     <p>
-      Version: 2018-02-14_23.20.16
+      Version: 2018-02-15_01.28.19
     </p>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="Example #1&#xa;List of paths" POSITION="right" ID="ID_1152312626" CREATED="1518640958072" MODIFIED="1518643004823">
 <edge COLOR="#ff0000"/>
@@ -176,8 +177,9 @@
 </richcontent>
 <font BOLD="true"/>
 <cloud COLOR="#f0f0f0" SHAPE="RECT"/>
-<node TEXT="&quot;C:\Windows\win.ini&quot;" ID="ID_449991648" CREATED="1518641830222" MODIFIED="1518642396622" LINK="file:/C:/Windows/win.ini">
+<node TEXT="&quot;C:\Windows\win.ini&quot;" ID="ID_449991648" CREATED="1518641830222" MODIFIED="1518650839615" LINK="file:/C:/Windows/win.ini">
 <icon BUILTIN="list"/>
+<icon BUILTIN="full-9"/>
 <attribute NAME="DateModified" VALUE="1/19/18 9:01 AM" OBJECT="org.freeplane.features.format.FormattedDate|2018-01-19T09:01+0200|datetime"/>
 <attribute NAME="Size" VALUE="478" OBJECT="org.freeplane.features.format.FormattedNumber|478"/>
 </node>
@@ -186,19 +188,23 @@
 <attribute NAME="DateModified" VALUE="7/14/09 4:39 AM" OBJECT="org.freeplane.features.format.FormattedDate|2009-07-14T04:39+0300|datetime"/>
 <attribute NAME="Size" VALUE="10240" OBJECT="org.freeplane.features.format.FormattedNumber|10240"/>
 </node>
-<node TEXT="&quot;C:\Program Files\Windows NT\Accessories\wordpad.exe&quot;" ID="ID_1253049571" CREATED="1518641830223" MODIFIED="1518642396628" LINK="file:/C:/Program%20Files/Windows%20NT/Accessories/wordpad.exe">
+<node TEXT="&quot;C:\Program Files\Windows NT\Accessories\wordpad.exe&quot;" ID="ID_1253049571" CREATED="1518641830223" MODIFIED="1518650845427" LINK="file:/C:/Program%20Files/Windows%20NT/Accessories/wordpad.exe">
 <icon BUILTIN="executable"/>
+<icon BUILTIN="full-3"/>
 <attribute NAME="DateModified" VALUE="8/11/17 9:09 AM" OBJECT="org.freeplane.features.format.FormattedDate|2017-08-11T09:09+0300|datetime"/>
 <attribute NAME="Size" VALUE="4582912" OBJECT="org.freeplane.features.format.FormattedNumber|4582912"/>
 </node>
 <node TEXT="C:\FileThatDoesntExist.txt" ID="ID_742774805" CREATED="1518641838266" MODIFIED="1518642396629">
 <icon BUILTIN="button_cancel"/>
 </node>
-<node TEXT="file:/c:/Windows" ID="ID_69037529" CREATED="1518642290251" MODIFIED="1518642396630" LINK="file:/c:/Windows">
+<node TEXT="file:/c:/Windows" ID="ID_69037529" CREATED="1518642290251" MODIFIED="1518650851880" LINK="file:/c:/Windows">
 <icon BUILTIN="folder"/>
+<icon BUILTIN="full-1"/>
 <attribute NAME="DateModified" VALUE="2/12/18 12:03 PM" OBJECT="org.freeplane.features.format.FormattedDate|2018-02-12T12:03+0200|datetime"/>
 </node>
-<node TEXT="file:/c:/Windows/System32" ID="ID_1151336990" CREATED="1518642290251" MODIFIED="1518642540450"/>
+<node TEXT="file:/c:/Windows/System32" ID="ID_1151336990" CREATED="1518642290251" MODIFIED="1518650857727">
+<icon BUILTIN="full-7"/>
+</node>
 </node>
 <node TEXT="Example #3&#xa;Get folder content" POSITION="right" ID="ID_186699498" CREATED="1518640958072" MODIFIED="1518643452631" LINK="file:/C:/Windows/Temp" HGAP_QUANTITY="37.249999307096026 pt" VSHIFT_QUANTITY="52.499998435378124 pt">
 <icon BUILTIN="PalmIcons/dFileMan/Trees/Blue-tree"/>
