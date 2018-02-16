@@ -5,6 +5,7 @@
     // ----------------------------------------------------------------------------------------------------
     // - Version history
     // ---------------------------------------------------------------------------------------------------- 
+        // 2018-02-16_11.38.16: Added lowercase sorting to sort by type and icon/priority.
         // 2018-02-15_18.35.26: Changed normalPath variable name by normPath. Changed some comments.
         // 2018-02-14_23.01.39: Remove the " from the sorting by name.
         // 2018-02-14_18.14.59: Added cloud to delimit projects visually.
@@ -15,6 +16,10 @@
     // ---------------------------------------------------------------------------------------------------- 
         // This is a script that tries to deal with project files, like one would find in a text editor project panel. 
         // NOTE: View the nodes in Outline View so it takes less horizontal space (View > View settings > Outline view).
+
+        // The script is intented to be used only (or mostly) on its own branch, which I named "Workspace" (it can have any name really) then you would created child nodes that are the projects and put your files there.
+        // I use only the script on this "Workspace" branch at the moment, but some projects could be created elsewhere and the scripts could be used on them. It is really only for nodes containing links to files and folders, not on other nodes like text or notes or images etc.
+        // I personally create a docked view with that map where the "Workspace" node is located, so I see my projects and files always while opening other maps on the right view.
 
     // ----------------------------------------------------------------------------------------------------
     // - Usage
@@ -27,6 +32,7 @@
     // ----------------------------------------------------------------------------------------------------
     // - Todo
     // ---------------------------------------------------------------------------------------------------- 
+        // s0 Maybe add a class to grep code files and then display there types info in subnodes? Maybe create a "TypeInfo" subnode and a "TypeInfo" class? And a Grep and CodeGrep classes also above it. So like, Project > Directory > File > Grep > CodeGrep > TypeInfo? 
         // s0 p3 t1 d0 FR: Maybe add directory and file class, and in the file class for example I could have types of files like a code file etc, and I could have grep and code stats methods in it.
         // s0 p3 t2 Document usage in the document section of the code, and also interation with project management (maybe this would be documented in a larger document in a mind map for the project management as a whole)
         // s0 p3 t3 Put + in input box to recurse the sorting?
@@ -253,10 +259,10 @@ class NodeUI { // # Class to work with nodes on the map.
                         nodeExt = new NodeExtension(it)
                         if (nodeExt?.getLink()?.getPath().getIsFile())
                             // Sort criteria
-                                nodeExt?.getLink().getPath().getExtension() + nodeExt?.getLink().getPath().getExtension()
+                                nodeExt?.getLink().getPath().getExtension() + nodeExt?.getLink().getPath().getExtension().toLowerCase() 
                         else
                             // Sort with this if the path is not a file that exists
-                                'zzz' + it.plainText
+                                'zzz' + it.plainText.toLowerCase() 
                         }
                     sorted.eachWithIndex { it, i ->
                         it.moveTo(pNode, i)
@@ -287,11 +293,11 @@ class NodeUI { // # Class to work with nodes on the map.
                         if (nodeExt.iconsText =~ /full-\d/) {
                             def match = nodeExt.iconsText =~ /full-\d/
                             // Sort criteria
-                                match[0] + it.plainText
+                                match[0] + it.plainText.toLowerCase() 
                         }
                         else
                             // Sort criteria
-                                'zzz' + it.plainText
+                                'zzz' + it.plainText.toLowerCase() 
                     }
                     sorted.eachWithIndex { it, i ->
                         it.moveTo(pNode, i)
