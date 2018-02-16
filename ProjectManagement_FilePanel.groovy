@@ -5,6 +5,7 @@
     // ----------------------------------------------------------------------------------------------------
     // - Version history
     // ---------------------------------------------------------------------------------------------------- 
+        // 2018-02-15_18.35.26: Changed normalPath variable name by normPath. Changed some comments.
         // 2018-02-14_23.01.39: Remove the " from the sorting by name.
         // 2018-02-14_18.14.59: Added cloud to delimit projects visually.
         // 2018-02-14_15.08.39: Initial upload.
@@ -588,7 +589,7 @@ class NodeExtension { // # Defines extra properties to a node to further identif
                 utils.d('iconsText = ' + iconsText)
 
             // ····································································································
-            // · Define the type of link
+            // · Define some properties
             // ···································································································· 
                     
                 // Check if text
@@ -623,7 +624,7 @@ class NodeExtension { // # Defines extra properties to a node to further identif
                             if (hasCoreText)
                                 linkTextTmp = coreText
 
-                // Get link type
+                // Select the type of node using the link type
                     if (!linkTextTmp.equals(null)) {
                         link = new Link(linkTextTmp)
 
@@ -873,25 +874,25 @@ class Path { // # Class to work with paths and files strings.
             utils.d("path = $path")
 
             String pathTmp = path.replace('"', '')
-            String normalPath = null
+            String normPath = null
 
             // Is like a Freeplane path
                 if (pathTmp =~ '\\w:/') {
                 //if (pathTmp =~ '^file:/\\w:/') {
                     isLikeFpPath = true
-                    normalPath = FpPathToNormPath(pathTmp)
+                    normPath = FpPathToNormPath(pathTmp)
                 }
             // Is like norm path
                 //else if (pathTmp =~ '(^)\"?\\w:\\\\') {
                 else if (pathTmp =~ '^\\w:\\\\') {
                     isLikeNormPath = true
-                    normalPath = pathTmp
+                    normPath = pathTmp
                 }
 
             // Is path
                 if (isLikeFpPath || isLikeNormPath) {
                     isLikePath = true
-                    file = new File(normalPath)
+                    file = new File(normPath)
                     // File exist
                         if (file.exists()) {
                             // Set that the path is really what it seemed 
@@ -902,7 +903,7 @@ class Path { // # Class to work with paths and files strings.
                                 }
                                 else if (isLikeNormPath) {
                                     isNormPath = true
-                                    fpPath = NormPathToFpPath(normalPath)
+                                    fpPath = NormPathToFpPath(normPath)
                                 }
                             // ····································································································
                             // · Get path parts
@@ -915,16 +916,16 @@ class Path { // # Class to work with paths and files strings.
                                     // Full path: X:\JCG\articles\org.apache.commons.io.FilenameUtils Example\notes.txt
                                     // Base name: notes
                                     // Extension: txt
-                                volume = FilenameUtils.getPrefix(normalPath);
-                                name = FilenameUtils.getName(normalPath);
-                                fullPath = FilenameUtils.getFullPath(normalPath) + name;
-                                baseName = FilenameUtils.getBaseName(normalPath);
-                                extension = FilenameUtils.getExtension(normalPath);
+                                volume = FilenameUtils.getPrefix(normPath);
+                                name = FilenameUtils.getName(normPath);
+                                fullPath = FilenameUtils.getFullPath(normPath) + name;
+                                baseName = FilenameUtils.getBaseName(normPath);
+                                extension = FilenameUtils.getExtension(normPath);
                             // More path properties
                                 dateModified = new Date(file.lastModified()).format('yyyy-MM-dd hh:mm:ss')
                             // Is file
                                 if (file.isFile()) {
-                                    directory = volume + FilenameUtils.getPath(normalPath);
+                                    directory = volume + FilenameUtils.getPath(normPath);
                                     isFile = true
                                     fSize = file.size()
                                 }
@@ -999,7 +1000,7 @@ class FolderContent extends NodeUI { // # Class to import file data from a folde
             super(pNode)
             utils.C('FolderContent')
             // ····································································································
-            // · Get the folder content // - This will get the list of files and folders recursively in the current directory. We need to run the script again to have these new nodes added processed by this script because they are not yet in the list of nodes currently being looped. 
+            // · Get the folder content // - This will get the list of files and folders recursively in the current directory.
             // ···································································································· 
                 String folderContentFilter = /.*/ // Regular expression to specify a filter for files that will be retrieved if there are folders with the ICON_FOLDER_CONTENT icon. By default it is all of them.
                 // Define the FolderContentFilter used to select the files
@@ -1022,8 +1023,8 @@ class FolderContent extends NodeUI { // # Class to import file data from a folde
                             pNode.children.each { it.delete() }
                     // Loop the content of the folder
                         Path path = null // To create a new path object for the current file being looped
-                        new FileNameByRegexFinder().getFileNames(nodeExt?.getLink()?.getPath().getDirectory(), folderContentFilter).each { tmpNormalPath ->
-                            path = new Path(tmpNormalPath) 
+                        new FileNameByRegexFinder().getFileNames(nodeExt?.getLink()?.getPath().getDirectory(), folderContentFilter).each { tmpNormPath ->
+                            path = new Path(tmpNormPath) 
                             def tmpNode = pNode.createChild()
                             tmpNode.text = path.getName()
                             tmpNode.link.text = path.getFpPath()
