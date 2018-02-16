@@ -3,6 +3,8 @@
 // ####################################################################################################
 // # Version History:
 // #################################################################################################### 
+        // Version 2018-02-16_05.48.05
+            // Changed the possibility of changing node levels by adding a specific icon with a number to the node: Now it is possible to put the number 5, so this is useful if you want to display a node that is an image but that is in the level of a title in the map. 
         // Version 2018-01-26_16.45.55
             // Changed variable for video link url to showVideoEmbedded variable, and now to have a video appear has embedded in the html document created the user should add the video icon to the link. This will avoid to have too many embedded videos in a page which slows down the page loading/rendering.
             // Moved a verification for the red x up before the check for embedded video, to make the iconText available before.
@@ -781,6 +783,8 @@
                         depth = 3
                     else if (iconsText.contains(CHANGE_DEPTH_ICON + '4'))
                         depth = 4
+                    else if (iconsText.contains(CHANGE_DEPTH_ICON + '5'))
+                        depth = 5
 
                 // ----------------------------------------------------------------------------------------------------
                 // - Set indentation
@@ -1196,7 +1200,7 @@
                         // Loop the attributes and create a row with 2 cells for each
                             n.attributes.names.each { attributeName ->
                                 //attributeValue = n.attributes.get(attributeIndex)
-                                attributeValue = n[attributeName]
+                                attributeValue = n[attributeName] // Get the formula calculation 
                                 tableStr += indentSp + '<tr>' + EOL
                                 tableStr += indentSp + '<td style="' + STYLE_ATTR_CELL + '">' + attributeName + '</td>' + EOL
                                 tableStr += indentSp + '<td style="' + STYLE_ATTR_CELL + '">' + attributeValue + '</td>' + EOL
