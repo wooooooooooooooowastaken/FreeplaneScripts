@@ -1,7 +1,6 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1516978963281" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
-<icon BUILTIN="executable"/>
+<node TEXT="MapToHtmlDoc - Demo Map" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1518753599610" LINK="https://viaa.github.io/MapToHtmlDoc_-_Demo_Map.html" BACKGROUND_COLOR="#ccffff">
 <icon BUILTIN="pencil"/>
 <font NAME="Rockwell" SIZE="36" BOLD="true"/>
 <richcontent TYPE="DETAILS">
@@ -12,7 +11,7 @@
   </head>
   <body>
     <p>
-      Version: 2018-01-26_17:02:03
+      Version: 2018-02-16_05.58.56
     </p>
   </body>
 </html>
@@ -45,7 +44,7 @@
             <node_compare_condition user_name="IGNORE (BAK)" VALUE="BAK" MATCH_CASE="true" MATCH_APPROXIMATELY="false" COMPARATION_RESULT="0" SUCCEED="true" ITEM="filter_node"/>
         </conditional_style>
     </conditional_styles>
-    <properties fit_to_viewport="false;" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false;" show_note_icons="true" edgeColorConfiguration="#808080ff,#808080ff,#808080ff,#808080ff,#808080ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -177,6 +176,7 @@
 echo 'Finished'</pre>
   </body>
 </html>
+
 </richcontent>
 <node TEXT="Introduction" POSITION="right" ID="ID_566377176" CREATED="1497111225374" MODIFIED="1499439933595">
 <edge COLOR="#808080"/>
@@ -507,7 +507,7 @@ echo 'Finished'</pre>
 <node TEXT="If you want to display code in a note, it is better to put directly the &lt;pre&gt; tag in the HTML Code view of the note editor. Because each lines pasted to the note editor&apos;s layout view becomes a paragraph and is all indented the same, so the indentation will appear wrongly once the html document is rendered." ID="ID_808262811" CREATED="1510662578762" MODIFIED="1510662753492"/>
 </node>
 </node>
-<node TEXT="Formating" ID="ID_1559534251" CREATED="1497108253313" MODIFIED="1512598405038" COLOR="#ffff33" BACKGROUND_COLOR="#ccccff">
+<node TEXT="Formating" FOLDED="true" ID="ID_1559534251" CREATED="1497108253313" MODIFIED="1512598405038" COLOR="#ffff33" BACKGROUND_COLOR="#ccccff">
 <icon BUILTIN="PalmIcons/dFileMan/Panes/Word-window"/>
 <icon BUILTIN="pencil"/>
 <font NAME="Century" SIZE="24" BOLD="true"/>
@@ -543,8 +543,7 @@ echo 'Finished'</pre>
 </node>
 <node TEXT="I suggest to set a keyboard shortcut to open the &apos;Edit node core in dialog&apos; window quickly if you need to change a lot of formatting." ID="ID_719284684" CREATED="1508931081803" MODIFIED="1512600097961"/>
 </node>
-<node TEXT="More advanced style using node style and CSS" ID="ID_381401682" CREATED="1512597478783" MODIFIED="1512599328940" COLOR="#ff66ff" BACKGROUND_COLOR="#990099">
-<icon BUILTIN="pencil"/>
+<node TEXT="More advanced style using node style and CSS" ID="ID_381401682" CREATED="1512597478783" MODIFIED="1517495667773" COLOR="#ff66ff" BACKGROUND_COLOR="#990099">
 <font SIZE="30" BOLD="true" ITALIC="true"/>
 <node ID="ID_1778033847" CREATED="1512598724706" MODIFIED="1512600211128"><richcontent TYPE="NODE">
 
@@ -679,7 +678,7 @@ echo 'Finished'</pre>
 </node>
 </node>
 <node TEXT="Change node levels" ID="ID_1566502814" CREATED="1508073908810" MODIFIED="1508073912212">
-<node TEXT="Node level can be enforced by the user by setting specific icons on them. By default these icons will change the level of a node to level 2, 3 and 4 (level 1 is the root node and cannot be set):" ID="ID_1375312217" CREATED="1508073922046" MODIFIED="1508224742537">
+<node TEXT="Node level can be enforced by the user by setting specific icons on them. By default these icons will change the level of a node to level 2, 3 and 4, 5 (level 1 is the root node and cannot be set):" ID="ID_1375312217" CREATED="1508073922046" MODIFIED="1518753059465">
 <node TEXT="* Dark-2" ID="ID_1998908557" CREATED="1508074007242" MODIFIED="1508074109342"/>
 <node TEXT="* Dark-3" ID="ID_1188948088" CREATED="1508074008231" MODIFIED="1508074114434"/>
 <node TEXT="* Dark-4" ID="ID_673194661" CREATED="1508074008971" MODIFIED="1508074118008"/>
@@ -687,10 +686,16 @@ echo 'Finished'</pre>
 <node TEXT="This node will be changed a level 3 node (H3) because it has the icon with a number 3." ID="ID_371800472" CREATED="1508138195101" MODIFIED="1508139652364">
 <icon BUILTIN="PalmIcons/cSeries/NumbersDark/Dark-3-"/>
 </node>
+<node TEXT="If you put the number &apos;5&apos; on an node with an image that is normally at level 1, 2, 3, 4, the image will be displayed because the node will appear at level 5 in the rendered html. Images are not displayed normally if they are at nodes with a level 1, 2, 3 or 4." ID="ID_675272720" CREATED="1518753068622" MODIFIED="1518753252698">
+<node TEXT="Level1 = The root node (in black)." ID="ID_453724652" CREATED="1518753191910" MODIFIED="1518753208128"/>
+<node TEXT="Level2 = The title in blue." ID="ID_905951537" CREATED="1518753191912" MODIFIED="1518753211232"/>
+<node TEXT="Level3 = The title in green." ID="ID_879671332" CREATED="1518753191912" MODIFIED="1518753214148"/>
+<node TEXT="Level4 = The title in red." ID="ID_116456676" CREATED="1518753191912" MODIFIED="1518753216631"/>
+</node>
 </node>
 </node>
 <node TEXT="Breadcrumbs" ID="ID_1472184249" CREATED="1510139779342" MODIFIED="1510139782839">
-<node TEXT="" ID="ID_1504309059" CREATED="1510139783501" MODIFIED="1510139783501">
+<node TEXT="" FOLDED="true" ID="ID_1504309059" CREATED="1510139783501" MODIFIED="1510139783501">
 <node TEXT="The breadcrumb feature will add the paths to each sections with each individual parts of the path as a link to be click to jump to that particular section. This is a little bit like the clickable paths feature in window managers." ID="ID_1420347834" CREATED="1510139786212" MODIFIED="1510139864653"/>
 <node TEXT="By defaul the breadcrumbs are added to H2 and H3 sections, but there is also the possibility to add them to H4 section as well by changing the constant ADD_H4_BREADCRUMBS = false." ID="ID_1413092494" CREATED="1510139865035" MODIFIED="1510139924931"/>
 <node TEXT="Each H2, H3, H4 have their contstant to add and remove the breadcrumbs and are defined like this by default:" ID="ID_1607441233" CREATED="1510139925323" MODIFIED="1510166946911">
@@ -708,7 +713,7 @@ echo 'Finished'</pre>
 <edge COLOR="#808080"/>
 <node TEXT="Images" ID="ID_34785326" CREATED="1497029381635" MODIFIED="1508142040129">
 <icon BUILTIN="PalmIcons/dFileMan/Image/Image-file"/>
-<node TEXT="3 types of image insertion" ID="ID_336707127" CREATED="1497029381635" MODIFIED="1511307436548">
+<node TEXT="3 types of image insertion" ID="ID_336707127" CREATED="1497029381635" MODIFIED="1518752674792">
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1366768445" STARTINCLINATION="1165;0;" ENDINCLINATION="1165;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <node ID="ID_1071338087" CREATED="1497029825254" MODIFIED="1497108576998"><richcontent TYPE="NODE">
 
@@ -724,7 +729,7 @@ echo 'Finished'</pre>
 </html>
 </richcontent>
 <node TEXT="Hold the ctrl key and drag-n-drop and image to the map from Windows Explorer for example:" ID="ID_449121044" CREATED="1497108577477" MODIFIED="1497108585997"/>
-<node TEXT="" ID="ID_1574202634" CREATED="1497029835904" MODIFIED="1497108627458"><richcontent TYPE="DETAILS">
+<node TEXT="" ID="ID_1574202634" CREATED="1497029835904" MODIFIED="1518765120149"><richcontent TYPE="DETAILS">
 
 <html>
   <head>
@@ -807,7 +812,6 @@ echo 'Finished'</pre>
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -900,7 +904,7 @@ echo 'Finished'</pre>
 <node TEXT="For now it is only a basic support in the sense that the script will simply take the first latex formula it finds (the text between the first $...$) and will create a image file for it and link it like an embedded image." ID="ID_273715888" CREATED="1508885941280" MODIFIED="1508886073357"/>
 </node>
 <node TEXT="Library required" ID="ID_789196711" CREATED="1508882964820" MODIFIED="1508885551884">
-<node ID="ID_1931079163" CREATED="1508882967122" MODIFIED="1508884724551"><richcontent TYPE="NODE">
+<node ID="ID_1931079163" CREATED="1508882967122" MODIFIED="1518697709893"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -912,6 +916,7 @@ echo 'Finished'</pre>
     </p>
   </body>
 </html>
+
 </richcontent>
 </node>
 </node>
@@ -941,7 +946,7 @@ echo 'Finished'</pre>
 </node>
 </node>
 </node>
-<node TEXT="Extra features" POSITION="right" ID="ID_797831984" CREATED="1497108979742" MODIFIED="1508246942839">
+<node TEXT="Extra features" FOLDED="true" POSITION="right" ID="ID_797831984" CREATED="1497108979742" MODIFIED="1508246942839">
 <icon BUILTIN="idea"/>
 <icon BUILTIN="launch"/>
 <edge COLOR="#808080"/>
@@ -1252,7 +1257,7 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
-<node TEXT="Configuration" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
+<node TEXT="Configuration" FOLDED="true" POSITION="right" ID="ID_662083576" CREATED="1507667102285" MODIFIED="1510134229444">
 <icon BUILTIN="PalmIcons/cSeries/Blue1/Blue-pc"/>
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1784484328" MIDDLE_LABEL="IGNORE" STARTINCLINATION="-286;8;" ENDINCLINATION="-286;8;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <edge COLOR="#808080"/>
@@ -1395,6 +1400,10 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 <node TEXT="Version: 2018-01-26_17:02:03:" ID="ID_1377380740" CREATED="1516978920823" MODIFIED="1516978924820">
 <node TEXT="Added documentation for the video icon that is required now to display the video as embedded video otherwise they are displayed as links." ID="ID_1581498751" CREATED="1516978925839" MODIFIED="1516978951246"/>
+</node>
+<node TEXT="Version: 2018-02-16_05.58.56:" ID="ID_1924500135" CREATED="1518753533687" MODIFIED="1518753537492">
+<node TEXT="Added documentation about the possibility of changing node levels by adding a specific icon with a number to the node: Now it is possible to put the number 5, so this is useful if you want to display a node that is an image but that is in the level of a title in the map." ID="ID_1518735394" CREATED="1518753538409" MODIFIED="1518753577234"/>
+<node TEXT="Changing a section order." ID="ID_902103591" CREATED="1518753581648" MODIFIED="1518753590249"/>
 </node>
 </node>
 </node>
@@ -2270,6 +2279,8 @@ else if (externalObject.uri == null &amp;&amp; link != null) {
 </node>
 </node>
 </node>
+<node TEXT="s0 Add clouds" ID="ID_1434340028" CREATED="1518080616781" MODIFIED="1518080619864"/>
+<node TEXT="s0 Don&apos;t render the latex formula to image if the node is a title (h1, h2, h3, h4) because they images are not displayed at these levels anyway." ID="ID_112880125" CREATED="1518698232048" MODIFIED="1518698278739"/>
 <node TEXT="s0 Upload to gitbub deactivated for now.... I should fix the shell script as files from other repositories get mixed up in other repositories, and also files from other branches exported as htmldoc........." ID="ID_833389119" CREATED="1514551931461" MODIFIED="1514551997529">
 <font SIZE="18"/>
 </node>
