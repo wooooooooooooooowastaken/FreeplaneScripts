@@ -2,18 +2,19 @@
 // # Documentation
 // #################################################################################################### 
 
-    // ----------------------------------------------------------------------------------------------------
-    // - Version history
-    // ---------------------------------------------------------------------------------------------------- 
+    // ====================================================================================================
+    // = Version history
+    // ==================================================================================================== 
+        // 2018-02-20_10.27.40: Added a sort by icons which allows to group files and folders together.
         // 2018-02-16_11.38.16: Added lowercase sorting to sort by type and icon/priority.
         // 2018-02-15_18.35.26: Changed normalPath variable name by normPath. Changed some comments.
         // 2018-02-14_23.01.39: Remove the " from the sorting by name.
         // 2018-02-14_18.14.59: Added cloud to delimit projects visually.
         // 2018-02-14_15.08.39: Initial upload.
 
-    // ----------------------------------------------------------------------------------------------------
-    // - Description
-    // ---------------------------------------------------------------------------------------------------- 
+    // ====================================================================================================
+    // = Description
+    // ==================================================================================================== 
         // This is a script that tries to deal with project files, like one would find in a text editor project panel. 
         // NOTE: View the nodes in Outline View so it takes less horizontal space (View > View settings > Outline view).
 
@@ -21,17 +22,21 @@
         // I use only the script on this "Workspace" branch at the moment, but some projects could be created elsewhere and the scripts could be used on them. It is really only for nodes containing links to files and folders, not on other nodes like text or notes or images etc.
         // I personally create a docked view with that map where the "Workspace" node is located, so I see my projects and files always while opening other maps on the right view.
 
-    // ----------------------------------------------------------------------------------------------------
-    // - Usage
-    // ---------------------------------------------------------------------------------------------------- 
+    // ====================================================================================================
+    // = Usage
+    // ==================================================================================================== 
         // The script has 2 modes, the Project mode and the Folder content mode:
             // - Project node: If the script is run on a node has maybe a link to a folder and has children nodes that are link to folders and files, then this will be considered a project node. Then an input menu will show that will allow to sort the files and folder by name, type, date, priority (icon 1, 2, 3, etc), path and size. This is useful if you want to know which files in a project was last modified, or the files that have the most content in the project, or the most important ones for you if sorted by priority. If for some files the linked files doesn't exist anymore, a red X icon will be added to the nodes that link to those files. Some icons are added to file types to help identify the files. The number of files in the project is added in the project core text. Also when the files are sorted, some info about the sort is added to the details of the nodes, like the size of the file or the full path for example. You may choose to hide the attributes also if you don't want to see the DateModified and the Size of the files and folders attributes (View > Node attributes > Hide all attributes).
             // - FolderContent: If the script is run on a node that has the 'blue-tree' icon and that node has a link to a folder, then an input box will be opened to input a regular expression to select files in a folder, like '.*\.java' for example to select all java files in that folder and its subfolder. Once the files are added as links to these files, the 'blue-tree' icon is removed, the regex used is added as an attribute. If the 'blue-tree' icon is added again the regex in attribute will be used to select again the files, but they will be added anew, which means that all child nodes are remove and replaced by the new ones retrieved using the regex. Once files are retrieved, the node becomes a project node and then it is treated as a project node. 
         // NOTES: The script has classes that tries to extend the Freeplane nodes, specially the Path, Link and NodeExtension classes. These can be reuse in other scripts. 
 
-    // ----------------------------------------------------------------------------------------------------
-    // - Todo
-    // ---------------------------------------------------------------------------------------------------- 
+    // ====================================================================================================
+    // = Todo
+    // ==================================================================================================== 
+        // s2 Add sort by icons, the icons would be sorted then the nodes would be sorted by the icons strings. This would allow to group files and folders by icons.
+        // s2 Maybe add sortbyicon so that nodes are grouped together by the icons they have, this would first sort by priority icons, then by the contatenation of the other icons.
+        // s0 Add sort by number of lines?
+        // s0 FR Make optional the addition of icons?
         // s0 Maybe add a class to grep code files and then display there types info in subnodes? Maybe create a "TypeInfo" subnode and a "TypeInfo" class? And a Grep and CodeGrep classes also above it. So like, Project > Directory > File > Grep > CodeGrep > TypeInfo? 
         // s0 p3 t1 d0 FR: Maybe add directory and file class, and in the file class for example I could have types of files like a code file etc, and I could have grep and code stats methods in it.
         // s0 p3 t2 Document usage in the document section of the code, and also interation with project management (maybe this would be documented in a larger document in a mind map for the project management as a whole)
@@ -85,6 +90,8 @@
 
     import org.apache.commons.io.FileUtils
     import org.apache.commons.io.FilenameUtils
+
+    import groovy.transform.Field // To use global Constants (the other option is just to remove '@Field def', not defining the variable will make it "global".
 
 // ####################################################################################################
 class Utilities { // # Utilities common to most classes.
@@ -140,7 +147,6 @@ class NodeUI { // # Class to work with nodes on the map.
     // ====================================================================================================
     // = Constants
     // ==================================================================================================== 
-
         protected final String ICON_CODE = 'PalmIcons/aOffice/Computer/Coding'
         protected final String ICON_DATABASE = '3-columns'
         protected final String ICON_DOCUMENT = 'PalmIcons/aOffice/Computer/Word'
@@ -285,7 +291,7 @@ class NodeUI { // # Class to work with nodes on the map.
                 }
 
                 // ····································································································
-                protected void sortNodesByPriorityIconAndName(pNode, nodeExt) { // · Sort by the icons that are numbers used for priority: 1, 2, 3 etc
+                protected void sortNodesByPriorityNumbers(pNode, nodeExt) { // · Sort by the icons that are numbers used for priority: 1, 2, 3 etc
                 // ···································································································· 
                     def sorted = new ArrayList(pNode.children).sort { 
                         it.detailsText = null
@@ -298,6 +304,20 @@ class NodeUI { // # Class to work with nodes on the map.
                         else
                             // Sort criteria
                                 'zzz' + it.plainText.toLowerCase() 
+                    }
+                    sorted.eachWithIndex { it, i ->
+                        it.moveTo(pNode, i)
+                    }
+                }
+
+                // ····································································································
+                protected void sortNodesByIcons(pNode, nodeExt) { // · Sort by icons names (to group the nodes)
+                // ···································································································· 
+                    def sorted = new ArrayList(pNode.children).sort { 
+                        it.detailsText = null
+                        nodeExt.iconsText = it.icons.collect{ it2 -> it2.toString() }.join(';').split(';').sort().join(';') // Get icons, put them in list, sort the list, put back in text
+                        // Sort criteria
+                            nodeExt.iconsText + it.plainText.toLowerCase() 
                     }
                     sorted.eachWithIndex { it, i ->
                         it.moveTo(pNode, i)
@@ -339,6 +359,10 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
         // ---------------------------------------------------------------------------------------------------- 
             utils.F('FilePanel.SetNode')
 
+            // Specific: EditPad Pro projects: Node is a EditPad pro project remove the extension .epp
+                if (pNode.plainText =~ '.epp$')
+                    pNode.text = FilenameUtils.getBaseName(nodeText).replace('.epp', '')
+
             // If there was no link but there was a path in the core text then set it as a link
                 if (!nodeExt.getHasLinkText() && nodeExt.getLink()?.getIsLink()) 
                     pNode.link.text = nodeExt?.getLink()?.getPath().getFpPath()
@@ -360,12 +384,6 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
                             pNode.cloud.shape = 'RECT' // either 'ARC', 'STAR', 'RECT' or 'ROUND_RECT'
                     // s0 Create a project object? The class is already below in comments?
                 }
-
-            // ····································································································
-            // · Specific: EditPad Pro projects: Node is a EditPad pro project remove the extension .epp
-            // ···································································································· 
-                if (pNode.plainText =~ '.epp$')
-                    pNode.text = FilenameUtils.getBaseName(nodeText).replace('.epp', '')
 
             // ····································································································
             // · File doesn't exist (red X): Path is there but file/folder dosen't exist anymore'
@@ -498,7 +516,7 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
             // ····································································································
             // · Sort nodes
             // ···································································································· 
-                def sortMethod = javax.swing.JOptionPane.showInputDialog('Enter the sort method:\n[n] Name\n[d] Date modified\n[s] Size\n[t] Type\n[p] Path\n[i] Priority icon and name\n[Cancel] No sorting\n');
+                def sortMethod = javax.swing.JOptionPane.showInputDialog('Enter the sort method:\n[n] Name\n[d] Date modified\n[s] Size\n[t] Type\n[p] Path\n[1] Priority numbers\n[i] Icons\n[Cancel] No sorting\n');
 
                 switch (sortMethod) {
                     case 'n': // Name
@@ -516,8 +534,11 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
                     case 'p': // Path
                         sortNodesByLink(selectedNode)
                         break
-                    case 'i': // Priority icon and name
-                        sortNodesByPriorityIconAndName(selectedNode, nodeExt)
+                    case '1': // Priority numbers
+                        sortNodesByPriorityNumbers(selectedNode, nodeExt)
+                        break
+                    case 'i': // Icons
+                        sortNodesByIcons(selectedNode, nodeExt)
                         break
                     default: // No sorting
                         break
