@@ -5,6 +5,7 @@
     // ====================================================================================================
     // = Version history
     // ==================================================================================================== 
+        // 2018-02-24_04:36:59: When a path is in the coreText and the script is run, then the directory will be removed from the coreText and just the name will be shown. 
         // 2018-02-20_10.27.40: Added a sort by icons which allows to group files and folders together.
         // 2018-02-16_11.38.16: Added lowercase sorting to sort by type and icon/priority.
         // 2018-02-15_18.35.26: Changed normalPath variable name by normPath. Changed some comments.
@@ -33,6 +34,27 @@
     // ====================================================================================================
     // = Todo
     // ==================================================================================================== 
+        // s0 Change getter by (example):
+            // getName = { ->
+            //     return "${getFirstName()} ${getLastName()}"
+            // }
+        // s0 Continue to try to load classes from a script like this: 
+            // import groovy.lang.GroovyClassLoader;
+            // import groovy.lang.GroovyObject;
+
+            // def m(message) { javax.swing.JOptionPane.showMessageDialog(null, message); }
+
+            // // Create GroovyClassLoader.
+            // final GroovyClassLoader classLoader = new GroovyClassLoader();
+            // groovy = classLoader.parseClass(new File("C:/Users/alexandre.viau/AppData/Roaming/Freeplane/1.6.x/scripts/Test2.groovy")); // Other than a File, it can also parse a string containg a class
+            // groovyObj = (GroovyObject) groovy.newInstance();
+            // //groovyObj.invokeMethod("m", new Object[] { "allo" });
+            // //output = groovyObj.invokeMethod("scriptSays", new Object[] { "mrhaki" });
+
+            // //m(output)
+        // s0 Maybe add attributes with all possibilities of paths / or \, file: or no file:, etc, and for the linux vm (/mnt/share/c/...) and portable git (/c/...)?
+        // s0 sortNodesByIcons should sort by iconstext and then by number, but sorting by icons text it should remove the 'full-' (number) icons.
+        // s0 Add a flag in NodeUI to prevent the changing of the nodes content: not adding or removing icons, and not changing the details. 
         // s2 Add sort by icons, the icons would be sorted then the nodes would be sorted by the icons strings. This would allow to group files and folders by icons.
         // s2 Maybe add sortbyicon so that nodes are grouped together by the icons they have, this would first sort by priority icons, then by the contatenation of the other icons.
         // s0 Add sort by number of lines?
@@ -364,8 +386,10 @@ class FilePanel extends NodeUI { // # Class to manage files like in a project vi
                     pNode.text = FilenameUtils.getBaseName(nodeText).replace('.epp', '')
 
             // If there was no link but there was a path in the core text then set it as a link
-                if (!nodeExt.getHasLinkText() && nodeExt.getLink()?.getIsLink()) 
+                if (!nodeExt.getHasLinkText() && nodeExt.getLink()?.getIsLink()) {
                     pNode.link.text = nodeExt?.getLink()?.getPath().getFpPath()
+                    pNode.text = nodeExt?.getLink()?.getPath().getName() // 2018-02-24_04.36.37
+                }
 
             // Is folder content
                 if (nodeExt.getIsFolderContent())
